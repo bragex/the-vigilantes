@@ -15,3 +15,9 @@ insert into customer (customer_firstname,customer_lastname,customer_address,cust
 	values ('Raman','Delhi','Gate1',97889988,'Raman.Delhi@mail.com'),('Bob','Larsen','Gate2',98776655,'bob.larsen@hotmail.com'),('Lars','Andersen','Gate3',96665544,'lars.andersen@gmail.com');
 
 select * from customer; 
+
+drop database database1;
+
+/*delete from customer
+	where customer_id = 1;
+*/
