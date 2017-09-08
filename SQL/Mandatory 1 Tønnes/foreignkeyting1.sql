@@ -7,8 +7,8 @@ create table if not exists orders (
     foreign key (customer_id) references customer(customer_id)
 );
 
-insert into orders (order_id,order_type)
-	values (10,'Toy');
+insert into orders (order_type)
+	values ('Toy');
 
 Select * from orders;
 
