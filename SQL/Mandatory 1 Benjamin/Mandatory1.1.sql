@@ -18,15 +18,13 @@ create table if not exists customer (
 );
 
 /*1.4 Adds three people to the customer table */
-insert into customer 
-(cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
+insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
 	values ('Hansen', 'Jens', 37012345, 'Nedenes, 4823 Granittveien 6', 'HanJ@gmail.com'),
 	('Holm', 'Sanne', 37067890, 'Nedenes, 4823 Juvelveien 19', 'HolS@gmail.com'),
 	('Roscher', 'Trude', 37043434, 'Nedenes, 4823 Kvartsveien 21', 'RosT@gmail.com');
 
 /*1.4 Adds two group members to the customer table */
-insert into customer 
-	(cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
+insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
 	values ('Sandøy', 'Benjamin', 87654321, 'Ganktown, 1337 Blazeit 420', 'bramail@gmail.com'),
 	('Moe', 'Kim', 34566782, 'Hjemm, 3715 Bestegata 7', 'kimsin@mitt.no');
 
