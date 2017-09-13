@@ -68,7 +68,7 @@
                 font-size: 1.5vw;
                 margin-top: 5px;
             }
-            
+            /* Dropdown menu + links */
             .divlines1 {
                 width: 35px;
                 height: 5px;
@@ -110,18 +110,27 @@
                 margin-right: 20px;
                 z-index: 1;
             }
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
             .dropdown-content a:hover {
                 background-color: #f1f1f1
             }
             .show {
                 display:block;
             }
+            /* Link button with post method */
+            .linkbutton {
+                background: none;
+                border: 0.5px solid black;
+                color: black;
+                display: block;
+                text-decoration: none;
+                cursor: pointer;
+                font-size: 26px;
+                font-family: Segoe UI;
+                font-weight: bold;
+                padding: 12px 16px;
+                width: 100%;
+                text-align: left;
+            }   
         </style>
     </head>
     <body>
@@ -129,13 +138,13 @@
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
                     <h1 id="h1menu1">Studentlisten</h1>
-                    <form id="search00" class=searchclass>
+                    <form id="search00" class=searchclass action="" method="get">
                         <button id="search01">Søk</button>
-                        <input id="search02" type="search" name="search1">
+                        <input id="search02" type="search" name="Search">
                     </form>
                 </div>
                 <div id="sumbox1">
-                    <p id="psum">Gjennomsnitt =<b>12</b></p>
+                    <p id="psum">Gjennomsnitt = <b>30</b></p>
                 </div>
             </div>
         </header>
@@ -195,11 +204,18 @@
             </button>
             <div id="myDropdown" class="dropdown-content">
                 <b>
-                    <a href="">Link</a>
-                    <a href="">Link</a>
-                    <a href="">Link</a>
-                    <a href="">Link</a>
-                    <a href=""></a>
+                    <form action="studentliste" method="post" class="inline">
+                        <button class="linkbutton">Blogg</button>
+                    </form>
+                    <form action="studentliste" method="post" class="inline">
+                        <button class="linkbutton">Profil</button>
+                    </form>
+                     <form action="studentliste" method="post" class="inline">
+                        <button class="linkbutton">Link her</button>
+                    </form>
+                    <form action="studentliste" method="post" class="inline">
+                        <button class="linkbutton">Flere linker her</button>
+                    </form>
                 </b>
             </div>
         </div>
