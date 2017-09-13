@@ -1,4 +1,3 @@
 # The Vigilantes
-## The Vigilantes
-### The Vigilantes
-#### The Vigilantes
+Welcome to the Vigilantes!
+
