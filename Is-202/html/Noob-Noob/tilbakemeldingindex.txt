@@ -6,29 +6,13 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <style>
-        div {
-            width: 300px;
-            border: 2px solid black;
-            padding: 15px;
-            margin: 10px;
-        }
-        h1 {
-            margin: 10px;
-        }
-        p {
-            margin: 10px;
-        }
-        </style>
         <title>Tilbakemelding</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Modul 1</h1>
-        <p>Tilbakemelding</p>
-        <div>OIOIOIOI<br>jaja<br>sjokolade</div>
-        <button type="button" onclick="alert('Sender deg til læremål')">Læremål</button>
-        <button type="button" onclick="alert('Sender deg til studentlisten')">Studentliste</button>
+        <form action="Tilbakemelding">
+            <p><input type="submit" value="Tilbakemelding"></p>
+        </form>
     </body>
 </html>

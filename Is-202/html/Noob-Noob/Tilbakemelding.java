@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Amand
  */
-@WebServlet(name = "TilbakemeldingServlet", urlPatterns = {"/TilbakemeldingServlet"})
-public class TilbakemeldingServlet extends HttpServlet {
+@WebServlet(name = "Tilbakemelding", urlPatterns = {"/Tilbakemelding"})
+public class Tilbakemelding extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
