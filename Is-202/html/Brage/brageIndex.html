@@ -1,45 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Min side</title>
-</head>
-<body>
+    <head>
+        <title>Min side</title>
+        <style>
+            .button {
+                background-color: gray;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                -webkit-transition-duration: 0.4s; /* Safari */
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+            .button1 {
+                background-color: green; 
+                color: white; 
+                border: 2px solid #4CAF50;
+            }
+            .button1:hover {
+                background-color: black;
+                color: white;
+            }
+            .button2 {
+                background-color: red; 
+                color: white; 
 
-<h1>Min side</h1>
-<p>Navn:</p>
-<p>Blogg:</p>
-<p>E-post:</p>
-
-</body>
+            }
+            .button2:hover {
+                background-color: blue;
+                color: white;
+            }
+            .button3 {
+                background-color: yellow;
+                color: black;
+            }
+            .button3:hover {
+                background-color: black;
+                color: white;
+            }
+            .button4 {
+                background-color: blue;
+                color: white;
+            }
+            .button4:hover {
+                background-color: green;
+                color: white;
+            }
+            .disabled {
+                opacity: 0.9;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Min side</h1>
+        <p>Navn:</p>
+        <a href ="http://blogg.no">Blogg:</a>
+        <p>E-post:</p>
+        <button class="button button1" onclick="alert('Godkjent')">Modul1</button>
+        <button class="button button2" onclick="alert('Modul ikke godkjent')">Modul2</button>
+        <button class="button button3" onclick="alert('Venter godkjenning')">Modul3</button>
+        <button class="button button4" onclick="alert('Trykk for å laste opp')">Modul4</button>
+        <button class="button disabled" onclick="alert('Vent til modul 4 er levert')">Modul5</button>
+    </body>
 </html>
-
-
-<body>
-
-<button type="button" onclick="alert('Whabbaah?')">Modul1</button>
-
-</body>
-
-<body>
-
-<button type="button" onclick="alert('Hoooudish!')">Modul2</button>
-
-</body>
-
-<body>
-
-<button type="button" onclick="alert('Modul 3 her')">Modul3</button>
-
-</body>
-
-<body>
-
-<button type="button" onclick="alert('Dette er lett')">Modul4</button>
-
-</body>
-
-<body>
-
-<button type="button" onclick="alert('Prekæs')">Modul5</button>
-
-</body>
