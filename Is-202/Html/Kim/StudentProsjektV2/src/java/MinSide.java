@@ -55,7 +55,6 @@ public class MinSide extends HttpServlet {
 "            .button1 {\n" +
 "                background-color: green; \n" +
 "                color: white; \n" +
-"                border: 2px solid #4CAF50;\n" +
 "            }\n" +
 "            .button1:hover {\n" +
 "                background-color: black;\n" +
@@ -89,6 +88,9 @@ public class MinSide extends HttpServlet {
 "                opacity: 0.9;\n" +
 "                cursor: not-allowed;\n" +
 "            }\n" +
+"            form {\n" +
+"               display: inline-block;\n" +
+"            }\n" +
 "        </style>\n" +
 "    </head>\n" +
 "    <body>\n" +
@@ -96,11 +98,20 @@ public class MinSide extends HttpServlet {
 "        <p>Navn:</p>\n" +
 "        <a href =\"http://blogg.no\">Blogg:</a>\n" +
 "        <p>E-post:</p>\n" +
-"        <button class=\"button button1\" onclick=\"href=\"ModulLevering\">Modul1</button>\n" +
+"         <form action=\"TilbakeMelding\" method=\"post\">\n" +                    
+"        <button class=\"button button1\" onclick=\"href=\"ModulLevering\">Modul1</button>" +
+                    "</form>\n" +
+                    "<form action=\"TilbakeMelding\" method=\"post\">\n" + 
 "        <button class=\"button button2\" onclick=\"alert('Modul ikke godkjent')\">Modul2</button>\n" +
+                    "</form>\n" +
+                    "<form action=\"TilbakeMelding\" method=\"post\">\n" +
 "        <button class=\"button button3\" onclick=\"alert('Venter godkjenning')\">Modul3</button>\n" +
+                    "</form>\n" +
+                    "<form action=\"ModulLevering\" method=\"post\">\n" +
 "        <button class=\"button button4\" onclick=\"alert('Trykk for å laste opp')\">Modul4</button>\n" +
+                    "</form>\n" +
 "        <button class=\"button disabled\" onclick=\"alert('Vent til modul 4 er levert')\">Modul5</button>\n" +
+                
 "    </body>\n" +
 "</html>");
         }
