@@ -41,10 +41,14 @@ public class Home extends HttpServlet {
 "            body {\n" +
 "                font-family: Segoe UI;\n" +
 "            }\n" +
+"            h1 {\n" +
+"                font-size: 2vw;\n" +
+"            }\n" +
 "            #table01 {\n" +
 "                width: 90%;\n" +
 "                margin-left: 8%;\n" +
 "                margin-right: 2%;\n" +
+"				margin-top: 1.5%;\n" +
 "            }\n" +
 "            tr,th,td,table {\n" +
 "                border: 1px solid black;\n" +
@@ -100,27 +104,73 @@ public class Home extends HttpServlet {
 "                font-size: 1.5vw;\n" +
 "                margin-top: 5px;\n" +
 "            }\n" +
-"            \n" +
+"            /* Dropdown menu + links */\n" +
 "            .divlines1 {\n" +
 "                width: 35px;\n" +
 "                height: 5px;\n" +
 "                background-color: black;\n" +
-"                margin: 7px 0;\n" +
+"                margin: 6px 0;\n" +
+"                pointer-events: none;\n" +
 "            }\n" +
-"            #button1menu {\n" +
-"                background-color: #f7f7f7;\n" +
-"                border: none;\n" +
+"            .dropbtn {\n" +
+"                background-color: #f9f9f9;\n" +
 "                color: white;\n" +
-"                padding: 15px 32px;\n" +
-"                text-align: center;\n" +
-"                text-decoration: none;\n" +
+"                padding: 4px;\n" +
+"                padding-left: 7px;\n" +
+"                padding-right: 7px;\n" +
+"                border: 1px solid black;\n" +
+"                border-radius: 3px;\n" +
+"                cursor: pointer;\n" +
 "                display: inline-block;\n" +
 "                position: absolute;\n" +
 "                top: 0;\n" +
 "                right: 0;\n" +
-"                margin-top: 18.5px;\n" +
+"                margin-top: 16.6px;\n" +
 "                margin-right: 21px;\n" +
 "            }\n" +
+"            .dropbtn:hover, .dropbtn:focus {\n" +
+"                background-color: #e5e5e5;\n" +
+"            }\n" +
+"            .dropdown {\n" +
+"                display: inline-block;\n" +
+"                position: absolute;\n" +
+"                float: right;\n" +
+"                top: 0;\n" +
+"                right: 0;\n" +
+"            }\n" +
+"            .dropdown-content {\n" +
+"                display: none;\n" +
+"                background-color: #f7f7f7;\n" +
+"                min-width: 100px;\n" +
+"                margin-top: 66px;\n" +
+"                margin-right: 20px;\n" +
+"                z-index: 1;\n" +
+"				border: 1px solid black;\n" +
+"            }\n" +
+"            .dropdown-content a:hover {\n" +
+"                background-color: #f1f1f1\n" +
+"            }\n" +
+"            .show {\n" +
+"                display:block;\n" +
+"            }\n" +
+"            /* Link button with post method */\n" +
+"            .linkbutton {\n" +
+"                background: none;\n" +
+"                border: none;\n" +
+"                color: black;\n" +
+"                display: block;\n" +
+"                text-decoration: none;\n" +
+"                cursor: pointer;\n" +
+"                font-size: 26px;\n" +
+"                font-family: Segoe UI;\n" +
+"                font-weight: bold;\n" +
+"                padding: 12px 16px;\n" +
+"                width: 100%;\n" +
+"                text-align: left;\n" +
+"            }\n" +
+"			.linkbutton:hover {\n" +
+"				background-color: lightgray;\n" +
+"			}\n" +
 "        </style>\n" +
 "    </head>\n" +
 "    <body>\n" +
@@ -128,18 +178,13 @@ public class Home extends HttpServlet {
 "            <div id=\"headerbox1\" class=\"headerbox\">\n" +
 "                <div id=\"menudiv1\" class=\"divfrontpage\">\n" +
 "                    <h1 id=\"h1menu1\">Studentlisten</h1>\n" +
-"                    <form id=\"search00\" class=searchclass>\n" +
+"                    <form id=\"search00\" class=searchclass action=\"\" method=\"get\">\n" +
 "                        <button id=\"search01\">Søk</button>\n" +
-"                        <input id=\"search02\" type=\"search\" name=\"search1\">\n" +
+"                        <input id=\"search02\" type=\"search\" name=\"Search\">\n" +
 "                    </form>\n" +
 "                </div>\n" +
 "                <div id=\"sumbox1\">\n" +
-"                    <p id=\"psum\">X̄ =<b>12</b></p>\n" +
-"                </div>\n" +
-"                <div>\n" +
-"                    <form action=\"test.html\">\n" +
-"                        <button id=\"button\">test</button>\n" +
-"                    </form>\n" +
+"                    <p id=\"psum\">Gjennomsnitt = <b>30</b></p>\n" +
 "                </div>\n" +
 "            </div>\n" +
 "        </header>\n" +
@@ -191,6 +236,44 @@ public class Home extends HttpServlet {
 "                </tr>\n" +
 "            </table>\n" +
 "        </div>\n" +
+"        <div class=\"dropdown\">\n" +
+"            <button onclick=\"myFunction()\" class=\"dropbtn\">\n" +
+"                <div class=\"divlines1\"></div>\n" +
+"                <div class=\"divlines1\"></div>\n" +
+"                <div class=\"divlines1\"></div>\n" +
+"            </button>\n" +
+"            <div id=\"myDropdown\" class=\"dropdown-content\">\n" +
+"                <b>\n" +
+"                    <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
+"                        <button class=\"linkbutton\">Forum</button>\n" +
+"                    </form>\n" +
+"                    <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
+"                        <button class=\"linkbutton\">Innstillinger</button>\n" +
+"                    </form>\n" +
+"                     <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
+"                        <button class=\"linkbutton\">Logg ut</button>\n" +
+"                    </form>\n" +
+"                </b>\n" +
+"            </div>\n" +
+"        </div>\n" +
+"        <script>\n" +
+"            function myFunction() {\n" +
+"                document.getElementById(\"myDropdown\").classList.toggle(\"show\");\n" +
+"            }\n" +
+"            // Close the dropdown menu if the user clicks outside of it\n" +
+"            window.onclick = function(event) {\n" +
+"              if (!event.target.matches('.dropbtn')) {\n" +
+"                var dropdowns = document.getElementsByClassName(\"dropdown-content\");\n" +
+"                var i;\n" +
+"                for (i = 0; i < dropdowns.length; i++) {\n" +
+"                  var openDropdown = dropdowns[i];\n" +
+"                  if (openDropdown.classList.contains('show')) {\n" +
+"                    openDropdown.classList.remove('show');\n" +
+"                  }\n" +
+"                }\n" +
+"              }\n" +
+"            }    \n" +
+"        </script>\n" +
 "    </body>\n" +
 "</html>");
         }
