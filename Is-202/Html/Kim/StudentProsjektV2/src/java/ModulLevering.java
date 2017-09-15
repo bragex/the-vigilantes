@@ -32,45 +32,35 @@ public class ModulLevering extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>\n" +
-"<!--\n" +
-"To change this license header, choose License Headers in Project Properties.\n" +
-"To change this template file, choose Tools | Templates\n" +
-"and open the template in the editor.\n" +
-"-->\n" +
 "<html>\n" +
 "    <head>\n" +
 "        <title>Modulside</title>\n" +
 "        <meta charset=\"UTF-8\">\n" +
 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+"        <style>\n"+
+"           body {font-family:Segoe UI;}\n"+
+"           .form1{border:1px black solid;margin-left:15px;}#lmål1{margin-left:24px;font-size:15px;}\n"+
+"           a{text-decoration:none;}a:hover{color:#4169E1;}#p1{margin-left:10px;margin-bottom:-3px;margin-top:-5px;}\n"+
+"        </style>\n"+
 "    </head>\n" +
 "    <body>\n" +
-"    <center>\n" +
-"        <br><br>\n" +
-"        <h2>Modul 1</h2>\n" +
-"        <br>\n" +
-"        <h3>Læringsmål</h3>\n" +
-"        <br><br>\n" +
-"        <div>\n" +
-"            Læringsmål 1\n" +
-"            <br><br>\n" +
-"            Læringsmål 2\n" +
-"            <br><br>\n" +
-"            Læringsmål 3\n" +
-"            <br><br>\n" +
-"            Læringsmål 4\n" +
-"            <br><br>\n" +
-"            Læringsmål 5\n" +
-"            <br><br><br><br>\n" +
-"            <div>Last opp fil</div>\n" +
-"            <br>\n" +
-"            <form action=\"levere\">\n" +
-"                <input type=\"file\" name=\"myfile\">\n" +
-"                <input type=\"submit\">\n" +
-"            </form>\n" +
-"            </center> \n" +
-"        </div>\n" +
+"       <div>\n" +
+"           <h2>Modul 1</h2>\n" +
+"           <h3>Læringsmål:</h3><a href=\"Moduler\"><h4 id=\"p1\">Oversikt</h4><a>\n" +
+"           <div id=\"lmål1\">\n"+                    
+"               <p><a href=\"link\">Læringsmål moudl 1</a></p>\n" +
+"               <p><a href=\"link\">Læringsmål modul 2</a><p>\n" +
+"               <p>Læringsmål modul 3</p>\n" +
+"               <p>Læringsmål modul 4</p>\n" +
+"               <p>Læringsmål modul 5</p>\n" +
+"           </div>\n" +
+"           <p><b>Last opp fil</b></p>\n" +
+"           <form action=\"levere\">\n" +
+"               <input class=\"form1\" type=\"file\" name=\"myfile\">\n" +
+"               <input class=\"form1\" type=\"submit\">\n" +
+"           </form>\n" +
+"       </div> \n" +
 "    </body>\n" +
 "</html>");
         }

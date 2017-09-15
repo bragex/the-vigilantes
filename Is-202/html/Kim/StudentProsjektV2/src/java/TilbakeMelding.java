@@ -32,7 +32,6 @@ public class TilbakeMelding extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -42,14 +41,19 @@ public class TilbakeMelding extends HttpServlet {
                         "padding: 15px; margin: 10px;}" +
                         "h1 {margin: 10px;}" +
                         "p {margin: 10px;}" +
+                        "body {font-family: Segoe UI}" +
                         "</style>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Modul 1</h1>");
-            out.println("<p>Tilbakemelding</p>");
-            out.println("<div>OIOIOIOI<br>jaja<br>sjokolade</div>");
+            out.println("<p><b>Tilbakemelding</b></p>");
+            out.println("<div>"
+                    + "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue pharetra enim, at efficitur nibh iaculis nec. Pellentesque neque felis, faucibus at sapien ut, suscipit aliquam dolor</p>"
+                    + "<p>Praesent bibendum accumsan arcu, eget vulputate orci commodo at. Aliquam non lacus sed velit sagittis euismod nec molestie nibh. Pellentesque euismod felis in pharetra placerat.</p>"
+                    + "<p>Aliquam ante leo, tristique in hendrerit sit amet, faucibus et odio. Quisque varius viverra tincidunt. Nam pharetra ac urna vel venenatis.</p>"
+                    + "</div>");
             out.println("<form action=\"Home\">"
-                    + "<p><input type=\"submit\" value=\"Studentliste\"></p></form>");
+                    + "<p><input type=\"submit\" value=\"Hjem\"></p></form>");
             out.println("</body>");
             out.println("</html>");
         }

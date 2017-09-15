@@ -32,7 +32,6 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
@@ -250,7 +249,7 @@ public class Home extends HttpServlet {
 "                    <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
 "                        <button class=\"linkbutton\">Innstillinger</button>\n" +
 "                    </form>\n" +
-"                     <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
+"                     <form action=\"index.html\" method=\"post\" class=\"inline\">\n" +
 "                        <button class=\"linkbutton\">Logg ut</button>\n" +
 "                    </form>\n" +
 "                </b>\n" +
