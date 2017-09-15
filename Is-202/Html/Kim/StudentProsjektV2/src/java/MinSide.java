@@ -32,7 +32,6 @@ public class MinSide extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
@@ -42,76 +41,64 @@ public class MinSide extends HttpServlet {
 "                background-color: gray;\n" +
 "                border: none;\n" +
 "                color: white;\n" +
-"                padding: 16px 32px;\n" +
+"                padding: 10px 25px;\n" +
 "                text-align: center;\n" +
 "                text-decoration: none;\n" +
 "                display: inline-block;\n" +
 "                font-size: 16px;\n" +
 "                margin: 4px 2px;\n" +
-"                -webkit-transition-duration: 0.4s; /* Safari */\n" +
-"                transition-duration: 0.4s;\n" +
 "                cursor: pointer;\n" +
 "            }\n" +
 "            .button1 {\n" +
-"                background-color: green; \n" +
-"                color: white; \n" +
-"            }\n" +
-"            .button1:hover {\n" +
-"                background-color: black;\n" +
-"                color: white;\n" +
+"                background-color: lightgreen; \n" +
+"                color: black; border: 1px solid green;\n" +
 "            }\n" +
 "            .button2 {\n" +
-"                background-color: red; \n" +
-"                color: white; \n" +
-"            }\n" +
-"            .button2:hover {\n" +
-"                background-color: blue;\n" +
-"                color: white;\n" +
+"                background-color: lightcoral; \n" +
+"                color: black; border: 1px solid red;\n" +
 "            }\n" +
 "            .button3 {\n" +
-"                background-color: yellow;\n" +
-"                color: black;\n" +
-"            }\n" +
-"            .button3:hover {\n" +
-"                background-color: black;\n" +
-"                color: white;\n" +
+"                background-color: gold;\n" +
+"                color: black; border: 1px solid orange;\n" +
 "            }\n" +
 "            .button4 {\n" +
-"                background-color: blue;\n" +
-"                color: white;\n" +
-"            }\n" +
-"            .button4:hover {\n" +
-"                background-color: green;\n" +
-"                color: white;\n" +
+"                background-color: lightgray;\n" +
+"                color: black; border: 1px solid gray;\n" +
 "            }\n" +
 "            .disabled {\n" +
-"                opacity: 0.9;\n" +
-"                cursor: not-allowed;\n" +
+"                background-color: gray;\n" +
+"                color: black;\n" +
+"                cursor: not-allowed; border: 1px solid black;\n" +
 "            }\n" +
 "            form {\n" +
-"               display: inline-block;\n" +
+"               display: inline;\n" +
 "            }\n" +
+"            body{font-family:Segoe UI; margin-left:10px;}\n"+
+"            #minsidediv1{margin-left:15px;}\n"+
 "        </style>\n" +
 "    </head>\n" +
 "    <body>\n" +
 "        <h1>Min side</h1>\n" +
 "        <p>Navn:</p>\n" +
-"        <a href =\"http://blogg.no\">Blogg:</a>\n" +
+"        <p>Blogg</p>\n" +
 "        <p>E-post:</p>\n" +
-"         <form action=\"TilbakeMelding\" method=\"post\">\n" +                    
-"        <button class=\"button button1\" onclick=\"href=\"ModulLevering\">Modul1</button>" +
-                    "</form>\n" +
-                    "<form action=\"TilbakeMelding\" method=\"post\">\n" + 
-"        <button class=\"button button2\" onclick=\"alert('Modul ikke godkjent')\">Modul2</button>\n" +
-                    "</form>\n" +
-                    "<form action=\"TilbakeMelding\" method=\"post\">\n" +
-"        <button class=\"button button3\" onclick=\"alert('Venter godkjenning')\">Modul3</button>\n" +
-                    "</form>\n" +
-                    "<form action=\"ModulLevering\" method=\"post\">\n" +
-"        <button class=\"button button4\" onclick=\"alert('Trykk for å laste opp')\">Modul4</button>\n" +
-                    "</form>\n" +
-"        <button class=\"button disabled\" onclick=\"alert('Vent til modul 4 er levert')\">Modul5</button>\n" +
-                
+"        <div id=\"minsidediv1\">\n"+
+"           <form action=\"TilbakeMelding\" method=\"post\">\n" +                    
+"               <button class=\"button button1\" onclick=\"href=\"ModulLevering\">Modul1</button>" +
+"           </form>\n" +
+"           <form action=\"TilbakeMelding\" method=\"post\">\n" + 
+"               <button class=\"button button2\" onclick=\"alert('Modul ikke godkjent')\">Modul2</button>\n" +
+"           </form>\n" +
+"           <form action=\"TilbakeMelding\" method=\"post\">\n" +
+"               <button class=\"button button3\" onclick=\"alert('Venter godkjenning')\">Modul3</button>\n" +
+"           </form>\n" +
+"           <form action=\"ModulLevering\" method=\"post\">\n" +
+"               <button class=\"button button4\" onclick=\"alert('Trykk for å laste opp')\">Modul4</button>\n" +
+"           </form>\n" +
+"           <form action=\"\" method=\"post\">\n"+
+"               <button class=\"button disabled\" onclick=\"alert('Vent til modul 4 er levert')\">Modul5</button>\n" +
+"           </form>\n"+ 
+"        </div>\n"+
 "    </body>\n" +
 "</html>");
         }

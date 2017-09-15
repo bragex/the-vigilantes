@@ -32,7 +32,6 @@ public class Moduler extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>\n" +
 "\n" +
 "<html>\n" +
@@ -40,16 +39,17 @@ public class Moduler extends HttpServlet {
 "        <title>Is-200 prosjekt</title>\n" +
 "        <meta charset=\"UTF-8\">\n" +
 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+"        <style>\n" +
+"           body{font-family: Segoe UI;margin-left:2%;}ul{list-style-type:none;}h1{font-size:2vw;}li{font-size:1.1vw;}\n" +
+"        </style>\n"+
 "    </head>\n" +
 "    <body>\n" +
 "        <h1>Modul oversikt</h1>\n" +
-"        <p>Go to <a href=\"Moduler\">Moduler</a></p>\n" +
-"        \n" +
-"         <table>\n" +
+"           <table>\n" +
 "                <tr>\n" +
 "                    <td>\n" +
 "                        <ul>\n" +
-"                            <li><a href=\"Moduler\">Modul 1</a></li> \n" +
+"                            <li><a href=\"modul1\">Modul 1</a></li> \n" +
 "                             <li>Modul 2</li>\n" +
 "                             <li>Modul 3</li>\n" +
 "                             <li>Modul 4</li>\n" +
@@ -65,7 +65,7 @@ public class Moduler extends HttpServlet {
 "                    </td>\n" +
 "                    <td>\n" +
 "                        <ul>\n" +
-"                             <li>Lever her!</li> \n" +
+"                             <li><a href=\"ModulLevering\">Lever her!</a></li> \n" +
 "                             <li>Lever her!</li>\n" +
 "                             <li>Lever her!</li>\n" +
 "                             <li>Lever her!</li>\n" +
@@ -80,10 +80,7 @@ public class Moduler extends HttpServlet {
 "                        </ul>\n" +
 "                    </td>\n" +
 "                </tr>\n" +
-"        </table> \n" +
-"        \n" +
-"\n" +
-"        \n" +
+"           </table> \n" +
 "    </body>\n" +
 "</html>");
         }
