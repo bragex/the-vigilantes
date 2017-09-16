@@ -19,6 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/Home"})
 public class Home extends HttpServlet {
 
+    private int tint1; /*Find a better way of doing this. Use hashmaps or arraylist*/
+    private int tint2;private int tint3;private int tint4;private int bint1;private int bint2;private int bint3;
+    private int bint4;private int mint1;private int mint2;private int mint3;private int mint4;private int savg1;
+    private int savg2;private int savg3;private int savg4;private int sumt;private int sumb;private int summ;
+    private int posum;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -27,9 +33,20 @@ public class Home extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     */ 
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)   
             throws ServletException, IOException {
+            tint1 = 10;tint2 = 10;tint3 = 10;tint4 = 10; /* Hashmaps/Arrays */
+            bint1 = 10;bint2 = 7;bint3 = 8;bint4 = 9;
+            mint1 = 9;mint2 = 4;mint3 = 7;mint4 = 4;
+            sumt = tint1+tint2+tint3+tint4; /* Do better math */
+            sumb = bint1+bint2+bint3+bint4;
+            summ = mint1+mint2+mint3+mint4;
+            savg1 = (tint1+bint1+mint1)/3;
+            savg2 = (tint2+bint2+mint2)/3;
+            savg3 = (tint3+bint3+mint3)/3;
+            savg4 = (tint4+bint4+mint4)/3;
+            posum = (sumt+sumb+summ)/3;
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>\n" +
@@ -187,6 +204,7 @@ public class Home extends HttpServlet {
 "                </div>\n" +
 "            </div>\n" +
 "        </header>\n" +
+"        <div id=\"mathdiv1\"\n"+                    
 "        <div id=\"tablediv1\" class=\"divfrontpage\">\n" +
 "            <table id=\"table01\">\n" +
 "                <tr>\n" +
@@ -204,33 +222,44 @@ public class Home extends HttpServlet {
 "                    <td><a href=\"MinSide\">Tønnes Røren</a></td>\n" +
 "                    <td><a href=\"blogg1\">Tonnes.blogg.no</a></td>\n" +
 "                    <td><a href=\"mailto:tonnes.mail@gmail.com\">tonnes.mail@gmail.com</a></td>\n" +
-"                    <td>40</td>\n" +
-"                    <td>10</td>\n" +
-"                    <td>10</td>\n" +
-"                    <td>10</td>\n" +
-"                    <td>10</td>\n" +
+"                    <td>"+sumt+"</td>\n" +
+"                    <td>"+tint1+"</td>\n" +
+"                    <td>"+tint2+"</td>\n" +
+"                    <td>"+tint3+"</td>\n" +
+"                    <td>"+tint4+"</td>\n" +
 "                    <td>osv</td>\n" +
 "                </tr>\n" +
 "                <tr>\n" +
 "                    <td><a href=\"profil2\">Brannmann Sam</a></td>\n" +
 "                    <td><a href=\"blogg2\">Samblogg.com</a></td>\n" +
 "                    <td><a href=\"mailto:brannSam.mann@gmail.com\">brannSam.mann@gmail.com</a></td>\n" +
-"                    <td>24</td>\n" +
-"                    <td>6</td>\n" +
-"                    <td>6</td>\n" +
-"                    <td>4</td>\n" +
-"                    <td>8</td>\n" +
+"                    <td>"+sumb+"</td>\n" +
+"                    <td>"+bint1+"</td>\n" +
+"                    <td>"+bint2+"</td>\n" +
+"                    <td>"+bint3+"</td>\n" +
+"                    <td>"+bint4+"</td>\n" +
 "                    <td>osv</td>\n" +
 "                </tr>\n" +
 "                <tr>\n" +
 "                    <td><a href=\"profil3\">Byggmester Bob</a></td>\n" +
 "                    <td><a href=\"blogg3\">Paalblogg.no</a></td>\n" +
 "                    <td><a href=\"mailto:byggmester.bob@gmail.com\">byggmester.bob@gmail.com</a></td>\n" +
-"                    <td>33</td>\n" +
-"                    <td>10</td>\n" +
-"                    <td>10</td>\n" +
-"                    <td>7</td>\n" +
-"                    <td>6</td>\n" +
+"                    <td>"+summ+"</td>\n" +
+"                    <td>"+mint1+"</td>\n" +
+"                    <td>"+mint2+"</td>\n" +
+"                    <td>"+mint3+"</td>\n" +
+"                    <td>"+mint4+"</td>\n" +
+"                    <td>osv</td>\n" +
+"                </tr>\n" +
+"                <tr>\n" +
+"                    <td></td>\n" +
+"                    <td></td>\n" +
+"                    <td><b>Gjennomsnitt</b></td>\n" +
+"                    <td>"+posum+"</td>\n" +
+"                    <td>"+savg1+"</td>\n" +
+"                    <td>"+savg2+"</td>\n" +
+"                    <td>"+savg3+"</td>\n" +
+"                    <td>"+savg4+"</td>\n" +
 "                    <td>osv</td>\n" +
 "                </tr>\n" +
 "            </table>\n" +
