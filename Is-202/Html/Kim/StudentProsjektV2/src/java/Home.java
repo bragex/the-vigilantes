@@ -199,9 +199,6 @@ public class Home extends HttpServlet {
 "                        <input id=\"search02\" type=\"search\" name=\"Search\">\n" +
 "                    </form>\n" +
 "                </div>\n" +
-"                <div id=\"sumbox1\">\n" +
-"                    <p id=\"psum\">Gjennomsnitt = <b>30</b></p>\n" +
-"                </div>\n" +
 "            </div>\n" +
 "        </header>\n" +
 "        <div id=\"mathdiv1\"\n"+                    
@@ -220,7 +217,7 @@ public class Home extends HttpServlet {
 "                </tr>\n" +
 "                <tr>\n" +
 "                    <td><a href=\"MinSide\">Tønnes Røren</a></td>\n" +
-"                    <td><a href=\"blogg1\">Tonnes.blogg.no</a></td>\n" +
+"                    <td><a href=\"http://home.uia.no/ttrore16/\">Tonnes.blogg.no</a></td>\n" +
 "                    <td><a href=\"mailto:tonnes.mail@gmail.com\">tonnes.mail@gmail.com</a></td>\n" +
 "                    <td>"+sumt+"</td>\n" +
 "                    <td>"+tint1+"</td>\n" +
@@ -274,6 +271,9 @@ public class Home extends HttpServlet {
 "                <b>\n" +
 "                    <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
 "                        <button class=\"linkbutton\">Forum</button>\n" +
+"                    </form>\n" +
+"                    <form action=\"Moduler\" method=\"post\" class=\"inline\">\n" +
+"                        <button class=\"linkbutton\">Moduler</button>\n" +
 "                    </form>\n" +
 "                    <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
 "                        <button class=\"linkbutton\">Innstillinger</button>\n" +
