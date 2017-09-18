@@ -272,6 +272,9 @@ public class Home extends HttpServlet {
 "                    <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
 "                        <button class=\"linkbutton\">Forum</button>\n" +
 "                    </form>\n" +
+"                    <form action=\"Moduler\" method=\"post\" class=\"inline\">\n" +
+"                        <button class=\"linkbutton\">Moduler</button>\n" +
+"                    </form>\n" +
 "                    <form action=\"studentliste\" method=\"post\" class=\"inline\">\n" +
 "                        <button class=\"linkbutton\">Innstillinger</button>\n" +
 "                    </form>\n" +
