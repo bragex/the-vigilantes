@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author by-cr
+ * @author Kim
  */
 @WebServlet(urlPatterns = {"/First1"})
 public class First extends HttpServlet {

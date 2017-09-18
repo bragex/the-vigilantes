@@ -36,7 +36,7 @@ public class Moduler extends HttpServlet {
 "\n" +
 "<html>\n" +
 "    <head>\n" +
-"        <title>Is-200 prosjekt</title>\n" +
+"        <title>Moduler</title>\n" +
 "        <meta charset=\"UTF-8\">\n" +
 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
 "        <style>\n" +

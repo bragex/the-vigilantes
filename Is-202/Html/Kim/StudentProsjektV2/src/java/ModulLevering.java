@@ -35,7 +35,7 @@ public class ModulLevering extends HttpServlet {
             out.println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
-"        <title>Modulside</title>\n" +
+"        <title>Modullevering</title>\n" +
 "        <meta charset=\"UTF-8\">\n" +
 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
 "        <style>\n"+

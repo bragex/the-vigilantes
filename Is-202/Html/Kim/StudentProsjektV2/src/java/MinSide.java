@@ -35,7 +35,7 @@ public class MinSide extends HttpServlet {
             out.println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
-"        <title>Min side</title>\n" +
+"        <title>Minside</title>\n" +
 "        <style>\n" +
 "            .button {\n" +
 "                background-color: gray;\n" +
