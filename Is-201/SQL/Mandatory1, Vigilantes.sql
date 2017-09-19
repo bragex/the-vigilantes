@@ -74,12 +74,12 @@ insert into orders (order_date, order_status, cus_id)
 delete from customer where cus_id = 4;
 
 /*2.6  The query lists the last name of a customer, order date and the status of the order. */
-Select customer.cus_lname, order_date, order_status 
+select customer.cus_lname, order_date, order_status 
 	from customer, orders
     where customer.cus_id = orders.cus_id; 
 
 /*2.7 This query creates a lot of duplicates. */
-Select cus_lname, order_date, order_status 
+select cus_lname, order_date, order_status 
 	from customer, orders; 
     
 /*3.3 Creates two tables and inserts values. */
@@ -128,20 +128,27 @@ select order_date, left (prod_name,10)
     and customer.cus_id = orders.cus_id and order_date like '2015-08%'
     and prod_name like '%star%';
 
-/*c) Customer name, quantity ordered, and product name*/
+/*c) Customer name, quantity ordered, and product name. */
 select cus_lname,ol_quantity,prod_name
 	from orders,orderline,customer,product
     where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
     and customer.cus_id = orders.cus_id;
+
+/* Tried the "inner join" version. */
+select cus_lname,ol_quantity,prod_name
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+	inner join orderline on orders.order_id = orderline.order_id
+	inner join product on orderline.prod_id = product.prod_id;
     
-/*d) Modify previous query to sort results by customer name and product name*/
+/*d) Modify previous query to sort results by customer name and product name. */
 select cus_lname,ol_quantity,prod_name
 	from orders,orderline,customer,product
     where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
     and customer.cus_id = orders.cus_id
     order by cus_lname,prod_name;
     
-/*e) New attribute to product: reorder level */
+/*e) New attribute to product: reorder level. */
 alter table product
 	add reorder_lvl varchar(20) default 'Hello world!';
 
