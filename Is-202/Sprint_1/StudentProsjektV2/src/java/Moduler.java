@@ -49,18 +49,21 @@ public class Moduler extends HttpServlet {
 "                <tr>\n" +
 "                    <td>\n" +
 "                        <ul>\n" +
-"                            <li><a href=\"modul1\">Modul 1</a></li> \n" +
-"                             <li>Modul 2</li>\n" +
-"                             <li>Modul 3</li>\n" +
-"                             <li>Modul 4</li>\n" +
-"                             <li>Modul 5</li>\n" +
-"                             <li>Modul 6</li>\n" +
-"                             <li>Modul 7</li>\n" +
-"                             <li>Modul 8</li>\n" +
-"                             <li>Modul 9</li>\n" +
-"                             <li>Modul 10</li>\n" +
-"                             <li>Modul 11</li>\n" +
-"                             <li>Modul 12</li>\n" +
+"                            <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-1/beskrivelse.xhtml\">Modul 1</a></li> \n" +
+"                             <li<a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-2/beskrivelse.xhtml\">Modul 2</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-3/beskrivelse.xhtml\">Modul 3</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-4/beskrivelse.xhtml\">Modul 4</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-5/beskrivelse.xhtml\">Modul 5</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-6/beskrivelse.xhtml\">Modul 6</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-7/beskrivelse.xhtml\">Modul 7</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-8/beskrivelse.xhtml\">Modul 8</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-9/beskrivelse.xhtml\">Modul 9</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-10/beskrivelse.xhtml\">Modul 10</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-11/beskrivelse.xhtml\">Modul 11</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-12/beskrivelse.xhtml\">Modul 12</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-13/beskrivelse.xhtml\">Modul 13</a></li> \n" +
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-14/beskrivelse.xhtml\">Modul 14</a></li> \n" +    
+"                             <li><a href=\"http://home.uia.no/hallgeir/is110/moduler/modul-15/beskrivelse.xhtml\">Modul 15</a></li> \n" +                     
 "                        </ul>\n" +
 "                    </td>\n" +
 "                    <td>\n" +
@@ -77,6 +80,9 @@ public class Moduler extends HttpServlet {
 "                             <li>Lever her!</li>\n" +
 "                             <li>Lever her!</li>\n" +
 "                             <li>Lever her!</li>\n" +
+"                             <li>Lever her!</li>\n" +
+"                             <li>Lever her!</li>\n" +
+"                             <li>Lever her!</li>\n" +                    
 "                        </ul>\n" +
 "                    </td>\n" +
 "                </tr>\n" +

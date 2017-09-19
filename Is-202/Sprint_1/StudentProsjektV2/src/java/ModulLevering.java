@@ -32,37 +32,48 @@ public class ModulLevering extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>\n" +
-"<html>\n" +
-"    <head>\n" +
-"        <title>Modullevering</title>\n" +
-"        <meta charset=\"UTF-8\">\n" +
-"        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-"        <style>\n"+
-"           body {font-family:Segoe UI;}\n"+
-"           .form1{border:1px black solid;margin-left:15px;}#lmål1{margin-left:24px;font-size:15px;}\n"+
-"           a{text-decoration:none;}a:hover{color:#4169E1;}#p1{margin-left:10px;margin-bottom:-3px;margin-top:-5px;}\n"+
-"        </style>\n"+
-"    </head>\n" +
-"    <body>\n" +
-"       <div>\n" +
-"           <h2>Modul 1</h2>\n" +
-"           <h3>Læringsmål:</h3><a href=\"Moduler\"><h4 id=\"p1\">Oversikt</h4><a>\n" +
-"           <div id=\"lmål1\">\n"+                    
-"               <p><a href=\"link\">Læringsmål moudl 1</a></p>\n" +
-"               <p><a href=\"link\">Læringsmål modul 2</a><p>\n" +
-"               <p>Læringsmål modul 3</p>\n" +
-"               <p>Læringsmål modul 4</p>\n" +
-"               <p>Læringsmål modul 5</p>\n" +
-"           </div>\n" +
-"           <p><b>Last opp fil</b></p>\n" +
-"           <form action=\"levere\">\n" +
-"               <input class=\"form1\" type=\"file\" name=\"myfile\">\n" +
-"               <input class=\"form1\" type=\"submit\">\n" +
-"           </form>\n" +
-"       </div> \n" +
-"    </body>\n" +
-"</html>");
+            out.println("<!DOCTYPE html>\n"
+                    + "<html>\n"
+                    + "    <head>\n"
+                    + "        <title>Modullevering</title>\n"
+                    + "        <meta charset=\"UTF-8\">\n"
+                    + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                    + "        <style>\n"
+                    + "           body {font-family:Segoe UI;}\n"
+                    + "           .form1{border:1px black solid;margin-left:15px;}#lmål1{margin-left:24px;font-size:15px;}\n"
+                    + "           a{text-decoration:none;}a:hover{color:#4169E1;}#p1{margin-left:10px;margin-bottom:-3px;margin-top:-5px;}\n"
+                    + "        </style>\n"
+                    + "    </head>\n"
+                    + "    <body>\n"
+                    + "       <div>\n"
+                    + "           <h2>Modul 1</h2>\n"
+                    + "           <h3>Læringsmål:</h3><a href=\"Moduler\"><h4 id=\"p1\">Oversikt over alle Moduler</h4><a>\n"
+                    + "           <div id=\"lmål1\">\n"
+                    + "               <p><a href=\"link\">Læringsmål moudl 1</a></p>\n"
+                    + "               <p> Du har fullført modulen når du kan:\n"
+                    + "\n"
+                    + "Bruke BlueJ, bl.a. til å:\n"
+                    + "Åpne, lagre, og lukke prosjekter.\n"
+                    + "Lage objekter\n"
+                    + "Kalle metoder i objektene, med og uten parametere\n"
+                    + "Bruke editoren til å se på kildekoden til en klasse\n"
+                    + "Kunne kompilere prosjektet\n"
+                    + "Litt java, du skal f.eks.\n"
+                    + "Kunne kjenne igjen en klassedefinisjon, og kunne finne navnet på klassen\n"
+                    + "Kjenne til forskjellige typer data\n"
+                    + "Kalle metoder med et objekt som parameter\n"
+                    + "Kalle metoder som returnerer en verdi\n"
+                    + "Kjenne forskjellen mellom klasser og objekter\n"
+                    + " </p>\n"
+                    + "           </div>\n"
+                    + "           <p><b>Last opp fil</b></p>\n"
+                    + "           <form action=\"levere\">\n"
+                    + "               <input class=\"form1\" type=\"file\" name=\"myfile\">\n"
+                    + "               <input class=\"form1\" type=\"submit\">\n"
+                    + "           </form>\n"
+                    + "       </div> \n"
+                    + "    </body>\n"
+                    + "</html>");
         }
     }
 
