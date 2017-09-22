@@ -68,7 +68,10 @@ alter table orders auto_increment = 100;
 insert into orders (order_date, order_status, cus_id)
 	values ('2015.09.08',true,2),('2015.08.08',true,2),
 	('2016.05.08',false,3),('2016.08.08',true,4),
-	('2015.08.08',false,4),('2017.03.08',false,5);
+	('2015.08.08',false,4),('2017.03.08',false,5),('2014.08.08',false,4),('2016.03.08',false,5),('2015.04.05',true,5),
+    ('2015.01.04',false,5), ('2016.03.09',false,6), ('2016.02.09',true,6), ('2015.06.07',false,7),
+    ('2015.05.01',true,7), ('2015.06.02', true, 8), ('2016.04.04', false, 8), ('2015.06.06', false, 9),
+    ('2016.09.08', true, 9) ;;
     
 /*2.5 Tries to delete a customer with an order tied to it. Fails if an order has been added to a customer. */
 delete from customer where cus_id = 4;
