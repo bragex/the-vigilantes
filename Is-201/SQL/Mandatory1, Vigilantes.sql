@@ -157,3 +157,12 @@ alter table product
 	add reorder_lvl varchar(20) default 'Hello world!';
 
 select * from product;
+
+create table if not exists invoice(
+in_id int (5) not null auto_increment,
+in_issuedate date,
+in_creditcard int (12),
+in_name varchar(50),
+in_paiddate date,
+constraint invoice_pk primary key (in_id)
+);
