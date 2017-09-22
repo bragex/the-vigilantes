@@ -25,10 +25,16 @@ create table if not exists customer (
 );
 
 /*1.4 Adds three people to the customer table. */
+/*Mandatory 2: updatet with five more customers*/
 insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
-	values ('Hansen', 'Jens', 37012345, 'Nedenes, 4823 Granittveien 6', 'HanJ@gmail.com'),
-	('Holm', 'Sanne', 37067890, 'Nedenes, 4823 Juvelveien 19', 'HolS@gmail.com'),
-	('Roscher', 'Trude', 37043434, 'Nedenes, 4823 Kvartsveien 21', 'RosT@gmail.com');
+	values ('Hansen', 'Jens', 37012345, '4823 Nedenes, Granittveien 6', 'HanJ@gmail.com'),
+	('Holm', 'Sanne', 37067890, '4823 Nedenes, Juvelveien 19', 'HolS@gmail.com'),
+	('Roscher', 'Trude', 37043434, '4823 Nedenes, Kvartsveien 21', 'RosT@gmail.com'),
+    ('Amundsen', 'Bengt', 99774466, '4558 Songdalen, Storgata 29', 'bengt@amundsen.no'),
+    ('Jenssen', 'Heidi', 44556965, '7700 Trondheim, Nardoveien 77', 'heidi@trondheim.no'),
+    ('Nielsen', 'Egil', 77889966, '5020 Bergen, Sotraveien 92', 'egil@online.no'),
+    ('Knudsen', 'Petter', 54453314, '5493 Askøy, Herdlaveien 89', 'petter@knudsen.no'),
+    ('Helgesen', 'Nils Raymond', 98556132, '4899 Stavanger, Egenesveien 102', 'nray@gmail.com');
 
 /*1.4 Adds two group members to the customer table. */
 insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
@@ -68,21 +74,20 @@ alter table orders auto_increment = 100;
 insert into orders (order_date, order_status, cus_id)
 	values ('2015.09.08',true,2),('2015.08.08',true,2),
 	('2016.05.08',false,3),('2016.08.08',true,4),
-	('2015.08.08',false,4),('2017.03.08',false,5),('2014.08.08',false,4),('2016.03.08',false,5),('2015.04.05',true,5),
-    ('2015.01.04',false,5), ('2016.03.09',false,6), ('2016.02.09',true,6), ('2015.06.07',false,7),
-    ('2015.05.01',true,7), ('2015.06.02', true, 8), ('2016.04.04', false, 8), ('2015.06.06', false, 9),
-    ('2016.09.08', true, 9) ;;
+	('2015.08.08',false,4),('2017.03.08',false,5),('2016.09.08',true,5),('2014.08.08',false,6),
+	('2016.04.08',true,6),('2016.09.01',true,7),
+	('2014.07.04',false,7),('2017.03.08',true,8);
     
 /*2.5 Tries to delete a customer with an order tied to it. Fails if an order has been added to a customer. */
 delete from customer where cus_id = 4;
 
 /*2.6  The query lists the last name of a customer, order date and the status of the order. */
-select customer.cus_lname, order_date, order_status 
+Select customer.cus_lname, order_date, order_status 
 	from customer, orders
     where customer.cus_id = orders.cus_id; 
 
 /*2.7 This query creates a lot of duplicates. */
-select cus_lname, order_date, order_status 
+Select cus_lname, order_date, order_status 
 	from customer, orders; 
     
 /*3.3 Creates two tables and inserts values. */
@@ -94,11 +99,14 @@ create table if not exists product (
 );
 
 /* Adds products into the product table. */
+/* Mandatory 2, updatet with five products */
 insert into product (prod_id, prod_name, prod_price)
 	values ('FR01','Banan',10),('FR02','Eple',10),('FR03','Pære',10),
     ('TV01','SuperduperTV',10999),('DVD01','Pitch Black',140),('DVD02','Dunkirk',300),
     ('PCS01','Nidhogg 2',200),('PCS02','Warhammer 2',10),('TV02','DecentTV',3999),
-    ('FI01','Starfish',100),('KR01','Star Anise',50);
+    ('FI01','Starfish',100),('KR01','Star Anise',50), ('DVD03', 'The Mummy', 299), 
+    ('DVD04', 'The Sixth Sense', 299), ('BG01', 'Axis and Allies', 999), ('BG02', 'Colt Express', 699), 
+    ('BG03', 'Istanbul', 449);
 
 /* Table to assist in attatching orders and products. */
 create table if not exists orderline (
@@ -131,27 +139,20 @@ select order_date, left (prod_name,10)
     and customer.cus_id = orders.cus_id and order_date like '2015-08%'
     and prod_name like '%star%';
 
-/*c) Customer name, quantity ordered, and product name. */
+/*c) Customer name, quantity ordered, and product name*/
 select cus_lname,ol_quantity,prod_name
 	from orders,orderline,customer,product
     where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
     and customer.cus_id = orders.cus_id;
-
-/* Tried the "inner join" version. */
-select cus_lname,ol_quantity,prod_name
-	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-	inner join orderline on orders.order_id = orderline.order_id
-	inner join product on orderline.prod_id = product.prod_id;
     
-/*d) Modify previous query to sort results by customer name and product name. */
+/*d) Modify previous query to sort results by customer name and product name*/
 select cus_lname,ol_quantity,prod_name
 	from orders,orderline,customer,product
     where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
     and customer.cus_id = orders.cus_id
     order by cus_lname,prod_name;
     
-/*e) New attribute to product: reorder level. */
+/*e) New attribute to product: reorder level */
 alter table product
 	add reorder_lvl varchar(20) default 'Hello world!';
 
