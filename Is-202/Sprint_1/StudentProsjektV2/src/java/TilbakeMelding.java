@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,30 +33,8 @@ public class TilbakeMelding extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Tilbakemelding</title>");
-            out.println("<style>" +
-                        "div {width: 300px; border: 2px solid black;" +
-                        "padding: 15px; margin: 10px;}" +
-                        "h1 {margin: 10px;}" +
-                        "p {margin: 10px;}" +
-                        "body {font-family: Segoe UI}" +
-                        "</style>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Modul 1</h1>");
-            out.println("<p><b>Tilbakemelding</b></p>");
-            out.println("<div>"
-                    + "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue pharetra enim, at efficitur nibh iaculis nec. Pellentesque neque felis, faucibus at sapien ut, suscipit aliquam dolor</p>"
-                    + "<p>Praesent bibendum accumsan arcu, eget vulputate orci commodo at. Aliquam non lacus sed velit sagittis euismod nec molestie nibh. Pellentesque euismod felis in pharetra placerat.</p>"
-                    + "<p>Aliquam ante leo, tristique in hendrerit sit amet, faucibus et odio. Quisque varius viverra tincidunt. Nam pharetra ac urna vel venenatis.</p>"
-                    + "</div>");
-            out.println("<form action=\"Home\">"
-                    + "<p><input type=\"submit\" value=\"Hjem\"></p></form>");
-            out.println("</body>");
-            out.println("</html>");
+            RequestDispatcher rd = request.getRequestDispatcher("TilbakeMelding.jsp");
+                rd.forward(request, response);
         }
     }
 
