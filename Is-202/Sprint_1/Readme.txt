@@ -1,1 +1,0 @@
-Lag en mappe som heter WEB-INF i (StudentProsjektV2\web), får å kunne kjøre programmet.

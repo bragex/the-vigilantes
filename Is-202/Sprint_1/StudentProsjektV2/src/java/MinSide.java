@@ -33,7 +33,7 @@ public class MinSide extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            RequestDispatcher rd = request.getRequestDispatcher("MinSide.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("JSP/MinSide.jsp");
                 rd.forward(request, response);
        
         }

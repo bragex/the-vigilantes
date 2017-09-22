@@ -33,7 +33,7 @@ public class TilbakeMelding extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            RequestDispatcher rd = request.getRequestDispatcher("TilbakeMelding.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("JSP/TilbakeMelding.jsp");
                 rd.forward(request, response);
         }
     }

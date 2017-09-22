@@ -1,20 +1,25 @@
 <%-- 
-    Document   : newjsp
+    Document   : upload
     Created on : 20.sep.2017, 14:25:00
     Author     : hytta
 --%>
-<%@page import="java.io.*" %>"
+<%--This is a jsp page--%>
+<%@page import="java.io.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Uploading files</title>
+        <title>Levering</title>
+        <style>
+            body {
+                font-family: Segoe UI;
+            }
+        </style>
     </head>
     <body>
-    
-        <h1>Uploading files</h1>
-        <form name="uploadForm" action="index.jsp" method="POST" enctype="multipart/form-data">
+        <h3>Lever modul</h3>
+        <form name="uploadForm" action="JSP/upload.jsp" method="POST" enctype="multipart/form-data"> <!--Need to have a folder (C:/FileUploader/) to be able to use atm.-->
             <%
                 String saveFile = new String();
                 String contentType = request.getContentType();
@@ -31,7 +36,6 @@
                    while (totalBytesRead < formDataLenght) {
                        byteRead = in.read(dataBytes, totalBytesRead, formDataLenght);
                        totalBytesRead += byteRead; 
-                       
                    }
                    
                    String file = new String (dataBytes);
@@ -66,10 +70,10 @@
                        fileOut.flush();
                        fileOut.close();
                    } catch (Exception e) {
-                       out.println(e);
+                       out.println("<b>"+e+"</b>");
                    }
                 }
-                %>
+            %>
             <input type="file" name="file" value="" width="100" /> 
             <input type="submit" value="Submit" name="submit" />
         </form>

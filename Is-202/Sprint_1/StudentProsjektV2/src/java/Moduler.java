@@ -33,7 +33,7 @@ public class Moduler extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            RequestDispatcher rd = request.getRequestDispatcher("Moduler.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("JSP/Moduler.jsp");
                 rd.forward(request, response);
         }
     }
