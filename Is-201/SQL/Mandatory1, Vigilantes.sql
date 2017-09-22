@@ -70,7 +70,7 @@ create table if not exists orders (
 /* !!The increment must be set for the rest of the code to work properly!! */
 alter table orders auto_increment = 100;
 
-/*2.5 Adds some order instances. */
+/*2.5 Adds some order instances. This is also updated for mandatory 2 */
 insert into orders (order_date, order_status, cus_id)
 	values ('2015.09.08',true,2),('2015.08.08',true,2),
 	('2016.05.08',false,3),('2016.08.08',true,4),
