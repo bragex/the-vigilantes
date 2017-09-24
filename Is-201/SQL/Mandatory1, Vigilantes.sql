@@ -185,4 +185,4 @@ select customer.cus_fname, customer.cus_lname, orderline.ol_quantity, product.pr
 from customer, orderline, product, orders
 where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
 and customer.cus_id = orders.cus_id;
-anfoanhdvoBDOVodvbODVBowbvoWBVowbev
+
