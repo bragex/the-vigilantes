@@ -166,4 +166,22 @@ in_name varchar(50),
 in_paiddate date,
 constraint invoice_pk primary key (in_id)
 );
+
+/* lagt inn av Kim, må gjennomgås om er rett */
+
+insert into invoice (in_id, in_issuedate, in_creditcard, in_name, in_paiddate)
+values (1,'2017.09.08', 1276656899, 'Kim Moe', '2017.09.18'),
+		(2,'2017.09.09', 387661963, 'Morten Mygland', '2017.09.19'),
+        (3,'2017.09.08', 733629926, 'Tønnes Røren', '2017.09.18');
+        
+select * from invoice;
+drop table invoice;
+
+
+/* List customer name, total quantity ordered and product name, for each customer and
+each product.*/
+select customer.cus_fname, customer.cus_lname, orderline.ol_quantity, product.prod_name
+from customer, orderline, product, orders
+where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
+and customer.cus_id = orders.cus_id;
 anfoanhdvoBDOVodvbODVBowbvoWBVowbev
