@@ -123,7 +123,8 @@ insert into orderLine (order_id,prod_id,ol_quantity)
     (101,'DVD01',1),(101,'DVD02',1),(101,'TV01',1),
     (102,'DVD01',1),(102,'PCS01',1),(103,'TV02',1),
     (104,'TV02',1),(104,'PCS02',1),(105,'PCS01',2),
-    (102,'FI01',2),(103,'KR01',2),(104,'KR01',2);
+    (102,'FI01',2),(103,'KR01',2),(104,'KR01',2),
+    (107,'TV01',1),(106,'FR01',5),(106,'PCS02',2);
 
 /*3.4 Several select queries */
 /*a) Product details ordered August 2015 and only 10 first characters in product name. */
