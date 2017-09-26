@@ -36,9 +36,7 @@
                 font-family: Segoe UI;
             }
             #table01 {
-                width: 92%;
-                margin-left: 7%;
-                margin-right: 1%;
+                width: 100%;
                 margin-top: 1.5%;
             }
             tr,th,td,table {
@@ -67,6 +65,7 @@
             #avragetr {
                 font-weight: bold;
             }
+          
         </style>
     </head>
     <body>
@@ -156,7 +155,8 @@
                     <td>osv</td>
                     <td>osv</td>
                     <td>osv</td>
-                    <td>osv</td>    
+                    <td>osv</td>   
+                    
                 </tr>
             </table>
         </div>

@@ -17,10 +17,12 @@
             }
             #list1 {
                 list-style-type:none;
+                margin-left: -25px;
+                margin-top: -20px;
             }
             #h11 {
                 font-size:2vw;
-                margin-left: 1%;
+                
             }
             #list1 li {
                 font-size:1.1vw;

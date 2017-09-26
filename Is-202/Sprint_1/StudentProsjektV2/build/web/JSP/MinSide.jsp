@@ -60,10 +60,13 @@
             }    
             .bodydiv{
                 font-family:Segoe UI; 
-                margin-left:10px;
+                
             }
-            .divminside{
-                margin-left:15px;
+            #MinSideh1{
+                font-size: 2vw;
+            }
+            .MinSidediv{
+                margin-left: 8px;
             }
         </style>
     </head>
@@ -72,10 +75,12 @@
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
         <div id="bodydiv">
-            <h1>Min side</h1>
-            <p>Navn: <!--Declare name--></p>
-            <p>Blogg: <!--Declare blog link--></p>
-            <p>E-post:<!--Declare epost link--></p>
+            <h1 id="MinSideh1">Min side</h1>
+            <div class = "MinSidediv">
+                <p>Navn: <!--Declare name--></p>
+                <p>Blogg: <!--Declare blog link--></p>
+                <p>E-post:<!--Declare epost link--></p>
+            </div>
             <div class="divminside">
                 <form action="TilbakeMelding" method="post">                    
                     <button class="button button1">Modul 1</button>
