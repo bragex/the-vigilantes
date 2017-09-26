@@ -39,22 +39,8 @@ insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
 /*1.4 Adds two group members to the customer table. */
 insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
 	values ('Sandøy', 'Benjamin', 87654321, 'Ganktown, 1337 Blazeit 420', 'bramail@gmail.com'),
-	('Moe', 'Kim', 34566782, 'Hjemm, 3715 Bestegata 7', 'kimsin@mitt.no');
-
-/*1.4 Changes the address of a customer instance. */
-update customer
-	set cus_address = 'Nedenes, 4823 Nellikveien 5'
-	where cus_id = 1;
-
-/*1.4 Deletes a customer instance from the table. */
-delete from customer where cus_id = 1;
-
-/*1.5 Finds specific columns from the customer table. */
-select cus_lname, cus_email from customer;
-
-/*1.6 Finds customers who have "San" as the first three letters in their first- or last name. */
-select * from customer
-where cus_lname like 'San%' or cus_fname like 'San%';
+	('Moe', 'Kim', 34566782, 'Hjemm, 3715 Bestegata 7', 'kimsin@mitt.no'),
+    ('Kristost', 'Jesost', 98253132, '0101 Ostebyen, Osteveien 057', 'ost@gmail.com');
 
 /*2.4 Creates the table "orders". */
 create table if not exists orders (
@@ -74,21 +60,10 @@ alter table orders auto_increment = 100;
 insert into orders (order_date, order_status, cus_id)
 	values ('2015.09.08',true,2),('2015.08.08',true,2),
 	('2016.05.08',false,3),('2016.08.08',true,4),
-	('2015.08.08',false,4),('2017.03.08',false,5),('2016.09.08',true,5),('2014.08.08',false,6),
+	('2015.08.08',false,4),('2017.03.08',false,5),
+    ('2016.09.08',true,5),('2014.08.08',false,6),
 	('2016.04.08',true,6),('2016.09.01',true,7),
 	('2014.07.04',false,7),('2017.03.08',true,8);
-    
-/*2.5 Tries to delete a customer with an order tied to it. Fails if an order has been added to a customer. */
-delete from customer where cus_id = 4;
-
-/*2.6  The query lists the last name of a customer, order date and the status of the order. */
-Select customer.cus_lname, order_date, order_status 
-	from customer, orders
-    where customer.cus_id = orders.cus_id; 
-
-/*2.7 This query creates a lot of duplicates. */
-Select cus_lname, order_date, order_status 
-	from customer, orders; 
     
 /*3.3 Creates two tables and inserts values. */
 create table if not exists product (
@@ -105,8 +80,8 @@ insert into product (prod_id, prod_name, prod_price)
     ('TV01','SuperduperTV',10999),('DVD01','Pitch Black',140),('DVD02','Dunkirk',300),
     ('PCS01','Nidhogg 2',200),('PCS02','Warhammer 2',10),('TV02','DecentTV',3999),
     ('FI01','Starfish',100),('KR01','Star Anise',50), ('DVD03', 'The Mummy', 299), 
-    ('DVD04', 'The Sixth Sense', 299), ('BG01', 'Axis and Allies', 999), ('BG02', 'Colt Express', 699), 
-    ('BG03', 'Istanbul', 449);
+    ('DVD04', 'The Sixth Sense', 299), ('BG01', 'Axis and Allies', 999), 
+    ('BG02', 'Colt Express', 699), ('BG03', 'Istanbul', 449);
 
 /* Table to assist in attatching orders and products. */
 create table if not exists orderline (
@@ -125,6 +100,109 @@ insert into orderLine (order_id,prod_id,ol_quantity)
     (104,'TV02',1),(104,'PCS02',1),(105,'PCS01',2),
     (102,'FI01',2),(103,'KR01',2),(104,'KR01',2),
     (107,'TV01',1),(106,'FR01',5),(106,'PCS02',2);
+
+/*MANDATORY 2*/
+
+create table if not exists invoice(
+	in_id int (5) not null auto_increment,
+	in_issuedate date,
+	in_creditcard int (12),
+	in_name varchar(50),
+	in_paiddate date,
+    order_id int(5),
+	constraint invoice_pk primary key (in_id),
+    foreign key (order_id) references orders(order_id)
+);
+
+alter table invoice auto_increment = 1000;
+
+insert into invoice (in_issuedate, in_creditcard, in_name, in_paiddate)
+values ('2017.09.08', 1276656899, 'Kim Moe', '2017.09.18'),
+		('2017.09.09', 387661963, 'Morten Mygland', '2017.09.19'),
+        ('2017.09.08', 733629926, 'Tønnes Røren', '2017.09.18');
+        
+select * from invoice;
+drop table invoice;
+
+/* 4a) List customer name, total quantity ordered and product name, for each customer and each product.*/
+select customer.cus_fname, customer.cus_lname, orderline.ol_quantity, product.prod_name
+from customer, orderline, product, orders
+where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
+and customer.cus_id = orders.cus_id;
+
+/* 4b) List product name, quantity ordered and total amount paid for the 3 best-selling products */
+select prod_name, sum(ol_quantity) as total_quantity, sum(ol_quantity) * prod_price as total_price
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+	inner join orderline on orders.order_id = orderline.order_id
+	inner join product on orderline.prod_id = product.prod_id
+    group by product.prod_id
+    order by total_quantity desc
+    limit 3;
+
+/* 4c) Define a view that shows customer, order and total amount for each order. */
+create view vetsje as
+	select cus_lname, cus_fname, cus_email, orders.order_id, order_status,
+    count(ol_quantity) * prod_price as total_price
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+    inner join orderline on orders.order_id = orderline.order_id
+    inner join product on orderline.prod_id = product.prod_id
+    group by order_id;
+
+
+select * from vetsje order by order_id;
+
+drop view vetsje;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*1.4 Changes the address of a customer instance. */
+update customer
+	set cus_address = 'Nedenes, 4823 Nellikveien 5'
+	where cus_id = 1;
+
+/*1.4 Deletes a customer instance from the table. */
+delete from customer where cus_id = 1;
+
+/*1.5 Finds specific columns from the customer table. */
+select cus_lname, cus_email from customer;
+
+/*1.6 Finds customers who have "San" as the first three letters in their first- or last name. */
+select * from customer
+where cus_lname like 'San%' or cus_fname like 'San%';
+
+/*2.5 Tries to delete a customer with an order tied to it. Fails if an order has been added to a customer. */
+delete from customer where cus_id = 4;
+
+/*2.6  The query lists the last name of a customer, order date and the status of the order. */
+Select customer.cus_lname, order_date, order_status 
+	from customer, orders
+    where customer.cus_id = orders.cus_id; 
+
+/*2.7 This query creates a lot of duplicates. */
+Select cus_lname, order_date, order_status 
+	from customer, orders; 
 
 /*3.4 Several select queries */
 /*a) Product details ordered August 2015 and only 10 first characters in product name. */
@@ -146,6 +224,13 @@ select cus_lname,ol_quantity,prod_name
     where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
     and customer.cus_id = orders.cus_id;
     
+/* Tried the "inner join" version. */
+select cus_lname,ol_quantity,prod_name
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+	inner join orderline on orders.order_id = orderline.order_id
+	inner join product on orderline.prod_id = product.prod_id;
+    
 /*d) Modify previous query to sort results by customer name and product name*/
 select cus_lname,ol_quantity,prod_name
 	from orders,orderline,customer,product
@@ -158,31 +243,3 @@ alter table product
 	add reorder_lvl varchar(20) default 'Hello world!';
 
 select * from product;
-
-create table if not exists invoice(
-in_id int (5) not null auto_increment,
-in_issuedate date,
-in_creditcard int (12),
-in_name varchar(50),
-in_paiddate date,
-constraint invoice_pk primary key (in_id)
-);
-
-/* lagt inn av Kim, må gjennomgås om er rett */
-
-insert into invoice (in_id, in_issuedate, in_creditcard, in_name, in_paiddate)
-values (1,'2017.09.08', 1276656899, 'Kim Moe', '2017.09.18'),
-		(2,'2017.09.09', 387661963, 'Morten Mygland', '2017.09.19'),
-        (3,'2017.09.08', 733629926, 'Tønnes Røren', '2017.09.18');
-        
-select * from invoice;
-drop table invoice;
-
-
-/* List customer name, total quantity ordered and product name, for each customer and
-each product.*/
-select customer.cus_fname, customer.cus_lname, orderline.ol_quantity, product.prod_name
-from customer, orderline, product, orders
-where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
-and customer.cus_id = orders.cus_id;
-
