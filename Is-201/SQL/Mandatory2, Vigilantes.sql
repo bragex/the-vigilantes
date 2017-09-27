@@ -148,14 +148,14 @@ select prod_name, sum(ol_quantity) as total_quantity, sum(ol_quantity) * prod_pr
     limit 3;
 
 /* 4c) Define a view that shows customer, order and total amount for each order. */
-
-	select cus_lname, cus_fname, cus_email, orders.order_id, order_status,prod_price,
-    sum(ol_quantity * prod_price) as total_price
-	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-    inner join orderline on orders.order_id = orderline.order_id
-    inner join product on orderline.prod_id = product.prod_id
-    group by order_id, product.prod_id;
+create view vetsje as
+select cus_lname, cus_fname, cus_email, orders.order_id, order_status,
+	sum(ol_Quantity * prod_Price) as total_price
+from customer
+inner join orders on customer.cus_id = orders.cus_id
+inner join orderline on orders.order_id = orderline.order_id
+inner join product on orderline.prod_id = product.prod_id
+group by order_id;
 
 select * from vetsje order by order_id;
 
