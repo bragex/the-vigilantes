@@ -3,12 +3,14 @@ drop table customer;
 drop table orders;
 drop table product;
 drop table orderline;
+drop table invoice;
 drop database database1;
 
 select * from customer;
-Select * from orders;
-Select * from product;
-Select * from orderLine;
+select * from orders;
+select * from product;
+select * from orderline;
+select * from invoice;
 
 /*1.3 Creates a database and a customer table. */
 create database if not exists database1;
@@ -34,13 +36,13 @@ insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
     ('Jenssen', 'Heidi', 44556965, '7700 Trondheim, Nardoveien 77', 'heidi@trondheim.no'),
     ('Nielsen', 'Egil', 77889966, '5020 Bergen, Sotraveien 92', 'egil@online.no'),
     ('Knudsen', 'Petter', 54453314, '5493 Askøy, Herdlaveien 89', 'petter@knudsen.no'),
-    ('Helgesen', 'Nils Raymond', 98556132, '4899 Stavanger, Egenesveien 102', 'nray@gmail.com');
+    ('Helgesen', 'Nils Raymond', 98556132, '4899 Stavanger, Egenesveien 102', 'nray@gmail.com'),
+    ('Kristost', 'Jesost', 98253132, '0101 Ostebyen, Osteveien 057', 'ost@gmail.com');
 
 /*1.4 Adds two group members to the customer table. */
 insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
-	values ('Sandøy', 'Benjamin', 87654321, 'Ganktown, 1337 Blazeit 420', 'bramail@gmail.com'),
-	('Moe', 'Kim', 34566782, 'Hjemm, 3715 Bestegata 7', 'kimsin@mitt.no'),
-    ('Kristost', 'Jesost', 98253132, '0101 Ostebyen, Osteveien 057', 'ost@gmail.com');
+	values ('Sandøy', 'Benjamin', 87654321, '1337 Ganktown, Blazeit 420', 'bramail@gmail.com'),
+	('Moe', 'Kim', 34566782, '3715 Hjem, Bestegata 7', 'kimsin@mitt.no');
 
 /*2.4 Creates the table "orders". */
 create table if not exists orders (
@@ -63,8 +65,10 @@ insert into orders (order_date, order_status, cus_id)
 	('2015.08.08',false,4),('2017.03.08',false,5),
     ('2016.09.08',true,5),('2014.08.08',false,6),
 	('2016.04.08',true,6),('2016.09.01',true,7),
-	('2014.07.04',false,7),('2017.03.08',true,8);
-    
+	('2014.07.04',false,7),('2017.03.08',true,8),
+    ('2014.07.04',false,9),('2017.03.08',true,9),
+    ('2014.07.04',false,10),('2017.03.08',true,10);
+
 /*3.3 Creates two tables and inserts values. */
 create table if not exists product (
 	prod_id varchar(10) not null,
@@ -93,13 +97,15 @@ create table if not exists orderline (
     constraint orderLine_pks primary key (order_id,prod_id)
 );
 
-insert into orderLine (order_id,prod_id,ol_quantity)
-	values (100,'FR01',1),(100,'FR02',1),(100,'FR03',1),
+insert into orderline (order_id,prod_id,ol_quantity,ol_totalprice)
+	values (100,'FR01',2),(100,'FR02',3),(100,'FR03',4),
     (101,'DVD01',1),(101,'DVD02',1),(101,'TV01',1),
-    (102,'DVD01',1),(102,'PCS01',1),(103,'TV02',1),
-    (104,'TV02',1),(104,'PCS02',1),(105,'PCS01',2),
-    (102,'FI01',2),(103,'KR01',2),(104,'KR01',2),
-    (107,'TV01',1),(106,'FR01',5),(106,'PCS02',2);
+    (102,'DVD01',1),(102,'PCS01',1),(102,'TV02',1),
+    (103,'TV02',1),(103,'PCS02',1),(104,'PCS01',2),
+    (104,'FI01',2),(105,'KR01',2),(106,'DVD01',2),
+    (107,'TV01',1),(108,'FR01',5),(109,'PCS02',1),
+    (110,'KR01',5),(111,'BG03',2),(112,'FR01',6),
+    (113,'DVD04',1),(114,'TV02',1),(115,'PCS02',1);
 
 /*MANDATORY 2*/
 
@@ -126,9 +132,10 @@ drop table invoice;
 
 /* 4a) List customer name, total quantity ordered and product name, for each customer and each product.*/
 select customer.cus_fname, customer.cus_lname, orderline.ol_quantity, product.prod_name
-from customer, orderline, product, orders
-where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
-and customer.cus_id = orders.cus_id;
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+	inner join orderline on orders.order_id = orderline.order_id
+	inner join product on orderline.prod_id = product.prod_id;
 
 /* 4b) List product name, quantity ordered and total amount paid for the 3 best-selling products */
 select prod_name, sum(ol_quantity) as total_quantity, sum(ol_quantity) * prod_price as total_price
@@ -141,15 +148,14 @@ select prod_name, sum(ol_quantity) as total_quantity, sum(ol_quantity) * prod_pr
     limit 3;
 
 /* 4c) Define a view that shows customer, order and total amount for each order. */
-create view vetsje as
-	select cus_lname, cus_fname, cus_email, orders.order_id, order_status,
-    count(ol_quantity) * prod_price as total_price
+
+	select cus_lname, cus_fname, cus_email, orders.order_id, order_status,prod_price,
+    sum(ol_quantity * prod_price) as total_price
 	from customer
 	inner join orders on customer.cus_id = orders.cus_id
     inner join orderline on orders.order_id = orderline.order_id
     inner join product on orderline.prod_id = product.prod_id
-    group by order_id;
-
+    group by order_id, product.prod_id;
 
 select * from vetsje order by order_id;
 
