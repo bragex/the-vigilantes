@@ -165,6 +165,11 @@ drop view vetsje;
 their product names.*/
 
 /* Forstår ikke hva han vill her*/
+select left (prod_name,10), ol_Quantity,
+	sum(ol_Quantity) as total_order
+	from product, orderline
+	where product.prod_id = orderline.prod_id
+	and prod_name like '%EN%';
 
 /* e) Print customer name, order number and total sum for each order. */
 	select cus_lname, cus_fname, orders.order_id,
