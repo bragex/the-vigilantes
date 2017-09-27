@@ -60,14 +60,14 @@ alter table orders auto_increment = 100;
 
 /*2.5 Adds some order instances. This is also updated for mandatory 2 */
 insert into orders (order_date, order_status, cus_id)
-	values ('2015.09.08',true,2),('2015.08.08',true,2),
-	('2016.05.08',false,3),('2016.08.08',true,4),
-	('2015.08.08',false,4),('2017.03.08',false,5),
-    ('2016.09.08',true,5),('2014.08.08',false,6),
-	('2016.04.08',true,6),('2016.09.01',true,7),
-	('2014.07.04',false,7),('2017.03.08',true,8),
-    ('2014.07.04',false,9),('2017.03.08',true,9),
-    ('2014.07.04',false,10),('2017.03.08',true,10);
+	values  ('2015.09.08',true,2),('2015.08.08',true,2),
+			('2016.05.08',false,3),('2016.08.08',true,4),
+			('2015.08.08',false,4),('2017.03.08',false,5),
+			('2016.09.08',true,5),('2014.08.08',false,6),
+			('2016.04.08',true,6),('2016.09.01',true,7),
+			('2014.07.04',false,7),('2017.03.08',true,8),
+			('2014.07.04',false,9),('2017.03.08',true,9),
+			('2014.07.04',false,10),('2017.03.08',true,10);
 
 /*3.3 Creates two tables and inserts values. */
 create table if not exists product (
@@ -149,16 +149,15 @@ select prod_name, sum(ol_quantity) as total_quantity, sum(ol_quantity) * prod_pr
 
 /* 4c) Define a view that shows customer, order and total amount for each order. */
 create view vetsje as
-select cus_lname, cus_fname, cus_email, orders.order_id, order_status,
+	select cus_lname, cus_fname, cus_email, orders.order_id, order_status,
 	sum(ol_Quantity * prod_Price) as total_price
-from customer
-inner join orders on customer.cus_id = orders.cus_id
-inner join orderline on orders.order_id = orderline.order_id
-inner join product on orderline.prod_id = product.prod_id
-group by order_id;
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+	inner join orderline on orders.order_id = orderline.order_id
+	inner join product on orderline.prod_id = product.prod_id
+	group by order_id;
 
 select * from vetsje order by order_id;
-
 drop view vetsje;
 
 
