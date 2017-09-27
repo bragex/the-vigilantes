@@ -160,6 +160,20 @@ create view vetsje as
 select * from vetsje order by order_id;
 drop view vetsje;
 
+/* d) Print the first 10 characters of product name and quantity-before-reorder (quantityin-stock
+– reorder-level) for products with the text “EN” in the first 10 characters of
+their product names.*/
+
+/* Forstår ikke hva han vill her*/
+
+/* e) Print customer name, order number and total sum for each order. */
+	select cus_lname, cus_fname, orders.order_id,
+	sum(ol_Quantity * prod_Price) as total_price
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+	inner join orderline on orders.order_id = orderline.order_id
+	inner join product on orderline.prod_id = product.prod_id
+	group by order_id;
 
 
 
