@@ -172,7 +172,7 @@ select left(prod_name,10)
 	 , (prod_instock - prod_reorderlvl) as quantity_before_reorder
 	from customer,product,orderline,orders
     where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
-    and customer.cus_id = orders.cus_id and prod_name like '%en%'
+    and customer.cus_id = orders.cus_id and left(prod_name,10) like '%en%'
     group by prod_name;
 
 /* 4e) Print customer name, order number and total sum for each order. */
