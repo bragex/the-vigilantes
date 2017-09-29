@@ -42,7 +42,27 @@ public class First extends HttpServlet {
                 session.setAttribute("user", uname);
                 RequestDispatcher rd = request.getRequestDispatcher("Home");
                 rd.forward(request, response);
-            } else {
+                /*TESTING out.println(uname);*/
+            }
+            else if (uname.equalsIgnoreCase("tonnes") && pass.equalsIgnoreCase("tonnes")) { 
+                HttpSession session = request.getSession();
+                session.setAttribute("user", uname);
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
+            else if (uname.equalsIgnoreCase("morten") && pass.equalsIgnoreCase("morten")) { 
+                HttpSession session = request.getSession();
+                session.setAttribute("user", uname);
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
+            else if (uname.equalsIgnoreCase("kim") && pass.equalsIgnoreCase("kim")) { 
+                HttpSession session = request.getSession();
+                session.setAttribute("user", uname);
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
+            else {
                 out.println("Feil passord eller brukernavn.");
                 RequestDispatcher rd = request.getRequestDispatcher("index.html");
                 rd.include(request, response);
