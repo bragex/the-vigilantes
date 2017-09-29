@@ -117,7 +117,7 @@ create table if not exists invoice(
 	in_creditcard int (12),
 	in_name varchar(50),
 	in_paiddate date,
-    order_id int(5),
+    order_id int(5) unique,
 	constraint invoice_pk primary key (in_id),
     foreign key (order_id) references orders(order_id)
 );
