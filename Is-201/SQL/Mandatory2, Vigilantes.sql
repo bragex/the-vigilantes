@@ -60,32 +60,34 @@ alter table orders auto_increment = 100;
 
 /*2.5 Adds some order instances. This is also updated for mandatory 2 */
 insert into orders (order_date, order_status, cus_id)
-	values  ('2015.09.08',true,2),('2015.08.08',true,2),
-			('2016.05.08',false,3),('2016.08.08',true,4),
-			('2015.08.08',false,4),('2017.03.08',false,5),
-			('2016.09.08',true,5),('2014.08.08',false,6),
-			('2016.04.08',true,6),('2016.09.01',true,7),
-			('2014.07.04',false,7),('2017.03.08',true,8),
-			('2014.07.04',false,9),('2017.03.08',true,9),
-			('2014.07.04',false,10),('2017.03.08',true,10);
+	values ('2015.09.08',true,2),('2015.08.08',true,2),
+	('2016.05.08',false,3),('2016.08.08',true,4),
+	('2015.08.08',false,4),('2017.03.08',false,5),
+    ('2016.09.08',true,5),('2014.08.08',false,6),
+	('2016.04.08',true,6),('2016.09.01',true,7),
+	('2014.07.04',false,7),('2017.03.08',true,8),
+    ('2014.07.04',false,9),('2017.03.08',true,9),
+    ('2014.07.04',false,10),('2017.03.08',true,10);
 
 /*3.3 Creates two tables and inserts values. */
 create table if not exists product (
 	prod_id varchar(10) not null,
     prod_name varchar(20),
     prod_price int(10),
+    prod_instock int(10),
+    prod_reorderlvl int(10),
     constraint product_pk primary key (prod_id)
 );
 
 /* Adds products into the product table. */
 /* Mandatory 2, updatet with five products */
-insert into product (prod_id, prod_name, prod_price)
-	values ('FR01','Banan',10),('FR02','Eple',10),('FR03','Pære',10),
-    ('TV01','SuperduperTV',10999),('DVD01','Pitch Black',140),('DVD02','Dunkirk',300),
-    ('PCS01','Nidhogg 2',200),('PCS02','Warhammer 2',10),('TV02','DecentTV',3999),
-    ('FI01','Starfish',100),('KR01','Star Anise',50), ('DVD03', 'The Mummy', 299), 
-    ('DVD04', 'The Sixth Sense', 299), ('BG01', 'Axis and Allies', 999), 
-    ('BG02', 'Colt Express', 699), ('BG03', 'Istanbul', 449);
+insert into product (prod_id, prod_name, prod_price,prod_instock,prod_reorderlvl)
+	values ('FR01','Banan',10,500,50),('FR02','Eple',10,500,50),('FR03','Pære',10,500,50),
+    ('TV01','SuperduperTV',10999,20,4),('DVD01','Pitch Black',140,10,2),('DVD02','Dunkirk',300,50,10),
+    ('PCS01','Nidhogg 2',200,50,10),('PCS02','Warhammer 2',10,100,20),('TV02','DecentTV',3999,40,5),
+    ('FI01','Starfish',100,20,5),('KR01','Star Anise',50,100,10), ('DVD03', 'The Mummy', 299,10,2), 
+    ('DVD04','The Sixth Sense',299,10,2),('BG01','Axis and Allies',999,10,2), 
+    ('BG02','Colt Express',699,8,1), ('BG03','Istanbul',449,5,1);
 
 /* Table to assist in attatching orders and products. */
 create table if not exists orderline (
@@ -97,7 +99,7 @@ create table if not exists orderline (
     constraint orderLine_pks primary key (order_id,prod_id)
 );
 
-insert into orderline (order_id,prod_id,ol_quantity,ol_totalprice)
+insert into orderline (order_id,prod_id,ol_quantity)
 	values (100,'FR01',2),(100,'FR02',3),(100,'FR03',4),
     (101,'DVD01',1),(101,'DVD02',1),(101,'TV01',1),
     (102,'DVD01',1),(102,'PCS01',1),(102,'TV02',1),
@@ -122,23 +124,25 @@ create table if not exists invoice(
 
 alter table invoice auto_increment = 1000;
 
-insert into invoice (in_issuedate, in_creditcard, in_name, in_paiddate)
-values ('2017.09.08', 1276656899, 'Kim Moe', '2017.09.18'),
-		('2017.09.09', 387661963, 'Morten Mygland', '2017.09.19'),
-        ('2017.09.08', 733629926, 'Tønnes Røren', '2017.09.18');
-        
-select * from invoice;
-drop table invoice;
+insert into invoice (in_issuedate, in_creditcard, in_name, in_paiddate, order_id)
+values 	('2017.09.08', 1276656899, 'Kim Moe', '2017.09.18',101),
+		('2017.09.09', 387661963, 'Morten Mygland', '2017.09.19',102),
+		('2017.09.08', 733629926, 'Tønnes Røren', '2017.09.18',107);
 
 /* 4a) List customer name, total quantity ordered and product name, for each customer and each product.*/
-select customer.cus_fname, customer.cus_lname, orderline.ol_quantity, product.prod_name
+select customer.cus_fname
+	 , customer.cus_lname
+     , orderline.ol_quantity
+     , product.prod_name
 	from customer
 	inner join orders on customer.cus_id = orders.cus_id
 	inner join orderline on orders.order_id = orderline.order_id
 	inner join product on orderline.prod_id = product.prod_id;
 
 /* 4b) List product name, quantity ordered and total amount paid for the 3 best-selling products */
-select prod_name, sum(ol_quantity) as total_quantity, sum(ol_quantity) * prod_price as total_price
+select prod_name
+	 , sum(ol_quantity) as total_quantity
+     , sum(ol_quantity) * prod_price as total_price
 	from customer
 	inner join orders on customer.cus_id = orders.cus_id
 	inner join orderline on orders.order_id = orderline.order_id
@@ -148,59 +152,42 @@ select prod_name, sum(ol_quantity) as total_quantity, sum(ol_quantity) * prod_pr
     limit 3;
 
 /* 4c) Define a view that shows customer, order and total amount for each order. */
-create view vetsje as
-	select cus_lname, cus_fname, cus_email, orders.order_id, order_status,
-	sum(ol_Quantity * prod_Price) as total_price
+create view oioi as 
+	select cus_lname
+		 , cus_fname
+		 , cus_email
+         , orders.order_id
+         , order_status
+         , sum(ol_quantity * prod_price) as total_price
+	from customer
+	inner join orders on customer.cus_id = orders.cus_id
+    inner join orderline on orders.order_id = orderline.order_id
+    inner join product on orderline.prod_id = product.prod_id
+    group by order_id;
+
+/* 4d) Print the first 10 characters of product name and quantity-before-reorder 
+(quantityin-stock – reorder-level) for products with the text “EN” in the first 
+10 characters of their product names. */
+select left(prod_name,10)
+	 , (prod_instock - prod_reorderlvl) as quantity_before_reorder
+	from customer,product,orderline,orders
+    where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
+    and customer.cus_id = orders.cus_id and prod_name like '%en%'
+    group by prod_name;
+
+/* 4e) Print customer name, order number and total sum for each order. */
+select cus_lname
+	 , cus_fname
+     , orders.order_id
+     , sum(ol_quantity * prod_price) as total_price
 	from customer
 	inner join orders on customer.cus_id = orders.cus_id
 	inner join orderline on orders.order_id = orderline.order_id
 	inner join product on orderline.prod_id = product.prod_id
 	group by order_id;
 
-select * from vetsje order by order_id;
-drop view vetsje;
 
-/* d) Print the first 10 characters of product name and quantity-before-reorder (quantityin-stock
-– reorder-level) for products with the text “EN” in the first 10 characters of
-their product names.*/
-
-/* Forstår ikke hva han vill her*/
-select left (prod_name,10), ol_Quantity,
-	sum(ol_Quantity) as total_order
-	from product, orderline
-	where product.prod_id = orderline.prod_id
-	and prod_name like '%EN%';
-
-/* e) Print customer name, order number and total sum for each order. */
-	select cus_lname, cus_fname, orders.order_id,
-	sum(ol_Quantity * prod_Price) as total_price
-	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-	inner join orderline on orders.order_id = orderline.order_id
-	inner join product on orderline.prod_id = product.prod_id
-	group by order_id;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* We put tasks that interferred with the creation of tables at the bottom. */
 /*1.4 Changes the address of a customer instance. */
 update customer
 	set cus_address = 'Nedenes, 4823 Nellikveien 5'
@@ -265,5 +252,4 @@ select cus_lname,ol_quantity,prod_name
 /*e) New attribute to product: reorder level */
 alter table product
 	add reorder_lvl varchar(20) default 'Hello world!';
-
 select * from product;
