@@ -152,7 +152,7 @@ select prod_name
     limit 3;
 
 /* 4c) Define a view that shows customer, order and total amount for each order. */
-create view oioi as 
+create view Task_4c as 
 	select cus_lname
 		 , cus_fname
 		 , cus_email
@@ -164,6 +164,8 @@ create view oioi as
     inner join orderline on orders.order_id = orderline.order_id
     inner join product on orderline.prod_id = product.prod_id
     group by order_id;
+    
+    select * from Task_4c;
 
 /* 4d) Print the first 10 characters of product name and quantity-before-reorder 
 (quantityin-stock – reorder-level) for products with the text “EN” in the first 
