@@ -3,10 +3,10 @@
     Created on : 29-Sep-2017, 11:51:34
     Author     : Tonnes
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true" %>
 <% 
-   String username = (String)request.getAttribute("uname"); /*first1.java servlet class*/
-   out.println(username); /*TESTING https://stackoverflow.com/questions/18992557/passing-string-variable-from-servlet-to-jsp*/
+   /*String username = (String)request.getAttribute("user");
+   out.println(username); TESTING https://stackoverflow.com/questions/18992557/passing-string-variable-from-servlet-to-jsp*/
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,9 +16,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:if test="${username == 'admin'}">  
+        <% if (session.getAttribute("user") == null) { %>
+            <%=session.getAttribute("user")%>
+        <% } else {%>
+        <%=session.getAttribute("user")%>
+        <% } %>
+        <!--<c:if test="${username == 'admin'}">  
             <p>see me?</p>
-        </c:if>
+        </c:if>-->
         <h1>Hello World!</h1>
     </body>
 </html>
