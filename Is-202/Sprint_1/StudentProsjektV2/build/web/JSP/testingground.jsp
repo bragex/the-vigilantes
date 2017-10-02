@@ -3,22 +3,25 @@
     Created on : 29-Sep-2017, 11:51:34
     Author     : Tonnes
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<% 
-   String username = (String)request.getAttribute("uname"); /*first1.java servlet class*/
-   out.println(username); /*TESTING https://stackoverflow.com/questions/18992557/passing-string-variable-from-servlet-to-jsp*/
-%>
+<%--THIS PAGE IS ONLY FOR TESTING!--%>
+<%@ page session="true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Testingground</title>
     </head>
     <body>
-        <c:if test="${username == 'admin'}">  
-            <p>see me?</p>
-        </c:if>
-        <h1>Hello World!</h1>
+        <!--Function for only showing part of the page for diffrent individuals.-->
+        <% if (session.getAttribute("user") == null) { %>
+            <!--if the user value is empty, this part of the code will show.-->
+            <p>null (missing value)</p> 
+        <% } else {%>
+            <!--If the user value aren't empty, this part of the code will show.-->
+            <%=session.getAttribute("user")%>
+        <% } %>
+        <!--Everyone can see this part of the code-->
+        <p>Everyone can see me!</p>
     </body>
 </html>

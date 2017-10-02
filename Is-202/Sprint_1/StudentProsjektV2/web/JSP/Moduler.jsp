@@ -1,10 +1,10 @@
-
 <%-- 
     Document   : Moduler
     Created on : 22.sep.2017, 11:33:25
     Author     : by-cr
 --%>
-<%--This is a jsp page--%>
+<%--This page is for showing the user what modules exist, and a link too delivering them.--%>
+<%--Depends on HeaderMenu.jsp--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@
         </header>
         <h1 id="h11">Modul oversikt</h1>
         <div id="list1">
-            <table>
+            <table> <!--Rework table?-->
                 <tr>
                     <td>
                         <ul>

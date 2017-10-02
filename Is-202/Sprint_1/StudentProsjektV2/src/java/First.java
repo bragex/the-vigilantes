@@ -31,7 +31,7 @@ public class First extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) /*Change authentication from this to TomEE built-inn version.*/
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String uname = request.getParameter("uname");
@@ -40,9 +40,8 @@ public class First extends HttpServlet {
             if (uname.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) { 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", uname);
-                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                RequestDispatcher rd = request.getRequestDispatcher("Home"); /*Find a way to remove duplicate code!*/
                 rd.forward(request, response);
-                /*TESTING out.println(uname);*/
             }
             else if (uname.equalsIgnoreCase("tonnes") && pass.equalsIgnoreCase("tonnes")) { 
                 HttpSession session = request.getSession();

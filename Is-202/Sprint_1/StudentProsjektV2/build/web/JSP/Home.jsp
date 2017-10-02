@@ -1,10 +1,10 @@
-
 <%-- 
     Document   : Home
     Created on : 22-Sep-2017, 10:30:48
     Author     : Tonnes
 --%>
-<%--This is a jsp page--%>
+<%--This is the main page of the site.--%>
+<%--Depends on HeaderMenu.jsp--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> <!-- Restructure jsp Folders -->
 <%!
     int tint1 = 10; /*Bad way of doing things. Change me!*/
@@ -79,7 +79,7 @@
         <div id="tablediv1" class="divfrontpage">
             <table id="table01">
                 <tr>
-                    <th>Navn</th>
+                    <th>Navn</th> <!--Implement database here!-->
                     <th>Blogg</th>
                     <th>E-post</th>
                     <th>Poengscore</th>
@@ -157,7 +157,6 @@
                     <td>osv</td>
                     <td>osv</td>
                     <td>osv</td>   
-                    
                 </tr>
             </table>
         </div>

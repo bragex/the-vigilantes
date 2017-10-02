@@ -3,7 +3,10 @@
     Created on : 22.sep.2017, 10:24:31
     Author     : jenny
 --%>
-<%--This is a jsp page--%>
+<%--This page is for delivering the module.--%>
+
+<%--Depends on upload.jsp--%>
+<%--Depends on HeaderMenu.jsp--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,11 +39,8 @@
             }
             #Modulh21 {
                 margin: auto; 
-                padding-right: -200px; /* Må fikses her */
-                
-        }
-                
-            
+                padding-right: -200px;/*Test this part. (Margin error.)*/        
+        }    
         </style>
     </head>
     <body>
@@ -72,9 +72,9 @@
                 </ul>
             </div>
             <footer>
-            <!--Morten upload code-->
+                <!--Upload code-->
                 <jsp:include page="upload.jsp"/>
-            <!--Morten upload code-->
+                <!--Upload code-->
             </footer>
         </div>
     </body>
