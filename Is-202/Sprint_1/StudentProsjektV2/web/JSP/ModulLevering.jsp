@@ -1,4 +1,3 @@
-
 <%-- 
     Document   : ModulLevering
     Created on : 22.sep.2017, 10:24:31
@@ -14,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body {
-                font-family:Segoe UI;
+                font-family: Segoe UI;
             }
             .form1 {
                 border:1px black solid;
@@ -36,9 +35,12 @@
                 margin-top:-5px;
             }
             #Modulh21 {
-                margin-left: 0px;
-                display: inline-block;
-            }
+                margin: auto; 
+                padding-right: -200px; /* Må fikses her */
+                
+        }
+                
+            
         </style>
     </head>
     <body>
@@ -46,12 +48,11 @@
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
         <div>
-            <p style="font-size: 30px;"></p> <!--Margin error somewhere. No idea how this fixed the issue-->
-            <h1 id="Modulh21">Modul 1</h1>
+            <h1 id="Modulh21">Modul 1</h1>           
             <h3>Læringsmål:</h3>
             <a href="Moduler">
                 <h4 id="p1">Oversikt over alle Moduler</h4>
-            <a>
+            </a>
             <div id="lmål1">
                 <p><a id="alevering" href="http://home.uia.no/hallgeir/is110/moduler/modul-1/beskrivelse.xhtml">Læringsmål modul 1</a></p>
                 <ul> 
