@@ -13,7 +13,7 @@
         <title>Testingground</title>
     </head>
     <body>
-        <!--Function for only showing part of the page for diffrent individuals.-->
+        <!--Function for only showing part of the page for different individuals.-->
         <% if (session.getAttribute("user") == null) { %>
             <!--if the user value is empty, this part of the code will show.-->
             <p>null (missing value)</p> 
