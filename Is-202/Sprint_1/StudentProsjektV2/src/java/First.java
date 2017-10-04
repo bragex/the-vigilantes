@@ -32,32 +32,26 @@ public class First extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String uname = request.getParameter("uname");
         String pass = request.getParameter("pass");
+        HttpSession session = request.getSession();
+        session.setAttribute("user", uname);
         try (PrintWriter out = response.getWriter()) {
             if (uname.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) { 
-                HttpSession session = request.getSession();
-                session.setAttribute("user", uname);
                 RequestDispatcher rd = request.getRequestDispatcher("Home"); /*Find a way to remove duplicate code!*/
                 rd.forward(request, response);
             }
             else if (uname.equalsIgnoreCase("tonnes") && pass.equalsIgnoreCase("tonnes")) { 
-                HttpSession session = request.getSession();
-                session.setAttribute("user", uname);
                 RequestDispatcher rd = request.getRequestDispatcher("Home");
                 rd.forward(request, response);
             }
-            else if (uname.equalsIgnoreCase("morten") && pass.equalsIgnoreCase("morten")) { 
-                HttpSession session = request.getSession();
-                session.setAttribute("user", uname);
+            else if (uname.equalsIgnoreCase("morten") && pass.equalsIgnoreCase("morten")) {
                 RequestDispatcher rd = request.getRequestDispatcher("Home");
                 rd.forward(request, response);
             }
             else if (uname.equalsIgnoreCase("kim") && pass.equalsIgnoreCase("kim")) { 
-                HttpSession session = request.getSession();
-                session.setAttribute("user", uname);
                 RequestDispatcher rd = request.getRequestDispatcher("Home");
                 rd.forward(request, response);
             }
@@ -68,6 +62,11 @@ public class First extends HttpServlet {
             }
         }
     }
+    /*@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+            rd.forward(request, response);
+        }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
