@@ -55,6 +55,12 @@ public class First extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("Home");
                 rd.forward(request, response);
             }
+                else if (uname.equalsIgnoreCase("vegar") && pass.equalsIgnoreCase("vegar")) { 
+                HttpSession session = request.getSession();
+                session.setAttribute("user", uname);
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
             else {
                 out.println("Feil passord eller brukernavn.");
                 RequestDispatcher rd = request.getRequestDispatcher("index.html");

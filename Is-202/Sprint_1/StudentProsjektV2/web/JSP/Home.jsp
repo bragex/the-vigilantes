@@ -83,16 +83,21 @@
                     <th>Blogg</th>
                     <th>E-post</th>
                     <th>Poengscore</th>
-                    <th>Modul 1</th>
-                    <th>Modul 2</th>
-                    <th>Modul 3</th>
-                    <th>Modul 4</th>
-                    <th>Modul 5</th>
-                    <th>Modul 6</th>
-                    <th>Modul 7</th>
-                    <th>Modul 8</th>
-                    <th>Modul 9</th>
-                    <th>Modul 10</th>
+                    <th>M 1</th>
+                    <th>M 2</th>
+                    <th>M 3</th>
+                    <th>M 4</th>
+                    <th>M 5</th>
+                    <th>M 6</th>
+                    <th>M 7</th>
+                    <th>M 8</th>
+                    <th>M 9</th>
+                    <th>M 10</th>
+                    <th>M 11</th>
+                    <th>M 12</th>
+                    <th>M 13</th>
+                    <th>M 14</th>
+                    <th>M 15</th>
                 </tr>
                 <tr>
                     <td><a href="MinSide">Tønnes Røren</a></td>
@@ -103,6 +108,11 @@
                     <td><%=tint2%></td>
                     <td><%=tint3%></td>
                     <td><%=tint4%></td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
                     <td>osv</td>
                     <td>osv</td>
                     <td>osv</td>
@@ -125,6 +135,11 @@
                     <td>osv</td>
                     <td>osv</td>
                     <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
                 </tr>
                 <tr>
                     <td><a href="profil3">Byggmester Bob</a></td>
@@ -140,7 +155,12 @@
                     <td>osv</td>
                     <td>osv</td>
                     <td>osv</td>
-                    <td>osv</td>                    
+                    <td>osv</td>  
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
+                    <td>osv</td>
                 </tr>
                 <tr id="avragetr">
                     <td></td> <!--Do not remove-->
@@ -157,6 +177,11 @@
                     <td>osv</td>
                     <td>osv</td>
                     <td>osv</td>   
+                    <td>osv</td>
+                    <td>osv</td> 
+                    <td>osv</td> 
+                    <td>osv</td> 
+                    <td>osv</td>
                 </tr>
             </table>
         </div>
