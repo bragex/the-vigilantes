@@ -1,10 +1,9 @@
-
 <%-- 
     Document   : Menu
     Created on : 22.sep.2017, 15:48:04
     Author     : Tonnes
 --%>
-<%--This is a jsp page--%>
+<%--This page handels the header menu used for the rest of the page.--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,6 +26,7 @@
                 border: 1px solid gray;
                 color: black;
             }
+            
             #search01, #search02 {
                 float: right;
                 padding: 5px;
@@ -41,6 +41,7 @@
                 margin-bottom: 1%;
                 margin-top: 0.5%;
             }
+            
             #h1menu1 {
                 float: left;
                 padding: 0px;
@@ -119,10 +120,15 @@
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
                     <h1 class="h1header" id="h1menu1">Studentlisten</h1>
+                    
+                   <% String url = request.getRequestURI(); %> 
+                   <% String url2 = "/StudentProsjektV2/Home"; %> 
+                   <% if (url.equals(url2)){%>
                     <form id="search00" class=searchclass action="" method="get">
                         <button id="search01">Søk</button>
                         <input id="search02" type="search" name="Search">
                     </form>
+                    <%}%> 
                 </div>
             </div>
         </header>    
@@ -149,7 +155,15 @@
                 </b>
             </div>
         </div>
-        <script> //Javascript for dropdown menu.
+        <div style="display:inline-block;float:left;margin-left: 2%;margin-top: -2.5%;font-size:0.8vw;">
+            <% if (session.getAttribute("user") == null) { %>
+                <!--if the user value is empty, this part of the code will show.-->
+            <% } else {%>
+                <!--If the user value aren't empty, this part of the code will show.-->
+                <b><p>Logget inn som: <%=session.getAttribute("user")%></p></b>
+            <% } %>
+        </div>
+        <script type="text/javascript"> //Javascript for dropdown menu.
             function myFunction() {
               document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -164,7 +178,7 @@
                     }
                 }
                 }
-            }    
+            };    
         </script>
     </body>
 </html>

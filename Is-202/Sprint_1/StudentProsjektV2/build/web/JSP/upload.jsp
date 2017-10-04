@@ -1,10 +1,9 @@
-
 <%-- 
     Document   : upload
     Created on : 20.sep.2017, 14:25:00
     Author     : hytta
 --%>
-<%--This is a jsp page--%>
+<%--This page handels the upload aspect of modullevering.--%>
 <%@page import="java.io.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,8 +18,8 @@
         </style>
     </head>
     <body>
-        <h3>Lever modul</h3>
-        <form name="uploadForm" action="JSP/upload.jsp" method="POST" enctype="multipart/form-data"> <!--Need to have a folder (C:/FileUploader/) to be able to use atm.-->
+        <h3>Lever modul</h3> <!--Move the upload aspect too a java class.-->
+        <form name="uploadForm" action="JSP/upload.jsp" method="POST" enctype="multipart/form-data"> <!--Need to have a folder (C:/FileUploader/) to be able to use.-->
             <%
                 String saveFile = new String();
                 String contentType = request.getContentType();

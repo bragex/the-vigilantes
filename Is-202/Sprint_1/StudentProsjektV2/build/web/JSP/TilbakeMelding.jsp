@@ -1,10 +1,10 @@
-
 <%-- 
     Document   : TilbakeMelding
     Created on : 22.sep.2017, 11:10:35
     Author     : by-cr
 --%>
-<%--This is a jsp page--%>
+<%--This page shows the user the --%>
+<%--Depends on HeaderMenu.jsp--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@
         <div class="pmargin">
             <p><b>Tilbakemelding</b></p>
             <div id="pdiv">
-                <p>
+                <p> <!--not final--> <!--Implement users and diffrent modules.-->
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                     Aliquam congue pharetra enim, at efficitur nibh iaculis nec. 
                     Pellentesque neque felis, faucibus at sapien ut, suscipit aliquam dolor. 

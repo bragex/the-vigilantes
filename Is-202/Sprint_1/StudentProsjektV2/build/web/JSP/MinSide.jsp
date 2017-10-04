@@ -1,10 +1,10 @@
-
 <%-- 
     Document   : MinSide
     Created on : 22.sep.2017, 10:25:22
     Author     : by-cr
 --%>
-<%--This is a jsp page--%>
+<%--This is the user profile--%>
+<%--Depends on HeaderMenu.jsp--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -75,12 +75,12 @@
         <header>
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
-        <div id="bodydiv">
+        <div id="bodydiv"> <!--Implement users and Database!-->
             <h1 id="MinSideh1">Min side</h1>
             <div class = "MinSidediv">
-                <p>Navn: <!--Declare name--></p>
-                <p>Blogg: <!--Declare blog link--></p>
-                <p>E-post:<!--Declare epost link--></p>
+                <p>Navn:</p> 
+                <p>Blogg:</p>
+                <p>E-post:<!--Declare with database--></p>
             </div>
             <div class="divminside">
                 <form action="TilbakeMelding" method="post">                    

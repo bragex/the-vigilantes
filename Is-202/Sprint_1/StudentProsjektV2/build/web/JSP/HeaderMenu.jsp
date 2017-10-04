@@ -1,10 +1,9 @@
-
 <%-- 
     Document   : Menu
     Created on : 22.sep.2017, 15:48:04
     Author     : Tonnes
 --%>
-<%--This is a jsp page--%>
+<%--This page handels the header menu used for the rest of the page.--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -149,7 +148,15 @@
                 </b>
             </div>
         </div>
-        <script> //Javascript for dropdown menu.
+        <div style="display:inline-block;float:left;margin-left: 2%;margin-top: -2.5%;font-size:0.8vw;">
+            <% if (session.getAttribute("user") == null) { %>
+                <!--if the user value is empty, this part of the code will show.-->
+            <% } else {%>
+                <!--If the user value aren't empty, this part of the code will show.-->
+                <b><p>Logget inn som: <%=session.getAttribute("user")%></p></b>
+            <% } %>
+        </div>
+        <script type="text/javascript"> //Javascript for dropdown menu.
             function myFunction() {
               document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -164,7 +171,7 @@
                     }
                 }
                 }
-            }    
+            };    
         </script>
     </body>
 </html>
