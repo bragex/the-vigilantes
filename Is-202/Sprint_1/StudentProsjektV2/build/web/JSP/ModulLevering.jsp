@@ -38,8 +38,8 @@
                 margin-top:-5px;
             }
             #Modulh21 {
-                margin: auto; 
-                padding-right: -200px;/*Test this part. (Margin error.)*/        
+                margin: 0cm; 
+                /*padding-right: -200px; Test this part. (Margin error.)*/        
         }    
         </style>
     </head>
@@ -48,7 +48,7 @@
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
         <div>
-            <h1 id="Modulh21">Modul 1</h1>           
+            <h1 class="Modulh21">Modul 1</h1>           
             <h3>Læringsmål:</h3>
             <a href="Moduler">
                 <h4 id="p1">Oversikt over alle Moduler</h4>
