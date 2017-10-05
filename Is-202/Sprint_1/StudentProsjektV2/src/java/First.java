@@ -56,7 +56,6 @@ public class First extends HttpServlet {
                 rd.forward(request, response);
             }
                 else if (uname.equalsIgnoreCase("vegar") && pass.equalsIgnoreCase("vegar")) { 
-                HttpSession session = request.getSession();
                 session.setAttribute("user", uname);
                 RequestDispatcher rd = request.getRequestDispatcher("Home");
                 rd.forward(request, response);
