@@ -17,7 +17,7 @@
             <tr><td>Blogg</td></tr>
             <tr>
                 <td colspan="3">
-                    <textarea id="inputTextToSave" cols="80" rows="25"></textarea>
+                    <textarea id="inputTextToSave" cols="80" rows="35"></textarea>
                 </td>
             </tr>
             <tr>
