@@ -30,11 +30,9 @@
                 <td><input type="file" id="fileToLoad"></td>
                 <td><button onclick="loadFileAsText()">Last opp valgt fil</button><td>
             </tr>
-        </table>
-         <%--
-         Lagrer filen som .txt fil i nedlastings mappen
-         --%>
+        </table>      
         <script type="text/javascript"> //Må laste opp txt fil.
+            // Lagrer filen som .txt fil i nedlastings mappen. Funker ikke i Mikrosoft Edge
             function saveTextAsFile() {
                 var textToSave = document.getElementById("inputTextToSave").value;
                 var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
