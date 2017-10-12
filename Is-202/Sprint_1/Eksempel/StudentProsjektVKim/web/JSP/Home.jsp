@@ -232,12 +232,16 @@
                     <td>Bruker ID</td>
                     <td>Navn</td>
                     <td>Epost</td>
+                    <td>Blogg</td>
                 </tr>
                 <% while (users.next()) { %>
                 <tr>
                     <td><%=users.getString("user_id") %></td>
                     <td><%=users.getString("user_name") %></td>
                     <td><%=users.getString("user_email") %></td>
+                    <td><form action="Blogg" method="post">                    
+                    <button class="button"><%=users.getString("user_name") %> Blogg</button>
+                </form></td>
                 </tr>
                 <% } %>
             </tbody>
