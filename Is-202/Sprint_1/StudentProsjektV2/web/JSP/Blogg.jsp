@@ -30,8 +30,9 @@
                 <td><input type="file" id="fileToLoad"></td>
                 <td><button onclick="loadFileAsText()">Last opp valgt fil</button><td>
             </tr>
-        </table>
-        <script type="text/javascript"> //Crashes if you try to upload other files than text files.
+        </table>      
+        <script type="text/javascript"> //Må laste opp txt fil.
+            // Lagrer filen som .txt fil i nedlastings mappen. Funker ikke i Mikrosoft Edge
             function saveTextAsFile() {
                 var textToSave = document.getElementById("inputTextToSave").value;
                 var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
@@ -49,6 +50,7 @@
             function destroyClickedElement(event) {
                 document.body.removeChild(event.target);
             }
+            //Laster opp valgt .txt fil i tekst area.
             function loadFileAsText() {
                 var fileToLoad = document.getElementById("fileToLoad").files[0];
                 var fileReader = new FileReader();
