@@ -1,16 +1,26 @@
+/*
+
+Ikke tenk på om ting ser stygt ut når du skriver det inn i databasen.
+Hvor skal du ellers lagre dataen? En server? Den serveren er jo databasen.
+Hvor skal den statiske dataen være? I databasen. Ta varsel som eksempel:
+Hvor skal teksten som varsler gir være lagret? Skal det være en person som sitter
+å skriver varslene når man trenger dem? Når du skal gi en melding til studenter, 
+hvordan skal programmet vite hva teksten er? En bruker skriver inn teksten som blir
+lagret i en database. Når varselen dukker opp i en annens bruker program vil programmet
+finne teksten i databasen og referere den.
+
+*/
+
 drop database SLIT;
 
-Create database SLIT;
+create database SLIT;
+use SLIT;
 
-Use SLIT;
-
-
-Create table `user` (
-	user_id varchar (5) primary key,
-    user_name varchar (40),
-    user_email varchar (30),
-    user_number int (20)
-
+create table `user` (
+	user_id varchar(5) primary key,
+    user_name varchar(40),
+    user_email varchar(30),
+    user_number int(12)
 );
 
 insert into `user` (user_id, user_name, user_email, user_number)
@@ -21,23 +31,23 @@ values ('us001', 'Morten', 'Morten@hotmail.com', 959595 ), ('us002', 'Benjamin',
 ('us009', 'Kevin', 'Kevin@hotmail.com', 919191), ('us010', 'Halgeir', 'Halgeir@hotmail.com', 909090 );
 
 
-Create table lecturer (
-	lecturer_id varchar (5) primary key,
-    user_id varchar (5) unique,
+create table lecturer (
+	lecturer_id varchar(5) primary key,
+    user_id varchar(5) unique,
     foreign key (user_id) references `user` (user_id)
 );
 
 insert into lecturer (lecturer_id, user_id)
 values ('le001', 'us001'), ('le002', 'us002');
 
-Create table module (
-	module_id varchar (5) primary key,
-    module_name varchar (40),
-    module_goals varchar (200),
-    module_details varchar (50),
-    module_task varchar (50),
+
+create table module (
+	module_id varchar(5) primary key,
+    module_name varchar(20),
+    module_goals text,
+    module_details text,
+    module_task text,
     module_deadline date
-    
 );
 
 insert into module (module_id, module_name, module_goals, module_details, module_task, module_deadline)
@@ -48,32 +58,28 @@ values ('mo001', 'Module 1', 'Learn function', 'This is module 1', 'Make a funct
 ('mo005', 'Module 5','Learn hasmap', 'This is module 5', 'Make a hashmap', '2017-10-15');
 
 
-Create table student (
-	student_id varchar (5) primary key,
-    user_id varchar (5) unique,
+create table student (
+	student_id varchar(5) primary key,
+    student_points int(3),
+    user_id varchar(5) unique,
     foreign key (user_id) references `user` (user_id)
 );
 
-insert into student (student_id, user_id)
-values ('st001', 'us003'), ('st002', 'us004'), ('st003', 'us005'), ('st004', 'us006'), 
-('st005', 'us007'), ('st006', 'us008'), ('st007', 'us009'), ('st008', 'us010');
+insert into student (student_id, student_points, user_id)
+values ('st001', 0, 'us003'), ('st002', 0, 'us004'), ('st003', 0, 'us005'), ('st004', 0, 'us006'), 
+('st005', 0, 'us007'), ('st006', 0, 'us008'), ('st007', 0, 'us009'), ('st008', 0, 'us010');
 
-/*
-Create table `status` (
-	status_id varchar (5) primary key,
-    status_status boolean
-);
-*/
 
-Create table submit (
-	submit_id varchar (5) primary key,
-    submit_file varchar (10),
+create table submit (
+	submit_id varchar(5) primary key,
+    submit_file varchar(10),
     submit_date date,
-    module_id varchar (5),
-    student_id varchar (5),
+    module_id varchar(5),
+    student_id varchar(5),
     foreign key (module_id) references module (module_id),
     foreign key (student_id) references student (student_id)
 );
+
 /*Submit_file is for the file name. We used the names for simplicity*/
 insert into submit (submit_id, submit_file, submit_date, module_id, student_id)
 values ('su001', 'fi001', '2017-06-14', 'mo001', 'st001'), 
@@ -88,12 +94,11 @@ values ('su001', 'fi001', '2017-06-14', 'mo001', 'st001'),
 ('su010', 'fi010', '2018-03-14', 'mo005', 'st008');
 
 
-
-Create table feedback (
-	feedback_id varchar (5) primary key,
-    feedback_content varchar (50),
+create table feedback (
+	feedback_id varchar(5) primary key,
+    feedback_content text,
     feedback_date date,
-    submit_id varchar (5),
+    submit_id varchar(5),
     foreign key (submit_id) references submit (submit_id)
 );
 
@@ -102,24 +107,13 @@ values ('fe001','This was good','2017-06-16','su001'), ('fe002','This was bad','
 ('fe003', 'Need more work', '2017-08-16', 'su003'), ('fe004', 'Excellent', '2017-09-16', 'su004'), 
 ('fe005', 'Give up', '2017-10-16', 'su005');
 
-Create table progress (
-	progress_id varchar (5) primary key,
-    progress_points int (3),
-    student_id varchar (5) unique,
-    foreign key (student_id) references student (student_id)
-);
 
-insert into progress (progress_id, progress_points, student_id)
-values ('pr001', 1, 'st001'), ('pr002', 5, 'st002'), ('pr003', 4, 'st003'), ('pr004', 6, 'st004'),
-('pr005', 8, 'st005'), ('pr006', 9, 'st006'), ('pr007', 10, 'st007'), ('pr008', 3, 'st008');
-
-
-Create table blog (
-	blog_id varchar (5) primary key,
-    blog_title varchar (20),
-    blog_content varchar (100),
+create table blog (
+	blog_id varchar(5) primary key,
+    blog_title varchar(20),
+    blog_content text,
     blog_datePosted date,
-    student_id varchar (5),
+    student_id varchar(5),
     foreign key (student_id) references student (student_id)
 );
 
@@ -130,6 +124,16 @@ values ('bl001', 'blog 1', 'Ones upon a time', '2017-06-17', 'st001'), ('bl002',
 ('bl006', 'blog 6', ' but then they relaized', '2017-11-17', 'st006'),
 ('st007', 'blog 7', 'they had to get their shit togheter', '2017-12-17', 'st007'), 
 ('st008', 'blog 8', 'and do it again and pass', '2018-01-17', 'st008');
+
+
+create table notification (
+	notif_id int(5),
+    notif_submit text,
+    notif_feedback text
+);
+
+
+
 
 
 
