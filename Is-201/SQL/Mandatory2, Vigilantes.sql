@@ -135,18 +135,18 @@ select customer.cus_fname
      , orderline.ol_quantity
      , product.prod_name
 	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-	inner join orderline on orders.order_id = orderline.order_id
-	inner join product on orderline.prod_id = product.prod_id;
+	join orders on customer.cus_id = orders.cus_id
+	join orderline on orders.order_id = orderline.order_id
+	join product on orderline.prod_id = product.prod_id;
 
 /* 4b) List product name, quantity ordered and total amount paid for the 3 best-selling products */
 select prod_name
 	 , sum(ol_quantity) as total_quantity
      , sum(ol_quantity) * prod_price as total_price
 	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-	inner join orderline on orders.order_id = orderline.order_id
-	inner join product on orderline.prod_id = product.prod_id
+	join orders on customer.cus_id = orders.cus_id
+	join orderline on orders.order_id = orderline.order_id
+	join product on orderline.prod_id = product.prod_id
     group by product.prod_id
     order by total_quantity desc
     limit 3;
@@ -160,9 +160,9 @@ create view Task_4c as
          , order_status
          , sum(ol_quantity * prod_price) as total_price
 	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-    inner join orderline on orders.order_id = orderline.order_id
-    inner join product on orderline.prod_id = product.prod_id
+	join orders on customer.cus_id = orders.cus_id
+    join orderline on orders.order_id = orderline.order_id
+    join product on orderline.prod_id = product.prod_id
     group by order_id;
     
     select * from Task_4c;
@@ -183,75 +183,8 @@ select cus_lname
      , orders.order_id
      , sum(ol_quantity * prod_price) as total_price
 	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-	inner join orderline on orders.order_id = orderline.order_id
-	inner join product on orderline.prod_id = product.prod_id
+	join orders on customer.cus_id = orders.cus_id
+	join orderline on orders.order_id = orderline.order_id
+	join product on orderline.prod_id = product.prod_id
 	group by order_id;
 
-
-/* We put tasks that interferred with the creation of tables at the bottom. */
-/*1.4 Changes the address of a customer instance. */
-update customer
-	set cus_address = 'Nedenes, 4823 Nellikveien 5'
-	where cus_id = 1;
-
-/*1.4 Deletes a customer instance from the table. */
-delete from customer where cus_id = 1;
-
-/*1.5 Finds specific columns from the customer table. */
-select cus_lname, cus_email from customer;
-
-/*1.6 Finds customers who have "San" as the first three letters in their first- or last name. */
-select * from customer
-where cus_lname like 'San%' or cus_fname like 'San%';
-
-/*2.5 Tries to delete a customer with an order tied to it. Fails if an order has been added to a customer. */
-delete from customer where cus_id = 4;
-
-/*2.6  The query lists the last name of a customer, order date and the status of the order. */
-Select customer.cus_lname, order_date, order_status 
-	from customer, orders
-    where customer.cus_id = orders.cus_id; 
-
-/*2.7 This query creates a lot of duplicates. */
-Select cus_lname, order_date, order_status 
-	from customer, orders; 
-
-/*3.4 Several select queries */
-/*a) Product details ordered August 2015 and only 10 first characters in product name. */
-select order_date, left (prod_name,10)
-	from orders,orderline,customer,product
-    where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
-    and customer.cus_id = orders.cus_id and order_date like '2015-08%';
-
-/*b) Modify previous query to only include products containing "star" in the name. */
-select order_date, left (prod_name,10)
-	from orders,orderline,customer,product
-    where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
-    and customer.cus_id = orders.cus_id and order_date like '2015-08%'
-    and prod_name like '%star%';
-
-/*c) Customer name, quantity ordered, and product name*/
-select cus_lname,ol_quantity,prod_name
-	from orders,orderline,customer,product
-    where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
-    and customer.cus_id = orders.cus_id;
-    
-/* Tried the "inner join" version. */
-select cus_lname,ol_quantity,prod_name
-	from customer
-	inner join orders on customer.cus_id = orders.cus_id
-	inner join orderline on orders.order_id = orderline.order_id
-	inner join product on orderline.prod_id = product.prod_id;
-    
-/*d) Modify previous query to sort results by customer name and product name*/
-select cus_lname,ol_quantity,prod_name
-	from orders,orderline,customer,product
-    where orders.order_id = orderline.order_id and product.prod_id = orderline.prod_id
-    and customer.cus_id = orders.cus_id
-    order by cus_lname,prod_name;
-    
-/*e) New attribute to product: reorder level */
-alter table product
-	add reorder_lvl varchar(20) default 'Hello world!';
-select * from product;

@@ -26,6 +26,7 @@
                 border: 1px solid gray;
                 color: black;
             }
+            
             #search01, #search02 {
                 float: right;
                 padding: 5px;
@@ -40,6 +41,7 @@
                 margin-bottom: 1%;
                 margin-top: 0.5%;
             }
+            
             #h1menu1 {
                 float: left;
                 padding: 0px;
@@ -118,10 +120,14 @@
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
                     <h1 class="h1header" id="h1menu1">Studentlisten</h1>
-                    <form id="search00" class=searchclass action="" method="get">
-                        <button id="search01">Søk</button>
-                        <input id="search02" type="search" name="Search">
-                    </form>
+                    <% String url = request.getRequestURI(); %> 
+                    <% String url2 = "/StudentProsjektV2/Home"; %> 
+                    <% if (url.equals(url2)){%>
+                        <form id="search00" class=searchclass action="" method="get">
+                            <button id="search01">Søk</button>
+                            <input id="search02" type="search" name="Search">
+                        </form>
+                    <%}%> 
                 </div>
             </div>
         </header>    

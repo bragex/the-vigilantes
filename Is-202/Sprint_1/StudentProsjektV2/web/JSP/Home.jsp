@@ -101,7 +101,7 @@
                 </tr>
                 <tr>
                     <td><a href="MinSide">Tønnes Røren</a></td>
-                    <td><a href="http://home.uia.no/ttrore16/">Tonnes.blogg.no</a></td>
+                    <td><a href="Blogg">Tonnes.blogg.no</a></td>
                     <td><a href="mailto:tonnes.mail@gmail.com">tonnes.mail@gmail.com</a></td>
                     <td><b><%=sumt%></b></td>
                     <td><%=tint1%></td>
