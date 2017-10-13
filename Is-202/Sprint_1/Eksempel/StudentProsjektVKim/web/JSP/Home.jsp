@@ -49,7 +49,7 @@
             try {
                     connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                     selectUsers = connection.prepareStatement(
-                        "SELECT user_id, user_name, user_email FROM user");
+                        "SELECT user_name, user_email, module_name, module_points FROM user, module");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -229,19 +229,17 @@
             <table border="1">
             <tbody>
                 <tr>
-                    <td>Bruker ID</td>
                     <td>Navn</td>
                     <td>Epost</td>
-                    <td>Blogg</td>
+                    <td>Module</td>
                 </tr>
                 <% while (users.next()) { %>
                 <tr>
                     <td><%=users.getString("user_id") %></td>
                     <td><%=users.getString("user_name") %></td>
                     <td><%=users.getString("user_email") %></td>
-                    <td><form action="Blogg" method="post">                    
-                    <button class="button"><%=users.getString("user_name") %> Blogg</button>
-                </form></td>
+                    <td><%=users.getString("module_name") %></td>
+                    <td><%=users.getInt("module_points") %></td>
                 </tr>
                 <% } %>
             </tbody>
