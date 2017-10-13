@@ -62,6 +62,7 @@ values ('mo001', 'Module 1', 0, 'Learn function', 'This is module 1', 'Make a fu
 ('mo005', 'Module 5',0,'Learn hasmap', 'This is module 5', 'Make a hashmap', '2017-10-15');
 
 
+/*
 create table student (
 	student_id varchar(5) primary key,
     student_points int(3),
@@ -72,7 +73,23 @@ create table student (
 insert into student (student_id, student_points, user_id)
 values ('st001', 0, 'us003'), ('st002', 0, 'us004'), ('st003', 0, 'us005'), ('st004', 0, 'us006'), 
 ('st005', 0, 'us007'), ('st006', 0, 'us008'), ('st007', 0, 'us009'), ('st008', 0, 'us010');
+*/
+create table points (
+    user_id varchar(5) ,
+    module_id varchar(5),
+    p_points int default 0,
+    foreign key (user_id) references `user` (user_id),
+    foreign key (module_id) references module (module_id)
+);
 
+insert into points (user_id, module_id, p_points)
+values ('us001','mo001', 5), ('us001','mo002', 6), ('us001','mo003', 7), ('us001','mo004', 8), ('us001','mo005', 9),
+	   ('us002','mo001', 5), ('us002','mo002', 6), ('us002','mo003', 7), ('us002','mo004', 8), ('us002','mo005', 9),
+       ('us003','mo001', 9), ('us003','mo002', 8), ('us003','mo003', 7), ('us003','mo004', 6), ('us003','mo005', 5),
+       ('us004','mo001', 5), ('us004','mo002', 6), ('us004','mo003', 7), ('us004','mo004', 8), ('us004','mo005', 9),
+       ('us005','mo001', 5), ('us005','mo002', 6), ('us005','mo003', 7), ('us005','mo004', 8), ('us005','mo005', 9),
+       ('us006','mo001', 5), ('us006','mo002', 6), ('us006','mo003', 7), ('us006','mo004', 8), ('us006','mo005', 9),
+       ('us007','mo001', 5), ('us007','mo002', 6), ('us007','mo003', 7), ('us007','mo004', 8), ('us007','mo005', 9);
 
 create table submit (
 	submit_id varchar(5) primary key,
@@ -161,4 +178,5 @@ have fields with the notification text.
 */
 
 
-SELECT user_name, user_email, module_name, module_points FROM user, module
+SELECT user_fname, user_lname, user_email, p_points FROM user, points
+where user.user_id = points.user_id
