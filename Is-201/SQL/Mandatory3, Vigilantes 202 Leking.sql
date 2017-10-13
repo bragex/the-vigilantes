@@ -43,21 +43,23 @@ insert into lecturer (lecturer_id, user_id)
 values ('le001', 'us001'), ('le002', 'us002');
 
 
-create table module (
-	module_id varchar(5) primary key,
-    module_name varchar(20),
-    module_goals text,
-    module_details text,
-    module_task text,
+Create table module (
+	module_id varchar (5) primary key,
+    module_name varchar (40),
+    module_points int default 0,
+    module_goals varchar (200),
+    module_details varchar (50),
+    module_task varchar (50),
     module_deadline date
+    
 );
 
-insert into module (module_id, module_name, module_goals, module_details, module_task, module_deadline)
-values ('mo001', 'Module 1', 'Learn function', 'This is module 1', 'Make a function', '2017-06-15'), 
-('mo002', 'Module 2','Learn method', 'This is module 2', 'Make a method', '2017-07-15'), 
-('mo003', 'Module 3','Learn array', 'This is module 3', 'Make a array', '2017-08-15'), 
-('mo004', 'Module 4','Learn testning', 'This is module 4', 'Do some testing and debuging', '2017-09-15'), 
-('mo005', 'Module 5','Learn hasmap', 'This is module 5', 'Make a hashmap', '2017-10-15');
+insert into module (module_id, module_name, module_points, module_goals, module_details, module_task, module_deadline)
+values ('mo001', 'Module 1', 0, 'Learn function', 'This is module 1', 'Make a function', '2017-06-15'), 
+('mo002', 'Module 2',0,'Learn method', 'This is module 2', 'Make a method', '2017-07-15'), 
+('mo003', 'Module 3',0,'Learn array', 'This is module 3', 'Make a array', '2017-08-15'), 
+('mo004', 'Module 4',0,'Learn testning', 'This is module 4', 'Do some testing and debuging', '2017-09-15'), 
+('mo005', 'Module 5',0,'Learn hasmap', 'This is module 5', 'Make a hashmap', '2017-10-15');
 
 
 create table student (
@@ -159,3 +161,4 @@ have fields with the notification text.
 */
 
 
+SELECT user_name, user_email, module_name, module_points FROM user, module
