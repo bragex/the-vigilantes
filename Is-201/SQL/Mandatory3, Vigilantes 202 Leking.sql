@@ -17,19 +17,24 @@ create database SLIT;
 use SLIT;
 
 Create table `user` (
-	user_id varchar (5) primary key,
+	user_id int (5) auto_increment primary key,
     user_fname varchar(40),
     user_lname varchar(40),
-    user_email varchar (30),
-    user_number int (20)
+    user_email varchar (30)
 );
 
-insert into `user` (user_id, user_fname, user_lname, user_email, user_number)
-values ('us001', 'Morten', 'Mygland', 'morten@hotmail.com', 959595 ), ('us002', 'Benjamin', 'Sandøy', 'benjamin@hotmail.com', 969696), 
-('us003', 'Kim', 'Moe', 'kim@hotmail.com', 979797 ), ('us004', 'Vegar', 'Sakseid', 'vegar@hotmail.com', 989898 ), 
-('us005', 'Brage', 'Sydskogen', 'brage@hotmail.com', 999999), ('us006', 'Jenny', 'Kristiansen', 'jenny@hotmail.com', 949494), 
-('us007', 'Tønnes', 'Røren', 'tønnes@hotmail.com', 939393),('us008', 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com', 929292), 
-('us009', 'Kevin', 'Pedersen', 'kevin@hotmail.com', 919191), ('us010', 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com', 909090 );
+insert into `user` (user_id, user_fname, user_lname, user_email)
+values 
+(1, 'Morten', 'Mygland', 'morten@hotmail.com'), 
+(2, 'Benjamin', 'Sandøy', 'benjamin@hotmail.com'), 
+(3, 'Kim', 'Moe', 'kim@hotmail.com'), 
+(4, 'Vegar', 'Sakseid', 'vegar@hotmail.com' ), 
+(5, 'Brage', 'Sydskogen', 'brage@hotmail.com'), 
+(6, 'Jenny', 'Kristiansen', 'jenny@hotmail.com'), 
+(7, 'Tønnes', 'Røren', 'tønnes@hotmail.com'),
+(8, 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com'), 
+(9, 'Kevin', 'Pedersen', 'kevin@hotmail.com'), 
+(10, 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com');
 
 
 create table lecturer (
@@ -74,7 +79,7 @@ values ('st001', 0, 'us003'), ('st002', 0, 'us004'), ('st003', 0, 'us005'), ('st
 ('st005', 0, 'us007'), ('st006', 0, 'us008'), ('st007', 0, 'us009'), ('st008', 0, 'us010');
 */
 create table points (
-    user_id varchar(5) ,
+    user_id int(5) ,
     module_id varchar(5),
     p_points int default 0,
     foreign key (user_id) references `user` (user_id),
@@ -82,13 +87,13 @@ create table points (
 );
 
 insert into points (user_id, module_id, p_points)
-values ('us001','mo001', 5), ('us001','mo002', 6), ('us001','mo003', 7), ('us001','mo004', 8), ('us001','mo005', 9),
-	   ('us002','mo001', 5), ('us002','mo002', 6), ('us002','mo003', 7), ('us002','mo004', 8), ('us002','mo005', 9),
-       ('us003','mo001', 9), ('us003','mo002', 8), ('us003','mo003', 7), ('us003','mo004', 6), ('us003','mo005', 5),
-       ('us004','mo001', 5), ('us004','mo002', 6), ('us004','mo003', 7), ('us004','mo004', 8), ('us004','mo005', 9),
-       ('us005','mo001', 5), ('us005','mo002', 6), ('us005','mo003', 7), ('us005','mo004', 8), ('us005','mo005', 9),
-       ('us006','mo001', 5), ('us006','mo002', 6), ('us006','mo003', 7), ('us006','mo004', 8), ('us006','mo005', 9),
-       ('us007','mo001', 5), ('us007','mo002', 6), ('us007','mo003', 7), ('us007','mo004', 8), ('us007','mo005', 9);
+values (1,'mo001', 5), (1,'mo002', 6), (1,'mo003', 7), (1,'mo004', 8), (1,'mo005', 9),
+	   (2,'mo001', 5), (2,'mo002', 6), (2,'mo003', 7), (2,'mo004', 8), (2,'mo005', 9),
+       (3,'mo001', 9), (3,'mo002', 8), (3,'mo003', 7), (3,'mo004', 6), (3,'mo005', 5),
+       (4,'mo001', 5), (4,'mo002', 6), (4,'mo003', 7), (4,'mo004', 8), (4,'mo005', 9),
+       (5,'mo001', 5), (5,'mo002', 6), (5,'mo003', 7), (5,'mo004', 8), (5,'mo005', 9),
+       (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
+       (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
 
 create table submit (
 	submit_id varchar(5) primary key,
