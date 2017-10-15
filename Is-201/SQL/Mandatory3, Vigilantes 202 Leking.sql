@@ -178,5 +178,18 @@ have fields with the notification text.
 */
 
 
-SELECT user_fname, user_lname, user_email, p_points FROM user, points
+SELECT user_fname, user_lname, user_email, p_points ,sum(p_points) as totalSum 
+FROM user, points
 where user.user_id = points.user_id
+group by ;
+
+select p_points
+from user, points
+where user.user_id = points.user_id;
+
+
+
+select user_name,user_email,student_points
+from user,student
+where (alle nøklene som trengs)
+group by student_id;
