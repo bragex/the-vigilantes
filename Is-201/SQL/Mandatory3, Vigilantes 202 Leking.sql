@@ -18,19 +18,18 @@ use SLIT;
 
 Create table `user` (
 	user_id varchar (5) primary key,
-    user_username varchar (40),
     user_fname varchar(40),
     user_lname varchar(40),
     user_email varchar (30),
     user_number int (20)
 );
 
-insert into `user` (user_id, user_username, user_fname, user_lname, user_email, user_number)
-values ('us001', 'Morten', 'Morten', 'Mygland', 'morten@hotmail.com', 959595 ), ('us002', 'Benjamin', 'Benjamin', 'Sandøy', 'benjamin@hotmail.com', 969696), 
-('us003', 'Kim', 'Kim', 'Moe', 'kim@hotmail.com', 979797 ), ('us004', 'Vegar', 'Vegar', 'Sakseid', 'vegar@hotmail.com', 989898 ), 
-('us005', 'Brage', 'Brage', 'Sydskogen', 'brage@hotmail.com', 999999), ('us006', 'Jenny', 'Jenny', 'Kristiansen', 'jenny@hotmail.com', 949494), 
-('us007', 'Tønnes', 'Tønnes', 'Røren', 'tønnes@hotmail.com', 939393),('us008', 'Ingfrid', 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com', 929292), 
-('us009', 'Kevin', 'Kevin', 'Pedersen', 'kevin@hotmail.com', 919191), ('us010', 'Hallgeir', 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com', 909090 );
+insert into `user` (user_id, user_fname, user_lname, user_email, user_number)
+values ('us001', 'Morten', 'Mygland', 'morten@hotmail.com', 959595 ), ('us002', 'Benjamin', 'Sandøy', 'benjamin@hotmail.com', 969696), 
+('us003', 'Kim', 'Moe', 'kim@hotmail.com', 979797 ), ('us004', 'Vegar', 'Sakseid', 'vegar@hotmail.com', 989898 ), 
+('us005', 'Brage', 'Sydskogen', 'brage@hotmail.com', 999999), ('us006', 'Jenny', 'Kristiansen', 'jenny@hotmail.com', 949494), 
+('us007', 'Tønnes', 'Røren', 'tønnes@hotmail.com', 939393),('us008', 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com', 929292), 
+('us009', 'Kevin', 'Pedersen', 'kevin@hotmail.com', 919191), ('us010', 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com', 909090 );
 
 
 create table lecturer (
