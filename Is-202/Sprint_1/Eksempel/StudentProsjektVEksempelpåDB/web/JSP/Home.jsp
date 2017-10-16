@@ -116,132 +116,17 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
-        <div id="mathdiv1">                    
-        <div id="tablediv1" class="divfrontpage">
-            <table id="table01">
-                <tr>
-                    <th>Navn</th> <!--Implement database here!-->
-                    <th>Blogg</th>
-                    <th>E-post</th>
-                    <th>Poengscore</th>
-                    <th>M 1</th>
-                    <th>M 2</th>
-                    <th>M 3</th>
-                    <th>M 4</th>
-                    <th>M 5</th>
-                    <th>M 6</th>
-                    <th>M 7</th>
-                    <th>M 8</th>
-                    <th>M 9</th>
-                    <th>M 10</th>
-                    <th>M 11</th>
-                    <th>M 12</th>
-                    <th>M 13</th>
-                    <th>M 14</th>
-                    <th>M 15</th>
-                </tr>
-                <tr>
-                    <td><a href="MinSide">Tønnes Røren</a></td>
-                    <td><a href="http://home.uia.no/ttrore16/">Tonnes.blogg.no</a></td>
-                    <td><a href="mailto:tonnes.mail@gmail.com">tonnes.mail@gmail.com</a></td>
-                    <td><b><%=sumt%></b></td>
-                    <td><%=tint1%></td>
-                    <td><%=tint2%></td>
-                    <td><%=tint3%></td>
-                    <td><%=tint4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                </tr>
-                <tr>
-                    <td><a href="profil2">Brannmann Sam</a></td>
-                    <td><a href="blogg2">Samblogg.com</a></td>
-                    <td><a href="mailto:brannSam.mann@gmail.com">brannSam.mann@gmail.com</a></td>
-                    <td><b><%=sumb%></b></td>
-                    <td><%=bint1%></td>
-                    <td><%=bint2%></td>
-                    <td><%=bint3%></td>
-                    <td><%=bint4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                </tr>
-                <tr>
-                    <td><a href="profil3">Byggmester Bob</a></td>
-                    <td><a href="blogg3">Paalblogg.no</a></td>
-                    <td><a href="mailto:byggmester.bob@gmail.com">byggmester.bob@gmail.com</a></td>
-                    <td><b><%=summ%></b></td>
-                    <td><%=mint1%></td>
-                    <td><%=mint2%></td>
-                    <td><%=mint3%></td>
-                    <td><%=mint4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>  
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                </tr>
-                <tr id="avragetr">
-                    <td></td> <!--Do not remove-->
-                    <td></td> <!--Do not remove-->
-                    <td>Gjennomsnitt</td>
-                    <td><%=posum%></td>
-                    <td><%=savg1%></td>
-                    <td><%=savg2%></td>
-                    <td><%=savg3%></td>
-                    <td><%=savg4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>   
-                    <td>osv</td>
-                    <td>osv</td> 
-                    <td>osv</td> 
-                    <td>osv</td> 
-                    <td>osv</td>
-                </tr>
-            </table>
-        </div>
             <table border="1">
             <tbody>
                 <tr>
-                    <td>Bruker ID</td>
                     <td>Navn</td>
                     <td>Epost</td>
                     <td>Blogg</td>
                 </tr>
                 <% while (users.next()) { %>
                 <tr>
-                    <td><%=users.getString("user_fname") %></td>
-                    <td><%=users.getString("user_lname") %></td>
+                    <td><a href="MinSide"> <%=users.getString("user_fname") %> <%=users.getString("user_lname") %></a></td>
                     <td><%=users.getString("user_email") %></td>
-                    <td><form action="Blogg" method="post">                    
-                    <button class="button"><%=users.getString("user_fname") %>Blogg</button>
-                </form></td>
                 </tr>
                 <% } %>
             </tbody>
