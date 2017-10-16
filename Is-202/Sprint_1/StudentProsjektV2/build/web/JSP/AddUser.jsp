@@ -37,7 +37,7 @@
             </style>
     </head>
     <body onload="displayResults()">
-        <h1>Sette data inn i DB</h1>
+        <h1>Legg til student i databasen</h1>
         <%!
             public class Insert {
             String URL = "jdbc:mysql://localhost:3306/slit";
@@ -105,9 +105,6 @@
         <form name="myForm" action="JSP/AddUser.jsp" method="POST">
             <table class="center">
                 <tbody>
-                    
-                        <h2>Legg til student i databasen</h2>
-                
                     <tr>
                         <td>First Name</td>
                         <td><input type="text" name="first" value="" size="50" /></td>
