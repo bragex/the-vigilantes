@@ -239,9 +239,6 @@
                     <td><%=users.getString("user_fname") %></td>
                     <td><%=users.getString("user_lname") %></td>
                     <td><%=users.getString("user_email") %></td>
-                    <td><form action="Blogg" method="post">                    
-                    <button class="button"><%=users.getString("user_fname") %>Blogg</button>
-                </form></td>
                 </tr>
                 <% } %>
             </tbody>
