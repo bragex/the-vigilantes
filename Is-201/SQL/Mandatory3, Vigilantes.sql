@@ -9,6 +9,11 @@ hvordan skal programmet vite hva teksten er? En bruker skriver inn teksten som b
 lagret i en database. Når varselen dukker opp i en annens bruker program vil programmet
 finne teksten i databasen og referere den.
 
+TRENGER
+Kommentering, litt spørsmål og view(se bunnen)
+Visse kommentarer må også fjernes, feks det på toppen og dette jeg har skrevet her.
+
+
 */
 
 drop database SLIT;
@@ -60,20 +65,20 @@ values ('mo001', 'Module 1', 'Learn function', 'This is module 1', 'Make a funct
 
 create table student (
 	student_id varchar(5) primary key,
-    student_points int(3),
     user_id varchar(5) unique,
     foreign key (user_id) references `user` (user_id)
 );
 
-insert into student (student_id, student_points, user_id)
-values ('st001', 0, 'us003'), ('st002', 0, 'us004'), ('st003', 0, 'us005'), ('st004', 0, 'us006'), 
-('st005', 0, 'us007'), ('st006', 0, 'us008'), ('st007', 0, 'us009'), ('st008', 0, 'us010');
+insert into student (student_id, user_id)
+values ('st001', 'us003'), ('st002', 'us004'), ('st003', 'us005'), ('st004', 'us006'), 
+('st005', 'us007'), ('st006', 'us008'), ('st007', 'us009'), ('st008', 'us010');
 
 
 create table submit (
 	submit_id varchar(5) primary key,
     submit_file varchar(10),
     submit_date date,
+    submit_points int(2) default null,
     module_id varchar(5),
     student_id varchar(5),
     foreign key (module_id) references module (module_id),
@@ -89,9 +94,24 @@ values ('su001', 'fi001', '2017-06-14', 'mo001', 'st001'),
 ('su005', 'fi005', '2017-10-14', 'mo003', 'st005'),
 ('su006', 'fi006', '2017-11-14', 'mo003', 'st006'), 
 ('su007', 'fi007', '2017-12-14', 'mo004', 'st007'),
-('su008', 'fi008', '2018-01-14', 'mo004', 'st007'),
+('su008', 'fi008', '2018-01-14', 'mo003', 'st007'),
 ('su009', 'fi009', '2018-02-14', 'mo005', 'st008'),
-('su010', 'fi010', '2018-03-14', 'mo005', 'st008');
+('su010', 'fi010', '2018-03-14', 'mo003', 'st008');
+
+/*
+create view homepage as
+select user_name,user_email,module_name,submit_points
+	from `user`,student,submit,module
+    where `user`.user_id = student.user_id
+    and student.student_id = submit.student_id
+    and submit.module_id = module.module_id;
+
+select submit_points
+	from `user`,student,submit,module
+    where `user`.user_id = student.user_id
+    and student.student_id = submit.student_id
+    and submit.module_id = module.module_id;
+*/
 
 
 create table feedback (
@@ -156,4 +176,9 @@ have fields with the notification text.
 
 */
 
+/*
+
+Make a view of all users; both lecturers and students.
+
+*/
 

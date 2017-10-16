@@ -9,6 +9,11 @@ hvordan skal programmet vite hva teksten er? En bruker skriver inn teksten som b
 lagret i en database. Når varselen dukker opp i en annens bruker program vil programmet
 finne teksten i databasen og referere den.
 
+TRENGER
+Kommentering, litt spørsmål og view(se bunnen)
+Visse kommentarer må også fjernes, feks det på toppen og dette jeg har skrevet her.
+
+
 */
 
 drop database SLIT;
@@ -16,25 +21,19 @@ drop database SLIT;
 create database SLIT;
 use SLIT;
 
-Create table `user` (
-	user_id int (5) auto_increment primary key,
-    user_fname varchar(40),
-    user_lname varchar(40),
-    user_email varchar (30)
+create table `user` (
+	user_id varchar(5) primary key,
+    user_name varchar(40),
+    user_email varchar(30),
+    user_number int(12)
 );
 
-insert into `user` (user_id, user_fname, user_lname, user_email)
-values 
-(1, 'Morten', 'Mygland', 'morten@hotmail.com'), 
-(2, 'Benjamin', 'Sandøy', 'benjamin@hotmail.com'), 
-(3, 'Kim', 'Moe', 'kim@hotmail.com'), 
-(4, 'Vegar', 'Sakseid', 'vegar@hotmail.com' ), 
-(5, 'Brage', 'Sydskogen', 'brage@hotmail.com'), 
-(6, 'Jenny', 'Kristiansen', 'jenny@hotmail.com'), 
-(7, 'Tønnes', 'Røren', 'tønnes@hotmail.com'),
-(8, 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com'), 
-(9, 'Kevin', 'Pedersen', 'kevin@hotmail.com'), 
-(10, 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com');
+insert into `user` (user_id, user_name, user_email, user_number)
+values ('us001', 'Morten', 'Morten@hotmail.com', 959595 ), ('us002', 'Benjamin', 'Benjamin@hotmail.com', 969696), 
+('us003', 'Kim', 'Kim@hotmail.com', 979797 ), ('us004', 'Vegard', 'Vegard@hotmail.com', 989898 ), 
+('us005', 'Brage', 'Brage@hotmail.com', 999999), ('us006', 'Jenny', 'Jenny@hotmail.com', 949494), 
+('us007', 'Tønnes', 'Tønnes@hotmail.com', 939393),('us008', 'Ingfrid', 'Ingfrid@hotmail.com', 929292), 
+('us009', 'Kevin', 'Kevin@hotmail.com', 919191), ('us010', 'Halgeir', 'Halgeir@hotmail.com', 909090 );
 
 
 create table lecturer (
@@ -47,58 +46,39 @@ insert into lecturer (lecturer_id, user_id)
 values ('le001', 'us001'), ('le002', 'us002');
 
 
-Create table module (
-	module_id varchar (5) primary key,
-    module_name varchar (40),
-    module_points int default 0,
-    module_goals varchar (200),
-    module_details varchar (50),
-    module_task varchar (50),
+create table module (
+	module_id varchar(5) primary key,
+    module_name varchar(20),
+    module_goals text,
+    module_details text,
+    module_task text,
     module_deadline date
-    
 );
 
-insert into module (module_id, module_name, module_points, module_goals, module_details, module_task, module_deadline)
-values ('mo001', 'Module 1', 0, 'Learn function', 'This is module 1', 'Make a function', '2017-06-15'), 
-('mo002', 'Module 2',0,'Learn method', 'This is module 2', 'Make a method', '2017-07-15'), 
-('mo003', 'Module 3',0,'Learn array', 'This is module 3', 'Make a array', '2017-08-15'), 
-('mo004', 'Module 4',0,'Learn testning', 'This is module 4', 'Do some testing and debuging', '2017-09-15'), 
-('mo005', 'Module 5',0,'Learn hasmap', 'This is module 5', 'Make a hashmap', '2017-10-15');
+insert into module (module_id, module_name, module_goals, module_details, module_task, module_deadline)
+values ('mo001', 'Module 1', 'Learn function', 'This is module 1', 'Make a function', '2017-06-15'), 
+('mo002', 'Module 2','Learn method', 'This is module 2', 'Make a method', '2017-07-15'), 
+('mo003', 'Module 3','Learn array', 'This is module 3', 'Make a array', '2017-08-15'), 
+('mo004', 'Module 4','Learn testning', 'This is module 4', 'Do some testing and debuging', '2017-09-15'), 
+('mo005', 'Module 5','Learn hasmap', 'This is module 5', 'Make a hashmap', '2017-10-15');
 
 
-/*
 create table student (
 	student_id varchar(5) primary key,
-    student_points int(3),
     user_id varchar(5) unique,
     foreign key (user_id) references `user` (user_id)
 );
 
-insert into student (student_id, student_points, user_id)
-values ('st001', 0, 'us003'), ('st002', 0, 'us004'), ('st003', 0, 'us005'), ('st004', 0, 'us006'), 
-('st005', 0, 'us007'), ('st006', 0, 'us008'), ('st007', 0, 'us009'), ('st008', 0, 'us010');
-*/
-create table points (
-    user_id int(5) ,
-    module_id varchar(5),
-    p_points int default 0,
-    foreign key (user_id) references `user` (user_id),
-    foreign key (module_id) references module (module_id)
-);
+insert into student (student_id, user_id)
+values ('st001', 'us003'), ('st002', 'us004'), ('st003', 'us005'), ('st004', 'us006'), 
+('st005', 'us007'), ('st006', 'us008'), ('st007', 'us009'), ('st008', 'us010');
 
-insert into points (user_id, module_id, p_points)
-values (1,'mo001', 5), (1,'mo002', 6), (1,'mo003', 7), (1,'mo004', 8), (1,'mo005', 9),
-	   (2,'mo001', 5), (2,'mo002', 6), (2,'mo003', 7), (2,'mo004', 8), (2,'mo005', 9),
-       (3,'mo001', 9), (3,'mo002', 8), (3,'mo003', 7), (3,'mo004', 6), (3,'mo005', 5),
-       (4,'mo001', 5), (4,'mo002', 6), (4,'mo003', 7), (4,'mo004', 8), (4,'mo005', 9),
-       (5,'mo001', 5), (5,'mo002', 6), (5,'mo003', 7), (5,'mo004', 8), (5,'mo005', 9),
-       (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
-       (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
 
 create table submit (
 	submit_id varchar(5) primary key,
     submit_file varchar(10),
     submit_date date,
+    submit_points int(2) default null,
     module_id varchar(5),
     student_id varchar(5),
     foreign key (module_id) references module (module_id),
@@ -114,9 +94,24 @@ values ('su001', 'fi001', '2017-06-14', 'mo001', 'st001'),
 ('su005', 'fi005', '2017-10-14', 'mo003', 'st005'),
 ('su006', 'fi006', '2017-11-14', 'mo003', 'st006'), 
 ('su007', 'fi007', '2017-12-14', 'mo004', 'st007'),
-('su008', 'fi008', '2018-01-14', 'mo004', 'st007'),
+('su008', 'fi008', '2018-01-14', 'mo003', 'st007'),
 ('su009', 'fi009', '2018-02-14', 'mo005', 'st008'),
-('su010', 'fi010', '2018-03-14', 'mo005', 'st008');
+('su010', 'fi010', '2018-03-14', 'mo003', 'st008');
+
+/*
+create view homepage as
+select user_name,user_email,module_name,submit_points
+	from `user`,student,submit,module
+    where `user`.user_id = student.user_id
+    and student.student_id = submit.student_id
+    and submit.module_id = module.module_id;
+
+select submit_points
+	from `user`,student,submit,module
+    where `user`.user_id = student.user_id
+    and student.student_id = submit.student_id
+    and submit.module_id = module.module_id;
+*/
 
 
 create table feedback (
@@ -181,19 +176,9 @@ have fields with the notification text.
 
 */
 
+/*
 
-SELECT user_fname, user_lname, user_email, p_points ,sum(p_points) as totalSum 
-FROM user, points
-where user.user_id = points.user_id
-group by ;
+Make a view of all users; both lecturers and students.
 
-select p_points
-from user, points
-where user.user_id = points.user_id;
+*/
 
-
-
-select user_name,user_email,student_points
-from user,student
-where (alle nøklene som trengs)
-group by student_id;

@@ -27,7 +27,7 @@ create table if not exists customer (
 );
 
 /*1.4 Adds three people to the customer table. */
-/*Mandatory 2: updatet with five more customers*/
+/*Mandatory 2: updated with five more customers*/
 insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
 	values ('Hansen', 'Jens', 37012345, '4823 Nedenes, Granittveien 6', 'HanJ@gmail.com'),
 	('Holm', 'Sanne', 37067890, '4823 Nedenes, Juvelveien 19', 'HolS@gmail.com'),
@@ -80,7 +80,7 @@ create table if not exists product (
 );
 
 /* Adds products into the product table. */
-/* Mandatory 2, updatet with five products */
+/* Mandatory 2, updated with five products */
 insert into product (prod_id, prod_name, prod_price,prod_instock,prod_reorderlvl)
 	values ('FR01','Banan',10,500,50),('FR02','Eple',10,500,50),('FR03','Pære',10,500,50),
     ('TV01','SuperduperTV',10999,20,4),('DVD01','Pitch Black',140,10,2),('DVD02','Dunkirk',300,50,10),
@@ -110,13 +110,13 @@ insert into orderline (order_id,prod_id,ol_quantity)
     (113,'DVD04',1),(114,'TV02',1),(115,'PCS02',1);
 
 /*MANDATORY 2*/
-
 create table if not exists invoice(
-	in_id int (5) not null auto_increment,
+	in_id int(5) not null auto_increment,
 	in_issuedate date,
-	in_creditcard int (12),
-	in_name varchar(50),
 	in_paiddate date,
+	in_creditcard long,
+    in_name varchar(50),
+    in_expirydate date,
     order_id int(5) unique,
 	constraint invoice_pk primary key (in_id),
     foreign key (order_id) references orders(order_id)
@@ -124,12 +124,16 @@ create table if not exists invoice(
 
 alter table invoice auto_increment = 1000;
 
-insert into invoice (in_issuedate, in_creditcard, in_name, in_paiddate, order_id)
-values 	('2017.09.08', 1276656899, 'Kim Moe', '2017.09.18',101),
-		('2017.09.09', 387661963, 'Morten Mygland', '2017.09.19',102),
-		('2017.09.08', 733629926, 'Tønnes Røren', '2017.09.18',107);
+insert into invoice (in_issuedate, in_paiddate, in_creditcard,
+					 in_name, in_expirydate, order_id)
+values 	('2017.09.08', '2017.09.18', 1276656899, 'Oioi Herreli', '2017.09.28', 101),
+		('2017.09.09', '2017.09.19', 5387661963, 'Å SAVA', '2017.09.28', 102),
+		('2017.09.08', '2017.09.18', 7433629926, 'Jaja du', '2017.09.28', 107);
 
-/* 4a) List customer name, total quantity ordered and product name, for each customer and each product.*/
+
+/* QUERIES
+4a) List customer name, total quantity ordered and product name, for each customer and each product.
+*/
 select customer.cus_fname
 	 , customer.cus_lname
      , orderline.ol_quantity
