@@ -229,8 +229,8 @@
             <table border="1">
             <tbody>
                 <tr>
-                    <td>Bruker ID</td>
-                    <td>Navn</td>
+                    <td>Fornavn</td>
+                    <td>Etternavn</td>
                     <td>Epost</td>
                     <td>Blogg</td>
                 </tr>
