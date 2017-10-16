@@ -21,19 +21,26 @@ drop database SLIT;
 create database SLIT;
 use SLIT;
 
-create table `user` (
-	user_id varchar(5) primary key,
-    user_name varchar(40),
-    user_email varchar(30),
-    user_number int(12)
+Create table `user` (
+    user_id int (5) auto_increment primary key,
+    user_fname varchar(40),
+    user_lname varchar(40),
+    user_email varchar (30)
 );
 
-insert into `user` (user_id, user_name, user_email, user_number)
-values ('us001', 'Morten', 'Morten@hotmail.com', 959595 ), ('us002', 'Benjamin', 'Benjamin@hotmail.com', 969696), 
-('us003', 'Kim', 'Kim@hotmail.com', 979797 ), ('us004', 'Vegard', 'Vegard@hotmail.com', 989898 ), 
-('us005', 'Brage', 'Brage@hotmail.com', 999999), ('us006', 'Jenny', 'Jenny@hotmail.com', 949494), 
-('us007', 'Tønnes', 'Tønnes@hotmail.com', 939393),('us008', 'Ingfrid', 'Ingfrid@hotmail.com', 929292), 
-('us009', 'Kevin', 'Kevin@hotmail.com', 919191), ('us010', 'Halgeir', 'Halgeir@hotmail.com', 909090 );
+insert into `user` (user_id, user_fname, user_lname, user_email)
+values 
+(1, 'Morten', 'Mygland', 'morten@hotmail.com'), 
+(2, 'Benjamin', 'Sandøy', 'benjamin@hotmail.com'), 
+(3, 'Kim', 'Moe', 'kim@hotmail.com'), 
+(4, 'Vegar', 'Sakseid', 'vegar@hotmail.com' ), 
+(5, 'Brage', 'Sydskogen', 'brage@hotmail.com'), 
+(6, 'Jenny', 'Kristiansen', 'jenny@hotmail.com'), 
+(7, 'Tønnes', 'Røren', 'tønnes@hotmail.com'),
+(8, 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com'), 
+(9, 'Kevin', 'Pedersen', 'kevin@hotmail.com'), 
+(10, 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com');
+
 
 
 create table lecturer (
