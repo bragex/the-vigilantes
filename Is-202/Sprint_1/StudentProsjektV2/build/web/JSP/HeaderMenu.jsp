@@ -148,6 +148,9 @@
                     <form action="studentliste" method="post" class="inline">
                         <button class="linkbutton">Innstillinger</button>
                     </form>
+                    <form action="AddUser" method="post" class="inline">
+                        <button class="linkbutton">Legg til student</button>
+                    </form>
                     <form action="index.html" method="post" class="inline">
                         <button class="linkbutton">Logg ut</button>
                     </form>
