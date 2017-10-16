@@ -73,6 +73,22 @@ insert into student (student_id, user_id)
 values ('st001', 'us003'), ('st002', 'us004'), ('st003', 'us005'), ('st004', 'us006'), 
 ('st005', 'us007'), ('st006', 'us008'), ('st007', 'us009'), ('st008', 'us010');
 
+create table points (
+    user_id int(5) ,
+    module_id varchar(5),
+    p_points int default 0,
+    foreign key (user_id) references `user` (user_id),
+    foreign key (module_id) references module (module_id)
+);
+
+insert into points (user_id, module_id, p_points)
+values (1,'mo001', 5), (1,'mo002', 6), (1,'mo003', 7), (1,'mo004', 8), (1,'mo005', 9),
+	   (2,'mo001', 5), (2,'mo002', 6), (2,'mo003', 7), (2,'mo004', 8), (2,'mo005', 9),
+       (3,'mo001', 9), (3,'mo002', 8), (3,'mo003', 7), (3,'mo004', 6), (3,'mo005', 5),
+       (4,'mo001', 5), (4,'mo002', 6), (4,'mo003', 7), (4,'mo004', 8), (4,'mo005', 9),
+       (5,'mo001', 5), (5,'mo002', 6), (5,'mo003', 7), (5,'mo004', 8), (5,'mo005', 9),
+       (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
+       (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
 
 create table submit (
 	submit_id varchar(5) primary key,
