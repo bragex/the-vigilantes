@@ -11,6 +11,30 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Data til DB</title>
+        <style>
+            body {
+                font-family: Segoe UI;
+                text-align: center;
+                margin: auto;
+            }
+            p {
+                display: inline;
+                margin-right: 1%;
+            }
+            .InputMain {
+                display: inline;
+            }
+            table.center {
+                margin-left:auto; 
+                margin-right:auto;
+                
+            }
+            h2 {
+                
+            }
+            
+            
+            </style>
     </head>
     <body onload="displayResults()">
         <h1>Sette data inn i DB</h1>
@@ -70,7 +94,7 @@
             }
             
             if (request.getParameter("email")!= null) {
-                lastName = request.getParameter("email");
+                email = request.getParameter("email");
             }
             
             
@@ -78,9 +102,12 @@
             result= insert.setUsers(firstName, lastName, email);
             }
         %>
-        <form name="myForm" action="index.jsp" method="POST">
-            <table border="0">
+        <form name="myForm" action="JSP/AddUser.jsp" method="POST">
+            <table class="center">
                 <tbody>
+                    
+                        <h2>Legg til student i databasen</h2>
+                
                     <tr>
                         <td>First Name</td>
                         <td><input type="text" name="first" value="" size="50" /></td>
