@@ -42,15 +42,14 @@ values
 (10, 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com');
 
 
-
 create table lecturer (
 	lecturer_id varchar(5) primary key,
-    user_id varchar(5) unique,
+    user_id int(5) unique,
     foreign key (user_id) references `user` (user_id)
 );
 
 insert into lecturer (lecturer_id, user_id)
-values ('le001', 'us001'), ('le002', 'us002');
+values ('le001', 1), ('le002', 2);
 
 
 create table module (
@@ -72,30 +71,39 @@ values ('mo001', 'Module 1', 'Learn function', 'This is module 1', 'Make a funct
 
 create table student (
 	student_id varchar(5) primary key,
-    user_id varchar(5) unique,
+    user_id int(5) unique,
     foreign key (user_id) references `user` (user_id)
 );
 
 insert into student (student_id, user_id)
-values ('st001', 'us003'), ('st002', 'us004'), ('st003', 'us005'), ('st004', 'us006'), 
-('st005', 'us007'), ('st006', 'us008'), ('st007', 'us009'), ('st008', 'us010');
+values ('st001', 3), ('st002', 4), ('st003', 5), ('st004', 6), 
+('st005', 7), ('st006', 8), ('st007', 9), ('st008', 10);
 
 create table points (
     user_id int(5) ,
     module_id varchar(5),
-    p_points int default 0,
+    p_points int default null,
     foreign key (user_id) references `user` (user_id),
-    foreign key (module_id) references module (module_id)
+    foreign key (module_id) references module (module_id),
+    constraint p_cpk primary key (user_id,module_id)
 );
 
 insert into points (user_id, module_id, p_points)
-values (1,'mo001', 5), (1,'mo002', 6), (1,'mo003', 7), (1,'mo004', 8), (1,'mo005', 9),
-	   (2,'mo001', 5), (2,'mo002', 6), (2,'mo003', 7), (2,'mo004', 8), (2,'mo005', 9),
+values (8,'mo001', 5), (8,'mo002', 6), (8,'mo003', 7), (8,'mo004', 8), (8,'mo005', 9),
+	   (9,'mo001', 5), (9,'mo002', 6), (9,'mo003', 7), (9,'mo004', 8), (9,'mo005', 9),
        (3,'mo001', 9), (3,'mo002', 8), (3,'mo003', 7), (3,'mo004', 6), (3,'mo005', 5),
        (4,'mo001', 5), (4,'mo002', 6), (4,'mo003', 7), (4,'mo004', 8), (4,'mo005', 9),
        (5,'mo001', 5), (5,'mo002', 6), (5,'mo003', 7), (5,'mo004', 8), (5,'mo005', 9),
        (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
        (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
+
+create view points2 as
+select student.student_id, module.module_id, submit_points
+	from `user`,student,submit,module
+    where `user`.user_id = student.user_id
+    and student.student_id = submit.student_id
+    and submit.module_id = module.module_id;
+
 
 create table submit (
 	submit_id varchar(5) primary key,
