@@ -11,7 +11,7 @@
             <jsp:include page="HeaderMenu.jsp"/>
     </header>
     <style>
-                .button4 {
+                .button {
                 background-color: lightgray;
                 color: black; 
                 border: 1px solid black;
@@ -54,13 +54,13 @@
                 <h3>Ressurser:</h3>
                 <ul> 
                     <li><b>Lærebok:</b></li>
+                    <li style="list-style-type:none;"><b>Kapitel 1</b></li>
                     <li style="list-style-type:none;">David J. Barnes and Michael Kölling</li>
                     <li style="list-style-type:none;">Objects First With Java : a practical introduction using BlueJ, 5th edition, Pearson</li>
                     <li style="list-style-type:none;">ISBN: 978-0-13-283554-1</li>
-                    <li style="list-style-type:none;">Pensum er kapitel 1 til og med kapitel 5</li>
                     <br>
                     <li><b>Prosjekter:</b></li>
-                    <li style="list-style-type:none;">Figures, House og Lab-classes-</li>
+                    <li style="list-style-type:none;">Figures, House og Lab-classes</li>
                     <li style="list-style-type:none;">Du finner prosjektene på CDen i læreboka, eller de kan lastes ned <a href="https://www.bluej.org/objects-first/">HER</a> </li>
                     <br>
                     <li><b>Miniforelsninger:</b></li>

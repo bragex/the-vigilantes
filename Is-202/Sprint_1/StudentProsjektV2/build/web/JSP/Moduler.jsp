@@ -44,6 +44,12 @@
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
         <h1 id="h11">Modul oversikt</h1>
+        <p>IS-109 inneholder 5 moduler, i tillegg til de 10 nye i IS-110 <br>
+            (alt dere lærer i IS-110 bygger på modulene fra IS-109, så dere må fortsatt kunne dem like godt).<br>
+            Modul 1-10 er obligatoriske, og må tas i rekkefølge. Så er modul 14 og 15 obligatorisk.<br>
+            De valgfrie modulene kan tas i hvilken som helst rekkefølge.<br>
+            Minstekravet for å få gå opp til eksamen er at dere har fått godkjent de obligatoriske modulene, men husk at alle modulene er pensum.<br>
+            Hvis dere sikter mot en god karakter bør dere ta alle.
         <div id="list1">
             <table> <!--Rework table?-->
                 <tr>
