@@ -42,19 +42,19 @@
                 <ul> 
                     <p><b>Du har fullført modulen når du kan:</b></p>
                     <li>Lese en klassedefinisjon, og kunne fortelle:</li>
-                    <li style="list-style-type:none;">-Hva klassen heter</li>
-                    <li style="list-style-type:none;">-Hvilke felt den har, hva de heter og hvilken type de har</li>
-                    <li style="list-style-type:none;">-Hvilke metoder den har, og hva metodene heter</li>
-                    <li style="list-style-type:none;">-Beskrive parametere (med navn og type)og returverdi for alle metodene</li>
+                    <li style="list-style-type:none;">- Hva klassen heter</li>
+                    <li style="list-style-type:none;">- Hvilke felt den har, hva de heter og hvilken type de har</li>
+                    <li style="list-style-type:none;">- Hvilke metoder den har, og hva metodene heter</li>
+                    <li style="list-style-type:none;">- Beskrive parametere (med navn og type)og returverdi for alle metodene</li>
                     <li>Kjenner forskjellen på forskjellige slags metoder (constructors, getters, setters) og vet hva de brukes til</li>
                     <li>Kan skrive en klassedefinisjon</li>
-                    <li style="list-style-type:none;">-Med felt og metoder i riktig rekkefølge</li>
-                    <li style="list-style-type:none;">-Med metoder som bruker tilordning, if-setninger og utskrifter</li>
+                    <li style="list-style-type:none;">- Med felt og metoder i riktig rekkefølge</li>
+                    <li style="list-style-type:none;">- Med metoder som bruker tilordning, if-setninger og utskrifter</li>
                 </ul>
                 <h3>Ressurser:</h3>
                 <ul> 
                     <li><b>Lærebok:</b></li>
-                    <li style="list-style-type:none;"><b>Kapitel 2</b></li>
+                    <li style="list-style-type:none;"><b>Kapittel 2</b></li>
                     <li style="list-style-type:none;">David J. Barnes and Michael Kölling</li>
                     <li style="list-style-type:none;">Objects First With Java : a practical introduction using BlueJ, 5th edition, Pearson</li>
                     <li style="list-style-type:none;">ISBN: 978-0-13-283554-1</li>

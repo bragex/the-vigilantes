@@ -85,8 +85,8 @@
                     <th>Poengscore</th>
                     <th><a href="RessurserM1">M 1</a></th>
                     <th><a href="RessurserM2">M 2</a></th>
-                    <th>M 3</th>
-                    <th>M 4</th>
+                    <th><a href="RessurserM3">M 3</a></th>
+                    <th><a href="RessurserM4">M 4</a></th>
                     <th>M 5</th>
                     <th>M 6</th>
                     <th>M 7</th>

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jenny
  */
-@WebServlet(urlPatterns = {"/RessurserM2"})
-public class RessurserM2 extends HttpServlet {
+@WebServlet(urlPatterns = {"/RessurserM3"})
+public class RessurserM3 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,7 +26,7 @@ public class RessurserM2 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher rd = request.getRequestDispatcher("JSP/RessurserM2.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("JSP/RessurserM3.jsp");
             rd.include(request, response);    
     }
 

@@ -26,7 +26,7 @@
         <h1>Modul 1</h1>
         <h2>BlueJ, Klasser og Objekter<h2/>
         <form action="ModulLevering" method="post">
-                    <button class="button button4">Lever Her</button>
+                    <button class="button button">Lever Her</button>
         </form>
                 <br>
                 <h4><a href="Moduler">Oversikt over alle Moduler</a></h4>
@@ -39,22 +39,22 @@
                 <ul> 
                     <p><b>Du har fullført modulen når du kan:</b></p>
                     <li>Bruke BlueJ, bl.a. til å:</li>
-                    <li style="list-style-type:none;">Åpne, lagre, og lukke prosjekter.</li>
-                    <li style="list-style-type:none;">Lage objekter</li>
-                    <li style="list-style-type:none;">Kalle metoder i objektene, med og uten parametere</li>
-                    <li style="list-style-type:none;">Bruke editoren til å se på kildekoden til en klasse</li>
-                    <li style="list-style-type:none;">Kunne kompilere prosjektet</li>
+                    <li style="list-style-type:none;">- Åpne, lagre, og lukke prosjekter.</li>
+                    <li style="list-style-type:none;">- Lage objekter</li>
+                    <li style="list-style-type:none;">- Kalle metoder i objektene, med og uten parametere</li>
+                    <li style="list-style-type:none;">- Bruke editoren til å se på kildekoden til en klasse</li>
+                    <li style="list-style-type:none;">- Kunne kompilere prosjektet</li>
                     <li>Litt java, du skal f.eks.</li>
-                    <li style="list-style-type:none;">Kunne kjenne igjen en klassedefinisjon, og kunne finne navnet på klassen</li>
-                    <li style="list-style-type:none;">Kjenne til forskjellige typer data</li>
-                    <li style="list-style-type:none;">Kalle metoder med et objekt som parameter</li>
-                    <li style="list-style-type:none;">Kalle metoder som returnerer en verdi</li>
-                    <li style="list-style-type:none;">Kjenne forskjellen mellom klasser og objekter</li>
+                    <li style="list-style-type:none;">- Kunne kjenne igjen en klassedefinisjon, og kunne finne navnet på klassen</li>
+                    <li style="list-style-type:none;">- Kjenne til forskjellige typer data</li>
+                    <li style="list-style-type:none;">- Kalle metoder med et objekt som parameter</li>
+                    <li style="list-style-type:none;">- Kalle metoder som returnerer en verdi</li>
+                    <li style="list-style-type:none;">- Kjenne forskjellen mellom klasser og objekter</li>
                 </ul>
                 <h3>Ressurser:</h3>
                 <ul> 
                     <li><b>Lærebok:</b></li>
-                    <li style="list-style-type:none;"><b>Kapitel 1</b></li>
+                    <li style="list-style-type:none;"><b>Kapittel 1</b></li>
                     <li style="list-style-type:none;">David J. Barnes and Michael Kölling</li>
                     <li style="list-style-type:none;">Objects First With Java : a practical introduction using BlueJ, 5th edition, Pearson</li>
                     <li style="list-style-type:none;">ISBN: 978-0-13-283554-1</li>
