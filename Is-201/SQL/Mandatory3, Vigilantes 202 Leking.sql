@@ -25,21 +25,22 @@ Create table `user` (
     user_id int (5) auto_increment primary key,
     user_fname varchar(40),
     user_lname varchar(40),
-    user_email varchar (30)
+    user_email varchar (30),
+    user_status varchar(10) not null 
 );
 
-insert into `user` (user_id, user_fname, user_lname, user_email)
+insert into `user` (user_id, user_fname, user_lname, user_email, user_status)
 values 
-(1, 'Morten', 'Mygland', 'morten@hotmail.com'), 
-(2, 'Benjamin', 'Sandøy', 'benjamin@hotmail.com'), 
-(3, 'Kim', 'Moe', 'kim@hotmail.com'), 
-(4, 'Vegar', 'Sakseid', 'vegar@hotmail.com' ), 
-(5, 'Brage', 'Sydskogen', 'brage@hotmail.com'), 
-(6, 'Jenny', 'Kristiansen', 'jenny@hotmail.com'), 
-(7, 'Tønnes', 'Røren', 'tønnes@hotmail.com'),
-(8, 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com'), 
-(9, 'Kevin', 'Pedersen', 'kevin@hotmail.com'), 
-(10, 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com');
+(1, 'Morten', 'Mygland', 'morten@hotmail.com', 'Student'), 
+(2, 'Benjamin', 'Sandøy', 'benjamin@hotmail.com', 'Student'), 
+(3, 'Kim', 'Moe', 'kim@hotmail.com', 'Student'), 
+(4, 'Vegar', 'Sakseid', 'vegar@hotmail.com', 'Student'), 
+(5, 'Brage', 'Sydskogen', 'brage@hotmail.com', 'Student'), 
+(6, 'Jenny', 'Kristiansen', 'jenny@hotmail.com', 'Student'), 
+(7, 'Tønnes', 'Røren', 'tønnes@hotmail.com', 'Student'),
+(8, 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com', 'Student'), 
+(9, 'Kevin', 'Pedersen', 'kevin@hotmail.com', 'Student'), 
+(10, 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com', 'Foreleser');
 
 
 create table lecturer (
