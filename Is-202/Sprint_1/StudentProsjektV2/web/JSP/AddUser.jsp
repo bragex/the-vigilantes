@@ -36,7 +36,10 @@
             
             </style>
     </head>
-    <body onload="displayResults()">
+    <body onload="displayResults()" >
+        <header>
+            <jsp:include page="HeaderMenu.jsp"/>
+        </header>
         <h1>Legg til student i databasen</h1>
         <%!
             public class Insert {
