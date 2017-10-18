@@ -49,7 +49,7 @@
                 <tr>
                     <td>
                         <ul>
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-1/beskrivelse.xhtml">Modul 1</a></li>
+                            <li><a href="RessurserM1">Modul 1</a></li>
                             <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-2/beskrivelse.xhtml">Modul 2</a></li>
                             <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-3/beskrivelse.xhtml">Modul 3</a></li> 
                             <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-4/beskrivelse.xhtml">Modul 4</a></li> 
