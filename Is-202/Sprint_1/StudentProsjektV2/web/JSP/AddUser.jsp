@@ -55,20 +55,21 @@
             try {
                     connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                     insertUsers = connection.prepareStatement(
-                    "INSERT INTO user (user_fname, user_lname, user_email)"
-                    + " VALUES (?, ?, ?)" );
+                    "INSERT INTO user (user_fname, user_lname, user_email, user_status)"
+                    + " VALUES (?, ?, ?, ?)" );
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
 
-            public int setUsers (String first, String last, String email) {
+            public int setUsers (String first, String last, String email, String status) {
 
                 int result = 0;
                 try {
                 insertUsers.setString(1, first);
                 insertUsers.setString(2, last);
                 insertUsers.setString(3, email);
+                insertUsers.setString(4, status);
                 result = insertUsers.executeUpdate();
 
                 } catch (SQLException e) {
@@ -87,6 +88,7 @@
             String firstName = new String();
             String lastName = new String();
             String email = new String();
+            String status = new String();
             
             if (request.getParameter("first")!= null) {
                 firstName = request.getParameter("first");
@@ -100,9 +102,13 @@
                 email = request.getParameter("email");
             }
             
+            if (request.getParameter("status")!= null) {
+                status = request.getParameter("status");
+            }
+            
             
             Insert insert = new Insert();
-            result= insert.setUsers(firstName, lastName, email);
+            result= insert.setUsers(firstName, lastName, email, status);
             }
         %>
         <form name="myForm" action="JSP/AddUser.jsp" method="POST">
@@ -119,6 +125,13 @@
                     <tr>
                         <td>Email</td>
                         <td><input type="text" name="email" value="" size="50" /></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td><select name="status">
+                            <option value="Foreleser">Foreleser</option>
+                            <option value="Student">Student</option>
+                            </select></td>
                     </tr>
                 </tbody>
             </table>

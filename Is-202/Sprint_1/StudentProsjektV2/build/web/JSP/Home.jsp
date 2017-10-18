@@ -83,7 +83,7 @@
                     <th>Blogg</th>
                     <th>E-post</th>
                     <th>Poengscore</th>
-                    <th>M 1</th>
+                    <th><a href="RessurserM1">M 1</a></th>
                     <th>M 2</th>
                     <th>M 3</th>
                     <th>M 4</th>
