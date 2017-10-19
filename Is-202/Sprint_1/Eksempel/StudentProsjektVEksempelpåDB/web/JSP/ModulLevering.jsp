@@ -73,7 +73,7 @@
             </div>
             <footer>
                 <!--Upload code-->
-                <jsp:include page="upload.jsp"/>
+                <jsp:include page="Uploadv2.jsp"/>
                 <!--Upload code-->
             </footer>
         </div>

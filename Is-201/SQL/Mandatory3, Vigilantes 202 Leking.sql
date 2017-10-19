@@ -214,3 +214,14 @@ Make a view of all users; both lecturers and students.
 
 */
 
+create database AppDB;
+ 
+use AppDB;
+ 
+CREATE TABLE `contacts` (
+  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `photo` mediumblob,
+  PRIMARY KEY (`contact_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
