@@ -89,7 +89,7 @@
                         <td>
                             <select name="delete">
                                 <% while (deletes.next()) {%>
-                                <option value="<%= deletes.getInt("user_id")%>" ><%= deletes.getString("user_fname")%><%= deletes.getString("user_lname")%></option>
+                                <option value="<%= deletes.getInt("user_id")%>" ><%= deletes.getString("user_fname")%> <%= deletes.getString("user_lname")%></option>
                                 <% }%>
                             </select>
                         </td>
