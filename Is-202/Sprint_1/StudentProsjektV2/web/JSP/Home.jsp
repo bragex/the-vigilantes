@@ -138,9 +138,9 @@
                 </tr>
                 <% while (users.next()) { %>
                 <tr>
-                    <td><a href="MinSide"> <%=users.getString("user_fname") %> <%=users.getString("user_lname") %></a></td>
-                    <td><%=users.getString("user_email") %></td>
-                    <td> <%=users.getString("m1_points") %></td>
+                    <td> <a href="MinSide"> <%=users.getString("user_fname") %> <%=users.getString("user_lname") %></a></td>
+                    <td> <%=users.getString("user_email") %></td>
+                    <td> <a href="RessurserM1"> <%=users.getString("m1_points") %></a></td>
                     <td> <%=users.getString("m2_points") %></td>
                     <td> <%=users.getString("m3_points") %></td>
                     <td> <%=users.getString("m4_points") %></td>
