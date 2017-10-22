@@ -224,4 +224,66 @@ CREATE TABLE `contacts` (
   `last_name` varchar(45) DEFAULT NULL,
   `photo` mediumblob,
   PRIMARY KEY (`contact_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE m1 (
+m1_id int,
+user_id int(5),
+m1_points varchar(5),
+foreign key (user_id) references `user` (user_id),
+constraint m1_cpk primary key (m1_id, user_id)
+);
+insert into m1 (m1_id, user_id, m1_points)
+values(1, 1, '8'), (1, 2, '9'), (1, 3, '9'), (1, 4, '10'), (1, 5, '10'), (1, 6, '6'), (1, 7, '2');
+
+CREATE TABLE m2 (
+m2_id int,
+user_id int(5),
+m2_points varchar(5),
+foreign key (user_id) references `user` (user_id),
+constraint m2_cpk primary key (m2_id, user_id)
+);
+insert into m2 (m2_id, user_id, m2_points)
+values(2, 1, '6'), (2, 2, '7'), (2, 3, '7'), (2, 4, '2'), (2, 5, '3'), (2, 6, '9'), (2, 7, '10');
+
+CREATE TABLE m3 (
+m3_id int,
+user_id int(5),
+m3_points varchar(5),
+foreign key (user_id) references `user` (user_id),
+constraint m3_cpk primary key (m3_id, user_id)
+);
+insert into m3 (m3_id, user_id, m3_points)
+values(3, 1, '5'), (3, 2, '9'), (3, 3, '6'), (3, 4, '7'), (3, 5, '8'), (3, 6, '6'), (3, 7, '8');
+
+CREATE TABLE m4 (
+m4_id int,
+user_id int(5),
+m4_points varchar(5),
+foreign key (user_id) references `user` (user_id),
+constraint m4_cpk primary key (m4_id, user_id)
+);
+insert into m4 (m4_id, user_id, m4_points)
+values(4, 1, '9'), (4, 2, '8'), (4, 3, '10'), (4, 4, '9'), (4, 5, '10'), (4, 6, '9'), (4, 7, '10');
+
+CREATE TABLE m5 (
+m5_id int,
+user_id int(5),
+m5_points varchar(5),
+foreign key (user_id) references `user` (user_id),
+constraint m5_cpk primary key (m5_id, user_id)
+);
+insert into m5 (m5_id, user_id, m5_points)
+values(5, 1, '6'), (5, 2, '7'), (5, 3, '5'), (5, 4, '6'), (5, 5, '7'), (5, 6, '6'), (5, 7, '5');
+
+select user.user_fname, m3.m3_points
+from user, m3
+where user.user_id  = m3.user_id;
+
+SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points
+FROM user, m1, m2, m3, m4, m5
+where user.user_id  = m1.user_id 
+and user.user_id = m2.user_id
+and user.user_id = m3.user_id
+and user.user_id = m4.user_id
+and user.user_id = m5.user_id;
