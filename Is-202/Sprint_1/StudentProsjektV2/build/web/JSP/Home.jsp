@@ -81,7 +81,7 @@
         public class User {
             String URL = "jdbc:mysql://localhost:3306/slit";
             String USERNAME = "root";
-            String PASSWORD = "root";
+            String PASSWORD = "";
         
             Connection connection = null;
             PreparedStatement selectUsers= null;
