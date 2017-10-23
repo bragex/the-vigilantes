@@ -20,7 +20,7 @@ import javax.servlet.http.Part;
 public class FileUploadDBServlet extends HttpServlet {
      
     // database connection settings
-    private String dbURL = "jdbc:mysql://localhost:3306/AppDB";
+    private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
     private String dbUser = "root";
     private String dbPass = "Warstar123";
      
@@ -51,7 +51,7 @@ public class FileUploadDBServlet extends HttpServlet {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
-            String querySetLimit = "SET GLOBAL max_allowed_packet=104857600;";  // 10 MB
+            
  
             // constructs SQL statement
             String sql = "INSERT INTO contacts (first_name, last_name, file) values (?, ?, ?)";
@@ -81,7 +81,7 @@ public class FileUploadDBServlet extends HttpServlet {
                     ex.printStackTrace();
                 }
             }
-
+          
         }
     }
 }

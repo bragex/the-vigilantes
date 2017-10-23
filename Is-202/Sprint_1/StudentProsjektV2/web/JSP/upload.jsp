@@ -15,6 +15,10 @@
             body {
                 font-family: Segoe UI;
             }
+            table{
+                left: 0;
+                display: block;
+                }
         </style>
     </head>
     <body>

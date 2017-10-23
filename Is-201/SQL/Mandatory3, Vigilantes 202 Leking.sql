@@ -213,18 +213,20 @@ have fields with the notification text.
 Make a view of all users; both lecturers and students.
 
 */
-
-create database AppDB;
+drop database FileDB;
+create database FileDB;
  
-use AppDB;
+use FileDB;
  
 CREATE TABLE `contacts` (
   `contact_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
-  `photo` mediumblob,
+  `file` mediumblob,
   PRIMARY KEY (`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+Select * from `contacts`;
 
 CREATE TABLE m1 (
 m1_id int,
