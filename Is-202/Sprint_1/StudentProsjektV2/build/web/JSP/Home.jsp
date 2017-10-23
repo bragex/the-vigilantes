@@ -91,17 +91,17 @@
             try {
                     connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                     selectUsers = connection.prepareStatement(
-                        "SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points FROM user, m1, m2, m3, m4, m5 where user.user_id  = m1.user_id and user.user_id = m2.user_id and user.user_id = m3.user_id and user.user_id = m4.user_id and user.user_id = m5.user_id;");
+                      /*  "SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points FROM user, m1, m2, m3, m4, m5 where user.user_id  = m1.user_id and user.user_id = m2.user_id and user.user_id = m3.user_id and user.user_id = m4.user_id and user.user_id = m5.user_id;"); */
                        
-/*
-                       "SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points" 
-                        + "FROM user, m1, m2, m3, m4, m5" 
-                        + "where user.user_id  = m1.user_id" 
-                        + "and user.user_id = m2.user_id" 
-                        + "and user.user_id = m3.user_id" 
-                        + "and user.user_id = m4.user_id" 
-                        + "and user.user_id = m5.user_id;");
-*/
+
+                       " SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points " +
+                         " FROM user, m1, m2, m3, m4, m5 " +
+                         " where user.user_id  = m1.user_id " +
+                         " and user.user_id = m2.user_id " +
+                         " and user.user_id = m3.user_id " +
+                         " and user.user_id = m4.user_id " +
+                         " and user.user_id = m5.user_id; ");
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
