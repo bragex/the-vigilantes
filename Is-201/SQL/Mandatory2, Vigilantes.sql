@@ -12,53 +12,53 @@ select * from product;
 select * from orderline;
 select * from invoice;
 
-/*1.3 Creates a database and a customer table. */
+/*1.3 Creates a database, uses it, and creates a customer table. */
 create database if not exists database1;
 use database1;
 
 create table if not exists customer (
-	cus_id int(5) not null auto_increment,
+	cus_id int(5) auto_increment primary key,
 	cus_lname varchar(30) not null,
-	cus_fname varchar(30) not null,
+	cus_fname varchar(30),
 	cus_pnumber int(12),
 	cus_address varchar(50) not null,
-	cus_email varchar(50),
-	constraint customer_pk primary key (cus_id)
+	cus_email varchar(50) not null,
+    cus_owner int(5),
+    foreign key (cus_owner) references customer(cus_id)
 );
 
-/*1.4 Adds three people to the customer table. */
-/*Mandatory 2: updatet with five more customers*/
-insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
-	values ('Hansen', 'Jens', 37012345, '4823 Nedenes, Granittveien 6', 'HanJ@gmail.com'),
-	('Holm', 'Sanne', 37067890, '4823 Nedenes, Juvelveien 19', 'HolS@gmail.com'),
-	('Roscher', 'Trude', 37043434, '4823 Nedenes, Kvartsveien 21', 'RosT@gmail.com'),
-    ('Amundsen', 'Bengt', 99774466, '4558 Songdalen, Storgata 29', 'bengt@amundsen.no'),
-    ('Jenssen', 'Heidi', 44556965, '7700 Trondheim, Nardoveien 77', 'heidi@trondheim.no'),
-    ('Nielsen', 'Egil', 77889966, '5020 Bergen, Sotraveien 92', 'egil@online.no'),
-    ('Knudsen', 'Petter', 54453314, '5493 Askøy, Herdlaveien 89', 'petter@knudsen.no'),
-    ('Helgesen', 'Nils Raymond', 98556132, '4899 Stavanger, Egenesveien 102', 'nray@gmail.com'),
-    ('Kristost', 'Jesost', 98253132, '0101 Ostebyen, Osteveien 057', 'ost@gmail.com');
+/*1.4 Adds people to the customer table.
+Mandatory 2: updated with five more customers.*/
+insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email, cus_owner)
+	values ('Hansen', 'Jens', 37012345, '4823 Nedenes, Granittveien 6', 'HanJ@gmail.com', null),
+	('Holm', 'Sanne', 37067890, '4823 Nedenes, Juvelveien 19', 'HolS@gmail.com', 1),
+	('Roscher', 'Trude', 37043434, '4823 Nedenes, Kvartsveien 21', 'RosT@gmail.com', 1),
+    ('Amundsen', 'Bengt', 99774466, '4558 Songdalen, Storgata 29', 'bengt@amundsen.no', 1),
+    ('Jenssen', 'Heidi', 44556965, '7700 Trondheim, Nardoveien 77', 'heidi@trondheim.no', null),
+    ('Nielsen', 'Egil', 77889966, '5020 Bergen, Sotraveien 92', 'egil@online.no', 5),
+    ('Knudsen', 'Petter', 54453314, '5493 Askøy, Herdlaveien 89', 'petter@knudsen.no', 5),
+    ('Helgesen', 'Nils Raymond', 98556132, '4899 Stavanger, Egenesveien 102', 'nray@gmail.com', 5),
+    ('Kristost', 'Jesost', 98253132, '0101 Ostebyen, Osteveien 057', 'ost@gmail.com', 5);
 
 /*1.4 Adds two group members to the customer table. */
-insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email)
-	values ('Sandøy', 'Benjamin', 87654321, '1337 Ganktown, Blazeit 420', 'bramail@gmail.com'),
-	('Moe', 'Kim', 34566782, '3715 Hjem, Bestegata 7', 'kimsin@mitt.no');
+insert into customer (cus_lname, cus_fname, cus_pnumber, cus_address, cus_email, cus_owner)
+	values ('Sandøy', 'Benjamin', 87654321, '1337 Ganktown, Blazeit 420', 'bramail@gmail.com', null),
+	('Moe', 'Kim', 34566782, '3715 Hjem, Bestegata 7', 'kimsin@mitt.no', 10);
 
 /*2.4 Creates the table "orders". */
 create table if not exists orders (
-	order_id int(5) not null auto_increment,
+	order_id int(5) auto_increment primary key,
     order_date date,
     order_status boolean default false,
     cus_id int(4) not null,
-    foreign key (cus_id) references customer(cus_id),
-    constraint order_pk primary key (order_id)
+    foreign key (cus_id) references customer(cus_id)
 );
 
-/* Creates the start of the increment for order_id at 100 */
+/* Sets the start of the increment for order_id at 100 */
 /* !!The increment must be set for the rest of the code to work properly!! */
 alter table orders auto_increment = 100;
 
-/*2.5 Adds some order instances. This is also updated for mandatory 2 */
+/*2.5 Adds some orders. This is also updated for mandatory 2 */
 insert into orders (order_date, order_status, cus_id)
 	values ('2015.09.08',true,2),('2015.08.08',true,2),
 	('2016.05.08',false,3),('2016.08.08',true,4),
@@ -71,16 +71,15 @@ insert into orders (order_date, order_status, cus_id)
 
 /*3.3 Creates two tables and inserts values. */
 create table if not exists product (
-	prod_id varchar(10) not null,
+	prod_id varchar(10) not null primary key,
     prod_name varchar(20),
     prod_price int(10),
     prod_instock int(10),
-    prod_reorderlvl int(10),
-    constraint product_pk primary key (prod_id)
+    prod_reorderlvl int(10)
 );
 
 /* Adds products into the product table. */
-/* Mandatory 2, updatet with five products */
+/* Mandatory 2, updated with five products */
 insert into product (prod_id, prod_name, prod_price,prod_instock,prod_reorderlvl)
 	values ('FR01','Banan',10,500,50),('FR02','Eple',10,500,50),('FR03','Pære',10,500,50),
     ('TV01','SuperduperTV',10999,20,4),('DVD01','Pitch Black',140,10,2),('DVD02','Dunkirk',300,50,10),
@@ -91,8 +90,8 @@ insert into product (prod_id, prod_name, prod_price,prod_instock,prod_reorderlvl
 
 /* Table to assist in attatching orders and products. */
 create table if not exists orderline (
-	order_id int(5) not null,
-    prod_id varchar(10) not null,
+	order_id int(5),
+    prod_id varchar(10),
     ol_quantity int(10),
     foreign key (order_id) references orders(order_id),
     foreign key (prod_id) references product(prod_id),
@@ -110,26 +109,28 @@ insert into orderline (order_id,prod_id,ol_quantity)
     (113,'DVD04',1),(114,'TV02',1),(115,'PCS02',1);
 
 /*MANDATORY 2*/
-
 create table if not exists invoice(
-	in_id int (5) not null auto_increment,
+	in_id int(5) auto_increment primary key,
 	in_issuedate date,
-	in_creditcard int (12),
-	in_name varchar(50),
 	in_paiddate date,
+	in_creditcard long,
+    in_name varchar(50),
+    in_expirydate date,
     order_id int(5) unique,
-	constraint invoice_pk primary key (in_id),
     foreign key (order_id) references orders(order_id)
 );
 
+/* !!The increment must be set for the rest of the code to work properly!! */
 alter table invoice auto_increment = 1000;
 
-insert into invoice (in_issuedate, in_creditcard, in_name, in_paiddate, order_id)
-values 	('2017.09.08', 1276656899, 'Kim Moe', '2017.09.18',101),
-		('2017.09.09', 387661963, 'Morten Mygland', '2017.09.19',102),
-		('2017.09.08', 733629926, 'Tønnes Røren', '2017.09.18',107);
+insert into invoice (in_issuedate, in_paiddate, in_creditcard, in_name, in_expirydate, order_id)
+values 	('2017.09.08', '2017.09.18', 1276656899, 'Oioi Herreli', '2017.09.28', 101),
+		('2017.09.09', '2017.09.19', 5387661963, 'Å SAVA', '2017.09.28', 102),
+		('2017.09.08', '2017.09.18', 7433629926, 'Jaja du', '2017.09.28', 107);
 
-/* 4a) List customer name, total quantity ordered and product name, for each customer and each product.*/
+/* QUERIES
+4a) List customer name, total quantity ordered and product name, for each customer and each product.
+*/
 select customer.cus_fname
 	 , customer.cus_lname
      , orderline.ol_quantity
@@ -165,8 +166,6 @@ create view Task_4c as
     join product on orderline.prod_id = product.prod_id
     group by order_id;
     
-    select * from Task_4c;
-
 /* 4d) Print the first 10 characters of product name and quantity-before-reorder 
 (quantityin-stock – reorder-level) for products with the text “EN” in the first 
 10 characters of their product names. */
@@ -187,4 +186,3 @@ select cus_lname
 	join orderline on orders.order_id = orderline.order_id
 	join product on orderline.prod_id = product.prod_id
 	group by order_id;
-

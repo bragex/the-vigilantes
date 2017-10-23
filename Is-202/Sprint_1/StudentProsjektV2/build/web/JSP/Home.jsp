@@ -1,10 +1,12 @@
 <%-- 
     Document   : Home
-    Created on : 22-Sep-2017, 10:30:48
-    Author     : Tonnes
+    Created on : 22.okt.2017, 14:28:52
+    Author     : by-cr
 --%>
 <%--This is the main page of the site.--%>
 <%--Depends on HeaderMenu.jsp--%>
+<%@page import="java.sql.*"%>
+<%Class.forName("com.mysql.jdbc.Driver");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> <!-- Restructure jsp Folders -->
 <%!
     int tint1 = 10; /*Bad way of doing things. Change me!*/
@@ -75,115 +77,79 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
-        <div id="mathdiv1">                    
-        <div id="tablediv1" class="divfrontpage">
-            <table id="table01">
+            <%!
+        public class User {
+            String URL = "jdbc:mysql://localhost:3306/slit";
+            String USERNAME = "root";
+            String PASSWORD = "";
+        
+            Connection connection = null;
+            PreparedStatement selectUsers= null;
+            ResultSet resultSet = null;
+
+            public User() {
+            try {
+                    connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                    selectUsers = connection.prepareStatement(
+                      /*  "SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points FROM user, m1, m2, m3, m4, m5 where user.user_id  = m1.user_id and user.user_id = m2.user_id and user.user_id = m3.user_id and user.user_id = m4.user_id and user.user_id = m5.user_id;"); */
+                       
+
+                       " SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points " +
+                         " FROM user, m1, m2, m3, m4, m5 " +
+                         " where user.user_id  = m1.user_id " +
+                         " and user.user_id = m2.user_id " +
+                         " and user.user_id = m3.user_id " +
+                         " and user.user_id = m4.user_id " +
+                         " and user.user_id = m5.user_id; ");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            
+            public ResultSet getUser(){
+            try {
+                resultSet = selectUsers.executeQuery();
+                    
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                return resultSet;
+}
+        }
+        %>
+        
+        <%
+            User user = new User();
+            ResultSet users = user.getUser();
+        %>
+        
+        <table border="1">
+            <tbody>
                 <tr>
-                    <th>Navn</th> <!--Implement database here!-->
-                    <th>Blogg</th>
-                    <th>E-post</th>
-                    <th>Poengscore</th>
-                    <th>M 1</th>
-                    <th>M 2</th>
-                    <th>M 3</th>
-                    <th>M 4</th>
-                    <th>M 5</th>
-                    <th>M 6</th>
-                    <th>M 7</th>
-                    <th>M 8</th>
-                    <th>M 9</th>
-                    <th>M 10</th>
-                    <th>M 11</th>
-                    <th>M 12</th>
-                    <th>M 13</th>
-                    <th>M 14</th>
-                    <th>M 15</th>
+                    <td>Navn</td>
+                    <td>Epost</td>
+                    <td>Module 1</td>
+                    <td>Module 2</td>
+                    <td>Module 3</td>
+                    <td>Module 4</td>
+                    <td>Module 5</td>
                 </tr>
+                <% while (users.next()) { %>
                 <tr>
-                    <td><a href="MinSide">Tønnes Røren</a></td>
-                    <td><a href="Blogg">Tonnes.blogg.no</a></td>
-                    <td><a href="mailto:tonnes.mail@gmail.com">tonnes.mail@gmail.com</a></td>
-                    <td><b><%=sumt%></b></td>
-                    <td><%=tint1%></td>
-                    <td><%=tint2%></td>
-                    <td><%=tint3%></td>
-                    <td><%=tint4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
+                    <td> <a href="MinSide"> <%=users.getString("user_fname") %> <%=users.getString("user_lname") %></a></td>
+                    <td> <%=users.getString("user_email") %></td>
+                    <td> <a href="RessurserM1"> <%=users.getString("m1_points") %></a></td>
+                    <td> <%=users.getString("m2_points") %></td>
+                    <td> <%=users.getString("m3_points") %></td>
+                    <td> <%=users.getString("m4_points") %></td>
+                    <td> <%=users.getString("m5_points") %></td>
                 </tr>
-                <tr>
-                    <td><a href="profil2">Brannmann Sam</a></td>
-                    <td><a href="blogg2">Samblogg.com</a></td>
-                    <td><a href="mailto:brannSam.mann@gmail.com">brannSam.mann@gmail.com</a></td>
-                    <td><b><%=sumb%></b></td>
-                    <td><%=bint1%></td>
-                    <td><%=bint2%></td>
-                    <td><%=bint3%></td>
-                    <td><%=bint4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                </tr>
-                <tr>
-                    <td><a href="profil3">Byggmester Bob</a></td>
-                    <td><a href="blogg3">Paalblogg.no</a></td>
-                    <td><a href="mailto:byggmester.bob@gmail.com">byggmester.bob@gmail.com</a></td>
-                    <td><b><%=summ%></b></td>
-                    <td><%=mint1%></td>
-                    <td><%=mint2%></td>
-                    <td><%=mint3%></td>
-                    <td><%=mint4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>  
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                </tr>
-                <tr id="avragetr">
-                    <td></td> <!--Do not remove-->
-                    <td></td> <!--Do not remove-->
-                    <td>Gjennomsnitt</td>
-                    <td><%=posum%></td>
-                    <td><%=savg1%></td>
-                    <td><%=savg2%></td>
-                    <td><%=savg3%></td>
-                    <td><%=savg4%></td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>
-                    <td>osv</td>   
-                    <td>osv</td>
-                    <td>osv</td> 
-                    <td>osv</td> 
-                    <td>osv</td> 
-                    <td>osv</td>
-                </tr>
-            </table>
+                <% } %>
+            </tbody>
+        </table>
+            
         </div>
     </body>
 </html>

@@ -44,21 +44,27 @@
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
         <h1 id="h11">Modul oversikt</h1>
+        <p>IS-109 inneholder 5 moduler, i tillegg til de 10 nye i IS-110 <br>
+            (alt dere lærer i IS-110 bygger på modulene fra IS-109, så dere må fortsatt kunne dem like godt).<br>
+            Modul 1-10 er obligatoriske, og må tas i rekkefølge. Så er modul 14 og 15 obligatorisk.<br>
+            De valgfrie modulene kan tas i hvilken som helst rekkefølge.<br>
+            Minstekravet for å få gå opp til eksamen er at dere har fått godkjent de obligatoriske modulene, men husk at alle modulene er pensum.<br>
+            Hvis dere sikter mot en god karakter bør dere ta alle.
         <div id="list1">
             <table> <!--Rework table?-->
                 <tr>
                     <td>
                         <ul>
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-1/beskrivelse.xhtml">Modul 1</a></li>
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-2/beskrivelse.xhtml">Modul 2</a></li>
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-3/beskrivelse.xhtml">Modul 3</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-4/beskrivelse.xhtml">Modul 4</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-5/beskrivelse.xhtml">Modul 5</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-6/beskrivelse.xhtml">Modul 6</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-7/beskrivelse.xhtml">Modul 7</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-8/beskrivelse.xhtml">Modul 8</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-9/beskrivelse.xhtml">Modul 9</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-10/beskrivelse.xhtml">Modul 10</a></li>                              
+                            <li><a href="RessurserM1">Modul 1</a></li>
+                            <li><a href="RessurserM2">Modul 2</a></li>
+                            <li><a href="RessurserM3">Modul 3</a></li> 
+                            <li><a href="RessurserM4">Modul 4</a></li> 
+                            <li><a href="RessurserM5">Modul 5</a></li> 
+                            <li><a href="RessurserM6">Modul 6</a></li>
+                            <li><a href="RessurserM7">Modul 7</a></li>  
+                            <li><a href="RessurserM8">Modul 8</a></li>
+                            <li><a href="RessurserM9">Modul 9</a></li>
+                            <li><a href="RessurserM10">Modul 10</a></li>
                             <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-11/beskrivelse.xhtml">Modul 11</a></li> 
                             <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-12/beskrivelse.xhtml">Modul 12</a></li> 
                             <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-13/beskrivelse.xhtml">Modul 13</a></li> 

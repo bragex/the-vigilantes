@@ -39,7 +39,8 @@
             }
             #Modulh21 {
                 margin: 0cm; 
-                /*padding-right: -200px; Test this part. (Margin error.)*/        
+                /*padding-right: -200px; Test this part. (Margin error.)*/  
+           
         }    
         </style>
     </head>
@@ -54,27 +55,13 @@
                 <h4 id="p1">Oversikt over alle Moduler</h4>
             </a>
             <div id="lmål1">
-                <p><a id="alevering" href="http://home.uia.no/hallgeir/is110/moduler/modul-1/beskrivelse.xhtml">Læringsmål modul 1</a></p>
-                <ul> 
-                    <p><b>Du har fullført modulen når du kan:</b></p>
-                    <li>Bruke BlueJ, bl.a. til å:</li>
-                    <li style="list-style-type:none;">Åpne, lagre, og lukke prosjekter.</li>
-                    <li style="list-style-type:none;">Lage objekter</li>
-                    <li style="list-style-type:none;">Kalle metoder i objektene, med og uten parametere</li>
-                    <li style="list-style-type:none;">Bruke editoren til å se på kildekoden til en klasse</li>
-                    <li style="list-style-type:none;">Kunne kompilere prosjektet</li>
-                    <li>Litt java, du skal f.eks.</li>
-                    <li style="list-style-type:none;">Kunne kjenne igjen en klassedefinisjon, og kunne finne navnet på klassen</li>
-                    <li style="list-style-type:none;">Kjenne til forskjellige typer data</li>
-                    <li style="list-style-type:none;">Kalle metoder med et objekt som parameter</li>
-                    <li style="list-style-type:none;">Kalle metoder som returnerer en verdi</li>
-                    <li style="list-style-type:none;">Kjenne forskjellen mellom klasser og objekter</li>
-                </ul>
+            <p><a id="alevering" href="RessurserM1">Se her for læringsmål Modul 1</a></p>
             </div>
             <footer>
                 <!--Upload code-->
                 <jsp:include page="upload.jsp"/>
                 <!--Upload code-->
+                <jsp:include page="Download.jsp"/>
             </footer>
         </div>
     </body>
