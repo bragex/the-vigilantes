@@ -213,6 +213,11 @@ have fields with the notification text.
 Make a view of all users; both lecturers and students.
 
 */
+
+
+/*
+	Database for å laste opp fil. 
+*/
 drop database FileDB;
 create database FileDB;
  
@@ -222,11 +227,32 @@ CREATE TABLE `contacts` (
   `contact_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
-  `file` mediumblob,
+  `file` longblob,
   PRIMARY KEY (`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 Select * from `contacts`;
+
+/*
+File download database. Laste ned fil som elev/forelleser laster opp. 
+*/
+
+drop database FileDW;
+create database FileDW;
+ 
+use FileDW;
+
+Create table fileDW (
+	fileDW_id int (20) primary key null auto_increment,
+    fileDW_name varchar (150) default null,
+    fileDW_data longblob
+) Engine=InnoDB Default charset=latin1;
+
+Select * from fileDW;
+
+/*
+Kommentar fra Morten for å skille.
+*/
 
 CREATE TABLE m1 (
 m1_id int,
