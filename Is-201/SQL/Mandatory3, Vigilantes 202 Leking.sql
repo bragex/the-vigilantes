@@ -98,6 +98,13 @@ values (8,'mo001', 5), (8,'mo002', 6), (8,'mo003', 7), (8,'mo004', 8), (8,'mo005
        (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
        (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
 
+create view points2 as
+select student.student_id, module.module_id, submit_points
+	from `user`,student,submit,module
+    where `user`.user_id = student.user_id
+    and student.student_id = submit.student_id
+    and submit.module_id = module.module_id;
+
 
 create table submit (
 	submit_id varchar(5) primary key,
@@ -122,14 +129,6 @@ values ('su001', 'fi001', '2017-06-14', 'mo001', 'st001'),
 ('su008', 'fi008', '2018-01-14', 'mo003', 'st007'),
 ('su009', 'fi009', '2018-02-14', 'mo005', 'st008'),
 ('su010', 'fi010', '2018-03-14', 'mo003', 'st008');
-
-
-create view points2 as
-select student.student_id, module.module_id, submit_points
-	from `user`,student,submit,module
-    where `user`.user_id = student.user_id
-    and student.student_id = submit.student_id
-    and submit.module_id = module.module_id;
 
 /*
 create view homepage as
@@ -214,7 +213,6 @@ have fields with the notification text.
 Make a view of all users; both lecturers and students.
 
 */
-<<<<<<< HEAD
 
 
 /*
@@ -232,15 +230,14 @@ CREATE TABLE `contacts` (
   `file` longblob,
   PRIMARY KEY (`contact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-=======
->>>>>>> c549641ba11ec50c9fc6084357127e79038e06d7
 
+Select * from `contacts`;
 
 /*
 File download database. Laste ned fil som elev/forelleser laster opp. 
 */
 
-drop database FileDW;
+/*drop database FileDW;
 create database FileDW;
  
 use FileDW;
@@ -251,7 +248,7 @@ Create table fileDW (
     fileDW_data longblob
 ) Engine=InnoDB Default charset=latin1;
 
-Select * from fileDW;
+Select * from fileDW;*/
 
 /*
 Kommentar fra Morten for å skille.
@@ -318,18 +315,3 @@ and user.user_id = m2.user_id
 and user.user_id = m3.user_id
 and user.user_id = m4.user_id
 and user.user_id = m5.user_id;
-
-drop database if exists FileDB;
-create database FileDB;
- 
-use FileDB;
- 
-CREATE TABLE `contacts` (
-  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `file` mediumblob,
-  PRIMARY KEY (`contact_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-Select * from `contacts`;

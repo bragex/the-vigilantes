@@ -61,6 +61,7 @@
                 <!--Upload code-->
                 <jsp:include page="upload.jsp"/>
                 <!--Upload code-->
+                <jsp:include page="Download.jsp"/>
             </footer>
         </div>
     </body>
