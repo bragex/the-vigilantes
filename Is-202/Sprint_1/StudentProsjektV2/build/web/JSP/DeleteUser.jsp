@@ -3,6 +3,7 @@
     Created on : 19.okt.2017, 09:20:39
     Author     : by-cr
 --%>
+
 <%@page import="java.sql.*"%>
 <%Class.forName("com.mysql.jdbc.Driver");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,10 +11,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Delete from DB</title>
+        <title>Slett bruker</title>
+        <style>
+            body {
+                font-family: Segoe UI;
+                text-align: center;
+                margin: auto;
+            }
+            
+            table.center {
+                margin-left:auto; 
+                margin-right:auto;
+                
+            }
+        </style>
     </head>
     <body onload="displayResults()">
-        <h1>Delete from DB</h1>
+        <h1>Slett bruker</h1>
         <%!
             public class Delete {
 
@@ -81,7 +95,7 @@
             }
         %>
         <form name="myForm" action="index.jsp">
-            <table border="0">
+            <table class="center">
 
                 <tbody>
                     <tr>
