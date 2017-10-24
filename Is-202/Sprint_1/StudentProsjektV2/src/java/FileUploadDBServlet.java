@@ -29,7 +29,8 @@ public class FileUploadDBServlet extends HttpServlet {
         // gets values of text fields
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-         
+        String fileName = request.getParameter("fileName");
+              
         InputStream inputStream = null; // input stream of the upload file
          
         // obtains the upload file part in this multipart request
@@ -54,14 +55,15 @@ public class FileUploadDBServlet extends HttpServlet {
             
  
             // constructs SQL statement
-            String sql = "INSERT INTO contacts (first_name, last_name, file) values (?, ?, ?)";
+            String sql = "INSERT INTO contacts (first_name, last_name, file_name, file) values (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, firstName);
             statement.setString(2, lastName);
-             
+            statement.setString(3, fileName);
+                                         
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
-                statement.setBlob(3, inputStream);
+                statement.setBlob(4, inputStream);
             }
  
             // sends the statement to the database server

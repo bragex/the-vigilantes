@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * downloads the file.
  * @author www.codejava.net
  */
-@WebServlet("/DownloadServlet")
+@WebServlet("/FileDownloadDBServlet.java")
 public class FileDownloadDBServlet extends HttpServlet {
  
     // size of byte buffer to send file
@@ -36,7 +36,7 @@ public class FileDownloadDBServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // get upload id from URL's parameters
-        int uploadId = Integer.parseInt(request.getParameter("id"));
+        int contactid = Integer.parseInt(request.getParameter("id"));
          
         Connection conn = null; // connection to the database
          
@@ -46,9 +46,9 @@ public class FileDownloadDBServlet extends HttpServlet {
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // queries the database
-            String sql = "SELECT * FROM files_upload WHERE upload_id = ?";
+            String sql = "Select * from `contacts` where `contact_id`  = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, uploadId);
+            statement.setInt(1, contactid);
  
             ResultSet result = statement.executeQuery();
             if (result.next()) {
@@ -89,7 +89,7 @@ public class FileDownloadDBServlet extends HttpServlet {
                 outStream.close();             
             } else {
                 // no file found
-                response.getWriter().print("File not found for the id: " + uploadId);  
+                response.getWriter().print("File not found for the id: " + contactid);  
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

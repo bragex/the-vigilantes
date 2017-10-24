@@ -33,6 +33,10 @@
                         <tr>
                             <td>Last Name: </td>
                             <td><input type="text" name="lastName" size="50"/></td>
+                        </tr>                      
+                        <tr>
+                            <td>File Name: </td>
+                            <td><input type="text" name="fileName" size="50"/></td>
                         </tr>
                         <tr>
                             <td>Portrait File: </td>
