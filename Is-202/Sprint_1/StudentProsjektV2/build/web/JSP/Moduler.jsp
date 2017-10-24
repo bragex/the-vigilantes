@@ -65,11 +65,11 @@
                             <li><a href="RessurserM8">Modul 8</a></li>
                             <li><a href="RessurserM9">Modul 9</a></li>
                             <li><a href="RessurserM10">Modul 10</a></li>
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-11/beskrivelse.xhtml">Modul 11</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-12/beskrivelse.xhtml">Modul 12</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-13/beskrivelse.xhtml">Modul 13</a></li> 
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-14/beskrivelse.xhtml">Modul 14</a></li>     
-                            <li><a href="http://home.uia.no/hallgeir/is110/moduler/modul-15/beskrivelse.xhtml">Modul 15</a></li>                      
+                            <li><a href="RessurserM11">Modul 11</a></li> 
+                            <li><a href="RessurserM12">Modul 12</a></li> 
+                            <li><a href="RessurserM13">Modul 13</a></li> 
+                            <li><a href="RessurserM14">Modul 14</a></li>     
+                            <li><a href="RessurserM15">Modul 15</a></li>                      
                         </ul>
                     </td>
                     <td>
