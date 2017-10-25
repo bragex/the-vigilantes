@@ -115,54 +115,16 @@
             }
         </style>
     </head>
-    <body><% String url = request.getRequestURI(); %> 
+    <body>          <% String url = request.getRequestURI(); %> 
                     <% String url1 = "/StudentProsjektV2/First1"; %>
-                    <% String url2 = "/StudentProsjektV2/Home"; %> 
-                    <% String url3 = "/StudentProsjektV2/MinSide"; %>
-                    <% String url4 = "/StudentProsjektV2/ModulLevering";%>
-                    <% String url5 = "/StudentProsjektV2/Moduler";%>
-                    <% String url6 = "/StudentProsjektV2/AddUser";%>
-                    <% String url7 = "/StudentProsjektV2/DeleteUser";%>
-                    <% String url8 = "/StudentProsjektV2/Download";%>
-                    <% String url9 = "/StudentProsjektV2/TilbakeMelding";%>
-                    <% String url10 = "/StudentProsjektV2/upload";%>
                     
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
-                    <% if (url.equals(url1)){%>
                     <h1 class="h1header" id="h1menu1">Studentlisten</h1>
-                    }%>
-                    <% if (url.equals(url2)){%>
-                    <h1 class="h1header" id="h1menu1">Studentlisten</h1>
-                    }%>
-                    <% if (url.equals(url3)){%>
-                    <h1 class="h1header" id="h1menu1">Min side</h1>
-                    }%>
-                    <% if (url.equals(url4)){%>
-                    <h1 class="h1header" id="h1menu1">Modullevering</h1>
-                    }%>
-                    <% if (url.equals(url5)){%>
-                    <h1 class="h1header" id="h1menu1">Moduler</h1>
-                    }%>
-                    <% if (url.equals(url6)){%>
-                    <h1 class="h1header" id="h1menu1">Legg til bruker</h1>
-                    }%>
-                    <% if (url.equals(url7)){%>
-                    <h1 class="h1header" id="h1menu1">Slett bruker</h1>
-                    }%>
-                    <% if (url.equals(url8)){%>
-                    <h1 class="h1header" id="h1menu1">Nedlasting</h1>
-                    }%>
-                    <% if (url.equals(url9)){%>
-                    <h1 class="h1header" id="h1menu1">Tilbakemelding</h1>
-                    }%>
-                    <% if (url.equals(url10)){%>
-                    <h1 class="h1header" id="h1menu1">Last opp fil</h1>
-                    }%>
+                   
         <header>
                     
-                    
-                    <% if (url.equals(url2)){%>
+                    <% if (url.equals(url1)){%>
                         <form id="search00" class=searchclass action="" method="get">
                             <button id="search01">Søk</button>
                             <input id="search02" type="search" name="Search">
@@ -192,7 +154,10 @@
                         <button class="linkbutton">Legg til student</button>
                     </form>
                     <form action="DeleteUser" method="post" class="inline">
-                        <button class="linkbutton">Slett Student</button>
+                        <button class="linkbutton">Slett student</button>
+                    </form>
+                    <form action="SendEmail" method="post" class="inline">
+                        <button class="linkbutton">Send email</button>
                     </form>
                     <form action="index.html" method="post" class="inline">
                         <button class="linkbutton">Logg ut</button>
