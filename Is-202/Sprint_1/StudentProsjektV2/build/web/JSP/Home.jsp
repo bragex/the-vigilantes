@@ -80,11 +80,11 @@
                 <tr>
                     <td>Navn</td>
                     <td>Epost</td>
-                    <td>Module 1</td>
-                    <td>Module 2</td>
-                    <td>Module 3</td>
-                    <td>Module 4</td>
-                    <td>Module 5</td>
+                    <td>Modul 1</td>
+                    <td>Modul 2</td>
+                    <td>Modul 3</td>
+                    <td>Modul 4</td>
+                    <td>Modul 5</td>
                 </tr>
                 <% while (users.next()) { %>
                 <tr>
