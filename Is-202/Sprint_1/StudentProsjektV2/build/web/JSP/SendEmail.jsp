@@ -8,11 +8,11 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%
    String result;
-   String to = "to@gmail.com";
-   String from = "from@gmail.com";
+   String to = "vegar@sakseid.no";
+   String from = "vlantes@yahoo.com";
    String host = "localhost";
    Properties properties = System.getProperties();
-   properties.setProperty("mail.smtp.host", host);
+   properties.setProperty("smtp.mail.yahoo.com", host);
    Session mailSession = Session.getDefaultInstance(properties);
    try{
       MimeMessage message = new MimeMessage(mailSession);
