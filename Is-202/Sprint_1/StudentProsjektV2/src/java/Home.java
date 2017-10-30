@@ -32,7 +32,9 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
             RequestDispatcher rd = request.getRequestDispatcher("JSP/Home.jsp");
+            System.out.println("rd =" + rd);
             rd.include(request, response);
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
