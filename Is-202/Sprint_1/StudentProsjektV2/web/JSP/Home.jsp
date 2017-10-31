@@ -1,20 +1,52 @@
 <%-- 
     Document   : Home
-    Created on : 22.okt.2017, 14:28:52
-    Author     : by-cr
+    Created on : 22-Sep-2017, 10:30:48
+    Author     : Tonnes
 --%>
 <%--This is the main page of the site.--%>
 <%--Depends on HeaderMenu.jsp--%>
 <%@page import="java.sql.*"%>
+<%@page import="Java.Tools"%>
 <%Class.forName("com.mysql.jdbc.Driver");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> <!-- Restructure jsp Folders -->
 <!DOCTYPE html>
-<%-- Slett --%>
 <html>
     <head>
         <title>Studentliste</title>
         <style>
-           
+            body {
+                font-family: Segoe UI;
+            }
+            #table01 {
+                width: 100%;
+                margin-top: 1.5%;
+            }
+            tr,th,td,table {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th {
+                font-size: 1vw;
+            }
+            td {
+                font-size: 1vw;
+            }
+            a:link {
+                text-decoration: none;
+                color: #4169E1; /* Royal Blue */
+            }
+            a:hover {
+                text-decoration: none;
+                color: #00BFFF; /* DeepSkyBlue */
+            }
+            #psum {
+                text-align: center;
+                font-size: 1.5vw;
+                margin-top: 5px;
+            }
+            #avragetr {
+                font-weight: bold;
+            }
           
         </style>
     </head>
@@ -24,55 +56,14 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
-            <%!
-        public class User {
-            String URL = "jdbc:mysql://localhost:3306/slit";
-            String USERNAME = "root";
-            String PASSWORD = "";
-            
 
-            
-        
-            Connection connection = null;
-            PreparedStatement selectUsers= null;
-            ResultSet resultSet = null;
-
-            public User() {
-            try {
-                    connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                    selectUsers = connection.prepareStatement(
-                      /*  "SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points FROM user, m1, m2, m3, m4, m5 where user.user_id  = m1.user_id and user.user_id = m2.user_id and user.user_id = m3.user_id and user.user_id = m4.user_id and user.user_id = m5.user_id;"); */
-                       
-
-                       " SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points " +
-                         " FROM user, m1, m2, m3, m4, m5 " +
-                         " where user.user_id  = m1.user_id " +
-                         " and user.user_id = m2.user_id " +
-                         " and user.user_id = m3.user_id " +
-                         " and user.user_id = m4.user_id " +
-                         " and user.user_id = m5.user_id; ");
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            
-            public ResultSet getUser(){
-            try {
-                resultSet = selectUsers.executeQuery();
-                    
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-
-                return resultSet;
-}
-        }
-        %>
         
         <%
-            User user = new User();
-            ResultSet users = user.getUser();
+            Tools dbTools = new Tools(); 
+            dbTools.User();
+            dbTools.getUser();
+            ResultSet users = dbTools.getUser();
+            
         %>
         
         <table border="1">
@@ -80,11 +71,11 @@
                 <tr>
                     <td>Navn</td>
                     <td>Epost</td>
-                    <td>Modul 1</td>
-                    <td>Modul 2</td>
-                    <td>Modul 3</td>
-                    <td>Modul 4</td>
-                    <td>Modul 5</td>
+                    <td>Module 1</td>
+                    <td>Module 2</td>
+                    <td>Module 3</td>
+                    <td>Module 4</td>
+                    <td>Module 5</td>
                 </tr>
                 <% while (users.next()) { %>
                 <tr>
@@ -103,4 +94,3 @@
         </div>
     </body>
 </html>
-
