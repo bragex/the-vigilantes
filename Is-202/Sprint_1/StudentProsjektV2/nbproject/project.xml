@@ -19,8 +19,7 @@
                     <file>${file.reference.jaf-1_1_1.zip-1}</file>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.mysql-connector-java-5.1.44-bin.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
+                    <file>${file.reference.mysql-connector-java-5.1.44-bin.jar-2}</file>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>

@@ -136,7 +136,7 @@
                 </tbody>
             </table>
             <input type="hidden" name="hidden" value="<%=result %>" />
-            <input type="reset" value="Slett" name="slett" />
+            <input type="reset" value="Tøm" name="toom" />
             <input type="submit" value="Enter" name="submit" />
         </form>
     </body>
