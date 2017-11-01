@@ -7,9 +7,13 @@ package Java;
 
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 /**
@@ -26,6 +30,14 @@ public class Tools {
     PreparedStatement selectUsers = null;
     PreparedStatement deleteUser = null;
     ResultSet resultSet = null;
+    
+    public void connect() {
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (SQLException ex) {
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void User() {
         try {
@@ -54,5 +66,28 @@ public class Tools {
         }
 
         return resultSet;
+    }
+
+    public void newUser(String first, String last, String email, String status) {
+            
+         PreparedStatement newStud; 
+         int result = 0;                    
+            try {
+                insertUsers = connection.prepareStatement(
+                                            "INSERT INTO user (user_fname, user_lname, user_email, user_status)"
+                                             + " VALUES (?, ?, ?, ?)");
+                insertUsers.setString(1, first);
+                insertUsers.setString(2, last);
+                insertUsers.setString(3, email);
+                insertUsers.setString(4, status);
+                result = insertUsers.executeUpdate();
+                
+
+                
+         } // end try     
+          catch (SQLException ex) {
+                            ex.printStackTrace();
+
+        }
     }
 }

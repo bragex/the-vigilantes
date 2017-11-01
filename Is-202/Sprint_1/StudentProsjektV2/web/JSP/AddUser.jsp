@@ -4,6 +4,7 @@
     Author     : by-cr
 --%>
 <%@page import="java.sql.*"%>
+<%@page import="Java.Tools"%>
 <%Class.forName("com.mysql.jdbc.Driver");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,82 +37,14 @@
             
             </style>
     </head>
-    <body onload="displayResults()" >
+    <body
         <header>
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
         <h1>Legg til student i databasen</h1>
-        <%!
-            public class Insert {
-            String URL = "jdbc:mysql://localhost:3306/slit";
-            String USERNAME = "root";
-            String PASSWORD = "";
+    
         
-            Connection connection = null;
-            PreparedStatement insertUsers = null;
-            ResultSet resultSet = null;
-
-            public Insert() {
-            try {
-                    connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                    insertUsers = connection.prepareStatement(
-                    "INSERT INTO user (user_fname, user_lname, user_email, user_status)"
-                    + " VALUES (?, ?, ?, ?)" );
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            public int setUsers (String first, String last, String email, String status) {
-
-                int result = 0;
-                try {
-                insertUsers.setString(1, first);
-                insertUsers.setString(2, last);
-                insertUsers.setString(3, email);
-                insertUsers.setString(4, status);
-                result = insertUsers.executeUpdate();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-}
-            
-         return result;
-}
-        }
-        %>
-        
-        <%
-            int result = 0;
-            // trenger if setning for ellers legger den in blank verdi når siden laster, nå legger den inn når submit knappen blir aktivert
-            if (request.getParameter("submit") != null) { 
-            String firstName = new String();
-            String lastName = new String();
-            String email = new String();
-            String status = new String();
-            
-            if (request.getParameter("first")!= null) {
-                firstName = request.getParameter("first");
-            }
-            
-            if (request.getParameter("last")!= null) {
-                lastName = request.getParameter("last");
-            }
-            
-            if (request.getParameter("email")!= null) {
-                email = request.getParameter("email");
-            }
-            
-            if (request.getParameter("status")!= null) {
-                status = request.getParameter("status");
-            }
-            
-            
-            Insert insert = new Insert();
-            result= insert.setUsers(firstName, lastName, email, status);
-            }
-        %>
-        <form name="myForm" action="JSP/AddUser.jsp" method="POST">
+        <form name="myForm" action="Add" method="POST">
             <table class="center">
                 <tbody>
                     <tr>
@@ -135,10 +68,10 @@
                     </tr>
                 </tbody>
             </table>
-            <input type="hidden" name="hidden" value="<%=result %>" />
-            <input type="reset" value="Tøm" name="toom" />
+            <input type="reset" value="Slett" name="slett" />
             <input type="submit" value="Enter" name="submit" />
         </form>
+                           
     </body>
     <script LANGUAGE="JavaScript"> 
         
