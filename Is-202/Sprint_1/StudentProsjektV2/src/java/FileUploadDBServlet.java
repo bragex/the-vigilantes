@@ -1,4 +1,4 @@
-package net.codejava.upload;
+
  
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +22,7 @@ public class FileUploadDBServlet extends HttpServlet {
     // database connection settings
     private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
     private String dbUser = "root";
-    private String dbPass = "Warstar123";
+    private String dbPass = "";
      
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
