@@ -1,5 +1,3 @@
-package net.codejava.servlet;
- 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

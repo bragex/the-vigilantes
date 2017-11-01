@@ -26,9 +26,9 @@
         </header>
             <%!
         public class User {
-            String URL = "jdbc:mysql://localhost:3306/slit";
+            String URL = "jdbc:mysql://localhost:3306/SLIT";
             String USERNAME = "root";
-            String PASSWORD = "";
+            String PASSWORD = "Warstar123";
             
 
             
