@@ -1,6 +1,6 @@
-drop database slit;
-create database slit;
-use slit;
+drop database man4;
+create database man4;
+use man4;
 
 /* Creates a table for users. */
 create table `user` (
@@ -149,28 +149,51 @@ create table `comment` (
 	comment_id varchar(5) primary key,
     comment_content text,
     comment_dateposted date,
-    module_id varchar(5),
     user_id varchar(5),
-    foreign key (module_id) references module(module_id),
     foreign key (user_id) references `user`(user_id)
 );
 
-insert into `comment` (comment_id, comment_content, comment_dateposted, module_id, user_id)
-values ('co001', 'Oioi! Dette var kos', '2017-10-25', 'mo001', 'us005'), 
-	   ('co002', 'Godt å høre!', '2017-10-25', 'mo001', 'us001'),
-	   ('co003', 'Hjelp!', '2017-10-25', 'mo002', 'us006'),
-       ('co004', 'HJEEEEEELP!!', '2017-10-25', 'mo002', 'us006');
+insert into `comment` (comment_id, comment_content, comment_dateposted, user_id)
+values ('co001', 'Oioi! Dette var kos', '2017-10-25', 'us005'), 
+	   ('co002', 'Godt å høre!', '2017-10-25', 'us001'),
+	   ('co003', 'Hjelp!', '2017-10-25', 'us006'),
+       ('co004', 'HJEEEEEELP!!', '2017-10-25', 'us006'),
+       ('co005', 'Ser greit ut', '2017-10-26', 'us003'),
+       ('co006', 'Bræææ', '2017-10-26', 'us002'),
+       ('co007', 'Gjør det, gjør det gjennomfør det!', '2017-10-26', 'us007');
+       
+create table commentModule (
+	comment_id varchar(5),
+    module_id varchar(5),
+    foreign key (comment_id) references `comment`(comment_id),
+    foreign key (module_id) references module(module_id),
+    primary key (comment_id, module_id)
+);
+
+insert into commentModule (comment_id, module_id)
+values ('co005','mo001'),('co006','mo001'),('co007','mo001');
+
+create table commentSubmit (
+	comment_id varchar(5),
+    submit_id varchar(5),
+    foreign key (comment_id) references `comment`(comment_id),
+    foreign key (submit_id) references submit(submit_id),
+    primary key (comment_id, submit_id)
+);
+
+insert into commentSubmit (comment_id, submit_id)
+values ('co001', 'su001'), ('co002','su001'),('co003','su002'),('co004','su001');
 
 /* 1)Define a “view” that only gives read access to a user’s modules and that shows the
 number of hand-ins each user has. */
 create view oioi as
-select user_name, student.student_id, count(submit_id)
+select user_name, student.student_id, submit_id, count(submit_id)
 from `user`, student, submit
 where `user`.user_id = student.user_id
 and student.student_id = submit.student_id
-group by student_id;
-
-/* IKKE FERDIG, må lage rettigheter */
+group by student_id
+lock in share mode;
+/* A view creates only read access by default. "lock in share mode" does it manually. */
 
 /* 2)Write a query that lists all modules which does not have hand-ins. */
 select module_name
@@ -229,6 +252,10 @@ from submit
 left outer join feedback on submit.submit_id = feedback.submit_id
 join student on submit.student_id = student.student_id
 join `user` on student.user_id = `user`.user_id;
+
+
+
+
 
 
 
