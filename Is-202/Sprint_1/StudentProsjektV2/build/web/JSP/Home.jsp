@@ -56,17 +56,7 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
-<<<<<<< HEAD
-            <%!
-        public class User {
-            String URL = "jdbc:mysql://localhost:3306/SLIT";
-            String USERNAME = "root";
-            String PASSWORD = "Warstar123";
             
-=======
->>>>>>> c81b4c174214d484e24ba9f5ed96601e7bf80d97
-
-        
         <%
             Tools dbTools = new Tools(); 
             dbTools.User();
@@ -80,11 +70,11 @@
                 <tr>
                     <td>Navn</td>
                     <td>Epost</td>
-                    <td>Module 1</td>
-                    <td>Module 2</td>
-                    <td>Module 3</td>
-                    <td>Module 4</td>
-                    <td>Module 5</td>
+                    <td>Modul 1</td>
+                    <td>Modul 2</td>
+                    <td>Modul 3</td>
+                    <td>Modul 4</td>
+                    <td>Modul 5</td>
                 </tr>
                 <% while (users.next()) { %>
                 <tr>
