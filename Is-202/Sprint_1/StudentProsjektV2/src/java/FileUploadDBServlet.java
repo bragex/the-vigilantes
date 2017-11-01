@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-
- 
->>>>>>> c81b4c174214d484e24ba9f5ed96601e7bf80d97
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -18,14 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
  
-@WebServlet("/uploadServlet")
+@WebServlet("/uploadDBServlet")
 @MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
 public class FileUploadDBServlet extends HttpServlet {
      
     // database connection settings
     private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
     private String dbUser = "root";
-    private String dbPass = "";
+    private String dbPass = "Warstar123";
      
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {

@@ -56,17 +56,11 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
-<<<<<<< HEAD
             <%!
         public class User {
             String URL = "jdbc:mysql://localhost:3306/SLIT";
             String USERNAME = "root";
-            String PASSWORD = "Warstar123";
-            
-=======
->>>>>>> c81b4c174214d484e24ba9f5ed96601e7bf80d97
-
-        
+            String PASSWORD = "Warstar123";               
         <%
             Tools dbTools = new Tools(); 
             dbTools.User();

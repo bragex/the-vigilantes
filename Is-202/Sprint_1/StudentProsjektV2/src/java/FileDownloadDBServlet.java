@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * downloads the file.
  * @author www.codejava.net
  */
-@WebServlet("/FileDownloadDBServlet.java")
+@WebServlet("/downloadServlet")
 public class FileDownloadDBServlet extends HttpServlet {
  
     // size of byte buffer to send file
@@ -34,7 +34,7 @@ public class FileDownloadDBServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // get upload id from URL's parameters
-        int contactid = Integer.parseInt(request.getParameter("id"));
+        int contactid = Integer.parseInt(request.getParameter("contact_id"));
          
         Connection conn = null; // connection to the database
          
