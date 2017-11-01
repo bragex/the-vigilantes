@@ -27,6 +27,9 @@
         </style>
     </head>
     <body onload="displayResults()">
+        <header>
+            <jsp:include page="HeaderMenu.jsp"/>
+        </header>
         <h1>Slett bruker</h1>
         <%!
             public class Delete {

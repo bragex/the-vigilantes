@@ -11,6 +11,7 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.servlet-api.jar}</file>
+<<<<<<< HEAD
                 </library>
                 <library dirs="200">
                     <file>${file.reference.mysql-connector-java-5.1.44-bin.jar}</file>
@@ -22,6 +23,11 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.jaf-1_1_1.zip}</file>
+=======
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.mysql-connector-java-5.1.43-bin.jar}</file>
+>>>>>>> c81b4c174214d484e24ba9f5ed96601e7bf80d97
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
