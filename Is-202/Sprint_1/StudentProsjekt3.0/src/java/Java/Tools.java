@@ -57,7 +57,7 @@ public class Tools {
         }
     }
 
-    public ResultSet getUser() {
+        public ResultSet getUser() {
         try {
             resultSet = selectUsers.executeQuery();
 
@@ -67,11 +67,18 @@ public class Tools {
 
         return resultSet;
     }
-
-    public void newUser(String first, String last, String email, String status) {
+        
+    public void newUser(String first, String last, String email, String status) throws SQLException {
             
-         PreparedStatement newStud; 
-         int result = 0;                    
+            User();
+           getUser();
+           ResultSet users = getUser();
+         int result = 0;  
+         int result1 = 0;
+         int result2 = 0;
+         int result3 = 0;
+         int result4 = 0;
+         int result5 = 0;
             try {
                 insertUsers = connection.prepareStatement(
                                             "INSERT INTO user (user_fname, user_lname, user_email, user_status)"
@@ -81,7 +88,73 @@ public class Tools {
                 insertUsers.setString(3, email);
                 insertUsers.setString(4, status);
                 result = insertUsers.executeUpdate();
-                
+            } catch (SQLException ex) {
+                            ex.printStackTrace();
+
+        }
+         
+                         String id = users.getString("user_id");
+                         
+            try {                 
+                insertUsers = connection.prepareStatement(
+                                            "INSERT INTO m1 (m1_id, user_id, m1_points)"
+                                             + " VALUES (?, ?, ?)");
+                insertUsers.setString(1, "1");
+                insertUsers.setString(2, id);
+                insertUsers.setString(3, "1");
+                result1 = insertUsers.executeUpdate();
+                 
+            } catch (SQLException ex) {
+                            ex.printStackTrace();
+
+        }
+                 try {
+                insertUsers = connection.prepareStatement(
+                                            "INSERT INTO m2 (m2_id, user_id, m2_points)"
+                                             + " VALUES (?, ?, ?)");
+                insertUsers.setString(1, "2");
+                insertUsers.setString(2, id);
+                insertUsers.setString(3, "1");
+                result2 = insertUsers.executeUpdate();
+                 
+                 }catch (SQLException ex) {
+                            ex.printStackTrace();
+
+        }
+                 try {
+                insertUsers = connection.prepareStatement(
+                                            "INSERT INTO m3 (m3_id, user_id, m3_points)"
+                                             + " VALUES (?, ?, ?)");
+                insertUsers.setString(1, "3");
+                insertUsers.setString(2, id);
+                insertUsers.setString(3, "1");
+                result3 = insertUsers.executeUpdate();
+                 
+                 }catch (SQLException ex) {
+                            ex.printStackTrace();
+
+        }
+                 try {
+                insertUsers = connection.prepareStatement(
+                                            "INSERT INTO m4 (m4_id, user_id, m4_points)"
+                                             + " VALUES (?, ?, ?)");
+                insertUsers.setString(1, "4");
+                insertUsers.setString(2, id);
+                insertUsers.setString(3, "1");
+                result4 = insertUsers.executeUpdate();
+                 
+                 }catch (SQLException ex) {
+                            ex.printStackTrace();
+
+        }
+                 try {
+                insertUsers = connection.prepareStatement(
+                                            "INSERT INTO m5 (m5_id, user_id, m5_points)"
+                                             + " VALUES (?, ?, ?)");
+                insertUsers.setString(1, "5");
+                insertUsers.setString(2, id);
+                insertUsers.setString(3, "1");
+                result5 = insertUsers.executeUpdate();
 
                 
          } // end try     

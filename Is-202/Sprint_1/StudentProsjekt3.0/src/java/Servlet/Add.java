@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Java.Tools;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -55,7 +58,11 @@ public class Add extends HttpServlet {
             status = request.getParameter("status");
             Tools dbTools = new Tools();
             dbTools.connect();
-            dbTools.newUser(first, last, email, status);
+            try {
+                dbTools.newUser(first, last, email, status);
+            } catch (SQLException ex) {
+                Logger.getLogger(Add.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             
             out.println("</body>");
