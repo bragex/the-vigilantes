@@ -7,3 +7,11 @@
 /Is-202/Sprint_1/StudentProsjektV2_KopiV1/build/
 /Is-202/Sprint_1/StudentProsjektV2_KopiV1/dist/
 Is-202/Sprint_1/StudentProsjekt3.0/build.xml
+
+*.xml
+/Is-202/Sprint_1/StudentProsjekt3.0/nbproject/private/
+/Is-202/Sprint_1/StudentProsjekt3.0/build/
+*.properties
+*.zip
+*.jar
+/Is-202/Sprint_1/StudentProsjekt3.0/dist/
