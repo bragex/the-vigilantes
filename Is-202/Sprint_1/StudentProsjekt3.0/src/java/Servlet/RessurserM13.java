@@ -1,27 +1,20 @@
 package Servlet;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Java.Tools;
-import javax.servlet.RequestDispatcher;
-
 /**
  *
- * @author by-cr
+ * @author jenny
  */
-@WebServlet(urlPatterns = {"/Add"})
-public class Add extends HttpServlet {
+@WebServlet(urlPatterns = {"/RessurserM13"})
+public class RessurserM13 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,34 +28,8 @@ public class Add extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-             out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModulLagrer</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModulLagrer at " + request.getContextPath() + "</h1>");
-            
-            String first;
-            String last;
-            String email;
-            String status;
-            first = request.getParameter("first");
-            last = request.getParameter("last");
-            email = request.getParameter("email");
-            status = request.getParameter("status");
-            Tools dbTools = new Tools();
-            dbTools.connect();
-            dbTools.newUser(first, last, email, status);
-            
-            
-            out.println("</body>");
-            out.println("</html>");
-            RequestDispatcher rd = request.getRequestDispatcher("AddUser");
-            rd.forward(request, response);    
-        }
+        RequestDispatcher rd = request.getRequestDispatcher("JSP/RessurserM13.jsp");
+            rd.include(request, response);    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

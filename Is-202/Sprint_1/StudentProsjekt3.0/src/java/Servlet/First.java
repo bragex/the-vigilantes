@@ -1,5 +1,6 @@
 package Servlet;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,20 +9,20 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Java.Tools;
-import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author by-cr
+ * @author Kim
  */
-@WebServlet(urlPatterns = {"/Add"})
-public class Add extends HttpServlet {
+@WebServlet(urlPatterns = {"/First1"})
+public class First extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,37 +34,46 @@ public class Add extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String uname = request.getParameter("uname");
+        String pass = request.getParameter("pass");
+        HttpSession session = request.getSession();
+        session.setAttribute("user", uname);
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-             out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModulLagrer</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModulLagrer at " + request.getContextPath() + "</h1>");
-            
-            String first;
-            String last;
-            String email;
-            String status;
-            first = request.getParameter("first");
-            last = request.getParameter("last");
-            email = request.getParameter("email");
-            status = request.getParameter("status");
-            Tools dbTools = new Tools();
-            dbTools.connect();
-            dbTools.newUser(first, last, email, status);
-            
-            
-            out.println("</body>");
-            out.println("</html>");
-            RequestDispatcher rd = request.getRequestDispatcher("AddUser");
-            rd.forward(request, response);    
+            if (uname.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) { 
+                RequestDispatcher rd = request.getRequestDispatcher("Home"); /*Find a way to remove duplicate code!*/
+                rd.forward(request, response);
+            }
+            else if (uname.equalsIgnoreCase("tonnes") && pass.equalsIgnoreCase("tonnes")) { 
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
+            else if (uname.equalsIgnoreCase("morten") && pass.equalsIgnoreCase("morten")) {
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
+            else if (uname.equalsIgnoreCase("kim") && pass.equalsIgnoreCase("kim")) { 
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
+                else if (uname.equalsIgnoreCase("vegar") && pass.equalsIgnoreCase("vegar")) { 
+                session.setAttribute("user", uname);
+                RequestDispatcher rd = request.getRequestDispatcher("Home");
+                rd.forward(request, response);
+            }
+            else {
+                out.println("Feil passord eller brukernavn.");
+                RequestDispatcher rd = request.getRequestDispatcher("index.html");
+                rd.include(request, response);
+            }
         }
     }
+    /*@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+            rd.forward(request, response);
+        }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -105,3 +115,4 @@ public class Add extends HttpServlet {
     }// </editor-fold>
 
 }
+

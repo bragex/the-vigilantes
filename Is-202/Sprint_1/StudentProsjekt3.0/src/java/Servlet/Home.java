@@ -1,5 +1,6 @@
 package Servlet;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,22 +8,19 @@ package Servlet;
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Java.Tools;
-import javax.servlet.RequestDispatcher;
 
 /**
  *
  * @author by-cr
  */
-@WebServlet(urlPatterns = {"/Add"})
-public class Add extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/Home"})
+public class Home extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,39 +28,14 @@ public class Add extends HttpServlet {
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     * @throws IOException if an I/O error occurs.
+     */ 
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)   
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-             out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModulLagrer</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModulLagrer at " + request.getContextPath() + "</h1>");
+            RequestDispatcher rd = request.getRequestDispatcher("JSP/Home.jsp");
+            rd.include(request, response);
             
-            String first;
-            String last;
-            String email;
-            String status;
-            first = request.getParameter("first");
-            last = request.getParameter("last");
-            email = request.getParameter("email");
-            status = request.getParameter("status");
-            Tools dbTools = new Tools();
-            dbTools.connect();
-            dbTools.newUser(first, last, email, status);
-            
-            
-            out.println("</body>");
-            out.println("</html>");
-            RequestDispatcher rd = request.getRequestDispatcher("AddUser");
-            rd.forward(request, response);    
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
