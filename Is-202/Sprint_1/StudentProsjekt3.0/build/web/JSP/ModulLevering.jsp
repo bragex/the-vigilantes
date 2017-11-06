@@ -50,7 +50,6 @@
         </header>
         <div>
             <h1 class="Modulh21">Modul 1</h1>           
-            <h3>Læringsmål:</h3>
             <a href="Moduler">
                 <h4 id="p1">Oversikt over alle Moduler</h4>
             </a>

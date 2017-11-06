@@ -1,30 +1,26 @@
-package Servlet;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servlet;
 
+import Java.Tools;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Java.Tools;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 
 /**
  *
  * @author by-cr
  */
-@WebServlet(urlPatterns = {"/Add"})
-public class Add extends HttpServlet {
+@WebServlet(name = "Delete", urlPatterns = {"/Delete"})
+public class Delete extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,31 +36,23 @@ public class Add extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-             out.println("<!DOCTYPE html>");
+            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ModulLagrer</title>");            
+            out.println("<title>Servlet Delete</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ModulLagrer at " + request.getContextPath() + "</h1>");
-            
-            String first;
-            String last;
-            String email;
-            String status;
-            first = request.getParameter("first");
-            last = request.getParameter("last");
-            email = request.getParameter("email");
-            status = request.getParameter("status");
+            out.println("<h1>Servlet Delete at " + request.getContextPath() + "</h1>");
+            int result = 0;
+            Integer userId = new Integer(0);
             Tools dbTools = new Tools();
             dbTools.connect();
-            dbTools.newUser(first, last, email, status);
-            
+            dbTools.Delete();
+            userId = Integer.parseInt(request.getParameter("delete"));
+            dbTools.deleteUser(userId);
             
             out.println("</body>");
             out.println("</html>");
-            RequestDispatcher rd = request.getRequestDispatcher("AddUser");
-            rd.forward(request, response);    
         }
     }
 
