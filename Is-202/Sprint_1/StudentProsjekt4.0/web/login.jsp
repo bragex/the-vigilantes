@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Logg inn</title>
     </head>
@@ -16,13 +17,12 @@
         <h1>Logg inn</h1>
        <html:form action="/login">
     <table border="0">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
         <tbody>
+            <tr>
+                <td colspan="2">
+                    <bean:write name="LoginForm" property="error" filter="false"/>
+                    &nbsp;</td>
+            </tr>
             <tr>
                 <td>Navn</td>
                 <td><html:text property="name" /></td>

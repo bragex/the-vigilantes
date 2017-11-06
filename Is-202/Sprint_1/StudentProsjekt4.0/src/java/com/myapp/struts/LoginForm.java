@@ -19,6 +19,15 @@ public class LoginForm extends org.apache.struts.action.ActionForm {
     
     private String name;
     private String email;
+    private String error;
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError() {
+        this.error = "<span style='color:red'>Please provide valid entries for both fields</span>";
+    }
 
     public String getEmail() {
         return email;
@@ -40,20 +49,6 @@ public class LoginForm extends org.apache.struts.action.ActionForm {
      */
     public void setName(String string) {
         name = string;
-    }
-
-    /**
-     * @return
-     */
-    public int getNumber() {
-        return number;
-    }
-
-    /**
-     * @param i
-     */
-    public void setNumber(int i) {
-        number = i;
     }
 
     /**
