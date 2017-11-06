@@ -9,3 +9,8 @@
 Is-202/Sprint_1/StudentProsjekt3.0/build.xml
 *.xml
 *.properties
+Is-202/Sprint_1/StudentProsjekt3.0/nbproject/project.xml
+*.properties
+Is-202/Sprint_1/StudentProsjekt3.0/nbproject/build-impl.xml
+/Is-202/Sprint_1/StudentProsjekt4.0/nbproject/private/
+/Is-202/Sprint_1/StudentProsjekt4.0/build/
