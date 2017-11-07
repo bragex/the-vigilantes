@@ -29,14 +29,14 @@ public class FileDownloadDBServlet extends HttpServlet {
     private static final int BUFFER_SIZE = 4096;   
      
     // database connection settings
-    private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
+    private String dbURL = "jdbc:mysql://localhost:3306/FileDW";
     private String dbUser = "root";
-    private String dbPass = "";
+    private String dbPass = "Warstar123";
      
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // get upload id from URL's parameters
-        int contactid = Integer.parseInt(request.getParameter("contact_id"));
+        int uploadid = Integer.parseInt(request.getParameter("upload_id"));
          
         Connection conn = null; // connection to the database
          
@@ -46,15 +46,15 @@ public class FileDownloadDBServlet extends HttpServlet {
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // queries the database
-            String sql = "Select * from `contacts` where `contact_id`  = ?";
+            String sql = "Select * from file_upload where upload_id  = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, contactid);
+            statement.setInt(1, uploadid);
  
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 // gets file name and file blob data
                 String fileName = result.getString("file_name");
-                Blob blob = result.getBlob("file");
+                Blob blob = result.getBlob("file_data");
                 InputStream inputStream = blob.getBinaryStream();
                 int fileLength = inputStream.available();
                  
@@ -89,7 +89,7 @@ public class FileDownloadDBServlet extends HttpServlet {
                 outStream.close();             
             } else {
                 // no file found
-                response.getWriter().print("File not found for the id: " + contactid);  
+                response.getWriter().print("File not found for the id: " + uploadid);  
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
