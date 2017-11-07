@@ -15,46 +15,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
  
-@WebServlet("/uploadDBServlet")
-@MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
+@WebServlet("/uploadServlet")
+@MultipartConfig(maxFileSize = 16177215)    // File kan vær opp til 16mb
 public class FileUploadDBServlet extends HttpServlet {
      
-    // database connection settings
+    // Brukes for å koble til databasen.
     private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
     private String dbUser = "root";
-    private String dbPass = "";
+    private String dbPass = "Warstar123";
      
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // gets values of text fields
+        // Henter verdier fra text linjene i databasen. 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String fileName = request.getParameter("fileName");
               
-        InputStream inputStream = null; // input stream of the upload file
+        InputStream inputStream = null; // streamen opp til databasen. 
          
         // obtains the upload file part in this multipart request
         Part filePart = request.getPart("file");
         if (filePart != null) {
-            // prints out some information for debugging
+            // Brukes for å teste opp mot debugging. 
             System.out.println(filePart.getName());
             System.out.println(filePart.getSize());
             System.out.println(filePart.getContentType());
              
-            // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
         }
          
-        Connection conn = null; // connection to the database
-        String message = null;  // message will be sent back to client
+        Connection conn = null; // Forbindelse til databasen. 
+        String message = null;  // Melding blir sendt tilbake til klienten. 
          
         try {
-            // connects to the database
+            // Forbindelse til databasen. 
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
             
  
-            // constructs SQL statement
+            // Lager SQL statement.
             String sql = "INSERT INTO contacts (first_name, last_name, file_name, file) values (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, firstName);
@@ -66,7 +65,7 @@ public class FileUploadDBServlet extends HttpServlet {
                 statement.setBlob(4, inputStream);
             }
  
-            // sends the statement to the database server
+            // Sender en kommando til database serveren hvis det er vellyket. 
             int row = statement.executeUpdate();
             if (row > 0) {
                 message = "File uploaded and saved into database";
@@ -76,7 +75,7 @@ public class FileUploadDBServlet extends HttpServlet {
             ex.printStackTrace();
         } finally {
             if (conn != null) {
-                // closes the database connection
+                // Lukker databasen 
                 try {
                     conn.close();
                 } catch (SQLException ex) {
