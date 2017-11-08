@@ -5,19 +5,14 @@
  */
 package Java;
 
-import java.io.PrintWriter;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
+
 
 /**
- *
+ *Dette er en Java klasse som er laget for å holde metoder som bruker av flere sider.
+ * Dette har vi valgt å gjøre for å ikke ha duplisering av kode, samt å lette kunne lese koden.
  * @author by-cr
  */
 public class Tools {
@@ -39,7 +34,8 @@ public class Tools {
             Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    //Henter ut en liste med studenter og modulpoeng.
     public void User() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -53,8 +49,7 @@ public class Tools {
                     + " and user.user_id = m4.user_id "
                     + " and user.user_id = m5.user_id; ");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
         }
     }
 
@@ -63,12 +58,12 @@ public class Tools {
             resultSet = selectUsers.executeQuery();
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return resultSet;
     }
 
+        //Lager en ny bruker i databasen
     public void newUser(String first, String last, String email, String status) {
             
          PreparedStatement newStud; 
@@ -92,6 +87,7 @@ public class Tools {
         }
     }
     
+    // Sletter en bruker fra databasen. Gir en alfabetisk liste hvor du hvelger hvem som slettes. Slettes basert på id.
     public void Delete() {
                     try {
                         
@@ -101,8 +97,7 @@ public class Tools {
 
                         deleteUser = connection.prepareStatement(
                                 "DELETE FROM user WHERE user_id = ?");
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } catch (SQLException e) {
                     }
 
                 }
@@ -112,7 +107,6 @@ public class Tools {
                     try {
                         resultSet = selectUsersDel.executeQuery();
                     } catch (SQLException e) {
-                        e.printStackTrace();
                     }
 
                     return resultSet;
@@ -125,7 +119,6 @@ public class Tools {
                         deleteUser.setInt(1, id);
                         result = deleteUser.executeUpdate();
                     } catch (SQLException e) {
-                        e.printStackTrace();
                     }
                     return result;
                 }

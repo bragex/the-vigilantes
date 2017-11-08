@@ -218,7 +218,7 @@ Make a view of all users; both lecturers and students.
 CREATE TABLE m1 (
 m1_id int,
 user_id int(5),
-m1_points varchar(5),
+m1_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m1_cpk primary key (m1_id, user_id)
 );
@@ -228,7 +228,7 @@ values(1, 1, '8'), (1, 2, '9'), (1, 3, '9'), (1, 4, '10'), (1, 5, '10'), (1, 6, 
 CREATE TABLE m2 (
 m2_id int,
 user_id int(5),
-m2_points varchar(5),
+m2_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m2_cpk primary key (m2_id, user_id)
 );
@@ -238,7 +238,7 @@ values(2, 1, '6'), (2, 2, '7'), (2, 3, '7'), (2, 4, '2'), (2, 5, '3'), (2, 6, '9
 CREATE TABLE m3 (
 m3_id int,
 user_id int(5),
-m3_points varchar(5),
+m3_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m3_cpk primary key (m3_id, user_id)
 );
@@ -248,7 +248,7 @@ values(3, 1, '5'), (3, 2, '9'), (3, 3, '6'), (3, 4, '7'), (3, 5, '8'), (3, 6, '6
 CREATE TABLE m4 (
 m4_id int,
 user_id int(5),
-m4_points varchar(5),
+m4_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m4_cpk primary key (m4_id, user_id)
 );
@@ -258,7 +258,7 @@ values(4, 1, '9'), (4, 2, '8'), (4, 3, '10'), (4, 4, '9'), (4, 5, '10'), (4, 6, 
 CREATE TABLE m5 (
 m5_id int,
 user_id int(5),
-m5_points varchar(5),
+m5_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m5_cpk primary key (m5_id, user_id)
 );
