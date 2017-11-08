@@ -265,6 +265,13 @@ constraint m5_cpk primary key (m5_id, user_id)
 insert into m5 (m5_id, user_id, m5_points)
 values(5, 1, '6'), (5, 2, '7'), (5, 3, '5'), (5, 4, '6'), (5, 5, '7'), (5, 6, '6'), (5, 7, '5');
 
+/*
+----------------------------------------------------------------------------------------------------------------------------------
+Opprett database med verdi kjør til hit.
+Query nedenfor her
+*/
+
+
 select user.user_fname, m3.m3_points
 from user, m3
 where user.user_id  = m3.user_id;
@@ -276,3 +283,5 @@ and user.user_id = m2.user_id
 and user.user_id = m3.user_id
 and user.user_id = m4.user_id
 and user.user_id = m5.user_id;
+
+select * from user;
