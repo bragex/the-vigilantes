@@ -18,43 +18,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
 /**
- * A servlet that retrieves a file from MySQL database and lets the client
- * downloads the file.
- * @author www.codejava.net
+ * Servlet som laster ned fra databasen til pcen. 
  */
-@WebServlet("/downloadServlet")
+@WebServlet(urlPatterns = {"/downloadServlet"})
 public class FileDownloadDBServlet extends HttpServlet {
  
-    // size of byte buffer to send file
+    // Buffer for filen. 
     private static final int BUFFER_SIZE = 4096;   
      
-    // database connection settings
-    private String dbURL = "jdbc:mysql://localhost:3306/FileDW";
+    // Database setings
+    private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
     private String dbUser = "root";
     private String dbPass = "Warstar123";
      
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // get upload id from URL's parameters
-        int uploadid = Integer.parseInt(request.getParameter("upload_id"));
+        // Henter upload_id fra url.
+        //int uploadid = Integer.parseInt(request.getParameter("upload_id"));
          
-        Connection conn = null; // connection to the database
+        Connection conn = null; // Forbindelsen til databasen. 
          
         try {
-            // connects to the database
+            // Forbindelse til databasen. 
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // queries the database
-            String sql = "Select * from file_upload where upload_id  = ?";
+            String sql = "Select * from `contacts` where contact_id  = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, uploadid);
- 
+            statement.setInt(1, 1); //TODO: Fix uploadId (line 37 in html, and parese this in here)
+            
             ResultSet result = statement.executeQuery();
             if (result.next()) {
-                // gets file name and file blob data
+                System.out.println("spørringggg" + statement);
+                System.out.println("resultttt" + result);//testing
+                // Henter filen og file blob. 
                 String fileName = result.getString("file_name");
-                Blob blob = result.getBlob("file_data");
+                Blob blob = result.getBlob("file");
                 InputStream inputStream = blob.getBinaryStream();
                 int fileLength = inputStream.available();
                  
@@ -88,8 +88,8 @@ public class FileDownloadDBServlet extends HttpServlet {
                 inputStream.close();
                 outStream.close();             
             } else {
-                // no file found
-                response.getWriter().print("File not found for the id: " + uploadid);  
+                // Ingen fil funnet.
+                response.getWriter().print("File not found for the id: " );  
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -99,7 +99,7 @@ public class FileDownloadDBServlet extends HttpServlet {
             response.getWriter().print("IO Error: " + ex.getMessage());
         } finally {
             if (conn != null) {
-                // closes the database connection
+                // Lukker forbindelsen til databasen når arbeidet er fullført. 
                 try {
                     conn.close();
                 } catch (SQLException ex) {
@@ -108,4 +108,10 @@ public class FileDownloadDBServlet extends HttpServlet {
             }          
         }
     }
-}
+    @Override
+    protected void doPost(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("nullll");
+    }
+   }
+
