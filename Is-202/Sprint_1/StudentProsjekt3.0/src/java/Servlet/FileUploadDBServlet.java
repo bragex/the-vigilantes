@@ -20,16 +20,16 @@ import javax.servlet.http.Part;
 public class FileUploadDBServlet extends HttpServlet {
      
     // Brukes for å koble til databasen.
-    private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
+    private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
     private String dbUser = "root";
     private String dbPass = "Warstar123";
      
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // Henter verdier fra text linjene i databasen. 
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String fileName = request.getParameter("fileName");
+        //String firstName = request.getParameter("firstName");
+        //String lastName = request.getParameter("lastName");
+        //String fileName = request.getParameter("fileName");
               
         InputStream inputStream = null; // streamen opp til databasen. 
          
@@ -54,15 +54,15 @@ public class FileUploadDBServlet extends HttpServlet {
             
  
             // Lager SQL statement.
-            String sql = "INSERT INTO contacts (first_name, last_name, file_name, file) values (?, ?, ?, ?)";
+            String sql = "INSERT INTO submit (submit_file) values (?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
-            statement.setString(3, fileName);
+            //statement.setString(1, firstName);
+            //statement.setString(2, lastName);
+            //statement.setString(3, fileName);
                                          
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
-                statement.setBlob(4, inputStream);
+                statement.setBlob(1, inputStream);
             }
  
             // Sender en kommando til database serveren hvis det er vellyket. 
