@@ -1,5 +1,6 @@
 package Servlet;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -50,8 +51,6 @@ public class FileDownloadDBServlet extends HttpServlet {
             
             ResultSet result = statement.executeQuery();
             if (result.next()) {
-                System.out.println("spørringggg" + statement);
-                System.out.println("resultttt" + result);//testing
                 // Henter filen og file blob. 
                 String fileName = result.getString("file_name");
                 Blob blob = result.getBlob("file");
