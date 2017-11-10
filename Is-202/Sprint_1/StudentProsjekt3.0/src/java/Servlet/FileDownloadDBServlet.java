@@ -28,14 +28,14 @@ public class FileDownloadDBServlet extends HttpServlet {
     private static final int BUFFER_SIZE = 4096;   
      
     // Database setings
-    private String dbURL = "jdbc:mysql://localhost:3306/FileDB";
+    private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
     private String dbUser = "root";
     private String dbPass = "Warstar123";
      
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // Henter upload_id fra url.
-        //int uploadid = Integer.parseInt(request.getParameter("upload_id"));
+        int uploadId = Integer.parseInt(request.getParameter("id"));
          
         Connection conn = null; // Forbindelsen til databasen. 
          
@@ -45,15 +45,15 @@ public class FileDownloadDBServlet extends HttpServlet {
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // queries the database
-            String sql = "Select * from `contacts` where contact_id  = ?";
+            String sql = "Select * from submit where submit_id  = (?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, 1); //TODO: Fix uploadId (line 37 in html, and parese this in here)
+            statement.setInt(1, uploadId); 
             
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 // Henter filen og file blob. 
-                String fileName = result.getString("file_name");
-                Blob blob = result.getBlob("file");
+                String fileName = result.getString("submit_name");
+                Blob blob = result.getBlob("submit_file");
                 InputStream inputStream = blob.getBinaryStream();
                 int fileLength = inputStream.available();
                  
