@@ -98,9 +98,10 @@ values (8,'mo001', 5), (8,'mo002', 6), (8,'mo003', 7), (8,'mo004', 8), (8,'mo005
        (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
        (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
 
-
+select * from submit;
 create table submit (
-	submit_id int auto_increment primary key,
+    submit_id int auto_increment primary key,
+    submit_name varchar(30),
     submit_file longblob,
     submit_date date,
     module_id varchar(5),
@@ -109,18 +110,17 @@ create table submit (
     foreign key (student_id) references student (student_id)
 );
 
-/*Submit_file is for the file name. We used the names for simplicity*/
-insert into submit (submit_file, submit_date, module_id, student_id)
-values ('fi001', '2017-06-14', 'mo001', 'st001'), 
-('fi002', '2017-07-14', 'mo001', 'st002'), 
-('fi003', '2017-08-14', 'mo002', 'st003'),
-('fi004', '2017-09-14', 'mo002', 'st004'), 
-('fi005', '2017-10-14', 'mo003', 'st005'),
-('fi006', '2017-11-14', 'mo003', 'st006'), 
-('fi007', '2017-12-14', 'mo004', 'st007'),
-('fi008', '2018-01-14', 'mo003', 'st007'),
-('fi009', '2018-02-14', 'mo005', 'st008'),
-('fi010', '2018-03-14', 'mo003', 'st008');
+insert into submit (submit_name, submit_file, submit_date, module_id, student_id)
+values ('test1', 'fi001', '2017-06-14', 'mo001', 'st001'), 
+('test2', 'fi002', '2017-07-14', 'mo001', 'st002'), 
+('test3', 'fi003', '2017-08-14', 'mo002', 'st003'),
+('test4', 'fi004', '2017-09-14', 'mo002', 'st004'), 
+('test5', 'fi005', '2017-10-14', 'mo003', 'st005'),
+('test6', 'fi006', '2017-11-14', 'mo003', 'st006'), 
+('test7', 'fi007', '2017-12-14', 'mo004', 'st007'),
+('test8', 'fi008', '2018-01-14', 'mo003', 'st007'),
+('test9', 'fi009', '2018-02-14', 'mo005', 'st008'),
+('test10', 'fi010', '2018-03-14', 'mo003', 'st008');
 
 
 create table feedback (
