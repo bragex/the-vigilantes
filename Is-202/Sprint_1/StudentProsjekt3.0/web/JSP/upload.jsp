@@ -28,6 +28,10 @@
                     <table border="0">
                         <h3>et eller annet</h3>
                         <tr>
+                            <td>File name: </td>
+                            <td><input type="text" name="fileName" size="50"/></td>
+                        </tr>
+                        <tr>
                             <td>Portrait File: </td>
                             <td><input type="file" name="file" size="50"/></td>
                         </tr>
