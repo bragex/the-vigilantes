@@ -27,9 +27,9 @@ public class FileUploadDBServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // Henter verdier fra text linjene i databasen. 
-        //String firstName = request.getParameter("firstName");
-        //String lastName = request.getParameter("lastName");
-        //String fileName = request.getParameter("fileName");
+        String fileName = request.getParameter("fileName");
+        String module = request.getParameter("module");
+        String studentID = request.getParameter("studentID");
               
         InputStream inputStream = null; // streamen opp til databasen. 
          
@@ -54,15 +54,15 @@ public class FileUploadDBServlet extends HttpServlet {
             
  
             // Lager SQL statement.
-            String sql = "INSERT INTO submit (submit_file) values (?)";
+            String sql = "INSERT INTO submit (submit_name, module_id, student_id, submit_file) values (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            //statement.setString(1, firstName);
-            //statement.setString(2, lastName);
-            //statement.setString(3, fileName);
-                                         
+            statement.setString(1, fileName);
+            statement.setString(2, module);
+            statement.setString(3, studentID);
+
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
-                statement.setBlob(1, inputStream);
+                statement.setBlob(4, inputStream);
             }
  
             // Sender en kommando til database serveren hvis det er vellyket. 
