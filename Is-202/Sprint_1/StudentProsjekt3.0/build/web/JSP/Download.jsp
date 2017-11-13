@@ -13,8 +13,11 @@
         <h3>Lever modul</h3> <!--Move the Download aspect too a java class.-->
         <form method="post" action="downloadServlet" enctype="multipart/form-data">
             <center>                 
-                    <table border="0">
-                        
+                    <table border="0">  
+                        <tr>
+                            <td>Download submit_id </td> <!-- write the submit id, shitty solution -->
+                            <td><input type="text" name="id" size="50"/></td>
+                        </tr>
                         <tr>
                             <td colspan="2">
                                 <input type="submit" value="Download">

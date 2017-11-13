@@ -26,16 +26,9 @@
         <form method="post" action="uploadServlet" enctype="multipart/form-data">
             <center>                 
                     <table border="0">
+                        <h3>et eller annet</h3>
                         <tr>
-                            <td>First Name: </td>
-                            <td><input type="text" name="firstName" size="50"/></td>
-                        </tr>
-                        <tr>
-                            <td>Last Name: </td>
-                            <td><input type="text" name="lastName" size="50"/></td>
-                        </tr>                      
-                        <tr>
-                            <td>File Name: </td>
+                            <td>File name: </td>
                             <td><input type="text" name="fileName" size="50"/></td>
                         </tr>
                         <tr>
