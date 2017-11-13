@@ -9,6 +9,12 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,39 +40,31 @@ public class First extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+        throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        String uname = request.getParameter("uname");
-        String pass = request.getParameter("pass");
         HttpSession session = request.getSession();
-        session.setAttribute("user", uname);
+        String userid=request.getParameter("uname"); 
+        session.putValue("userid",userid); 
+        String pwd=request.getParameter("pass");
         try (PrintWriter out = response.getWriter()) {
-            if (uname.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) { 
-                RequestDispatcher rd = request.getRequestDispatcher("Home"); /*Find a way to remove duplicate code!*/
-                rd.forward(request, response);
-            }
-            else if (uname.equalsIgnoreCase("tonnes") && pass.equalsIgnoreCase("tonnes")) { 
-                RequestDispatcher rd = request.getRequestDispatcher("Home");
-                rd.forward(request, response);
-            }
-            else if (uname.equalsIgnoreCase("morten") && pass.equalsIgnoreCase("morten")) {
-                RequestDispatcher rd = request.getRequestDispatcher("Home");
-                rd.forward(request, response);
-            }
-            else if (uname.equalsIgnoreCase("kim") && pass.equalsIgnoreCase("kim")) { 
-                RequestDispatcher rd = request.getRequestDispatcher("Home");
-                rd.forward(request, response);
-            }
-                else if (uname.equalsIgnoreCase("vegar") && pass.equalsIgnoreCase("vegar")) { 
-                session.setAttribute("user", uname);
-                RequestDispatcher rd = request.getRequestDispatcher("Home");
-                rd.forward(request, response);
-            }
-            else {
-                out.println("Feil passord eller brukernavn.");
-                RequestDispatcher rd = request.getRequestDispatcher("index.html");
-                rd.include(request, response);
-            }
+              
+java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root"); 
+Statement st= con.createStatement(); 
+ResultSet rs=st.executeQuery("select * from user where user_fname='"+userid+"'"); 
+if(rs.next()) 
+{ 
+if(rs.getString(4).equals(pwd))
+{
+    RequestDispatcher rd = request.getRequestDispatcher("Home"); 
+    rd.forward(request, response);
+    
+
+} 
+else 
+{ 
+out.println("Feil passord, prøv igjen"); 
+} 
+} 
         }
     }
     /*@Override
@@ -87,7 +85,11 @@ public class First extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(First.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -101,7 +103,11 @@ public class First extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(First.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
