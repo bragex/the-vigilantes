@@ -116,7 +116,7 @@
         </style>
     </head>
     <body>          <% String url = request.getRequestURI(); %> 
-                    <% String url1 = "/StudentProsjektV2/First1"; %>
+                    <% String url1 = "StudentProsjektV5.0/First1"; %>
                     
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
