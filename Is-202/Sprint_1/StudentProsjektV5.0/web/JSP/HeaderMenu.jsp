@@ -170,7 +170,7 @@
                 <!--if the user value is empty, this part of the code will show.-->
             <% } else {%>
                 <!--If the user value aren't empty, this part of the code will show.-->
-                <b><p>Logget inn som: <%=session.getAttribute("user")%></p></b>
+                <b><p>Logget inn som: <%=session.getAttribute("user")%>     -       Brukerstatus: <%=session.getAttribute("bruker")%></p></b>
             <% } %>
         </div>
         <script type="text/javascript"> //Javascript for dropdown menu.

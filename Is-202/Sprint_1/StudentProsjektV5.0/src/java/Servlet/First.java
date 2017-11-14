@@ -44,8 +44,7 @@ public class First extends HttpServlet {
         throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String userid=request.getParameter("uname"); 
-        session.putValue("userid",userid);         
+        String userid=request.getParameter("uname");
         session.setAttribute("user", userid);
         String pwd=request.getParameter("pass");
         try (PrintWriter out = response.getWriter()) {
@@ -53,11 +52,13 @@ public class First extends HttpServlet {
               
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root",""); 
 Statement st= con.createStatement(); 
-ResultSet rs=st.executeQuery("select * from user where user_fname='"+userid+"'"); 
+ResultSet rs=st.executeQuery("select * from user where user_fname='"+userid+"'");
 if(rs.next()) 
 { 
 if(rs.getString(4).equals(pwd))
 {
+    String bruker = rs.getString(6);
+    session.setAttribute("bruker", bruker);
     RequestDispatcher rd = request.getRequestDispatcher("Home"); 
     rd.forward(request, response);
     

@@ -20,7 +20,7 @@ String lname=request.getParameter("lname");
 String email=request.getParameter("email"); 
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit",
-"root","root"); 
+"root",""); 
 Statement st= con.createStatement(); 
 ResultSet rs; 
 int i=st.executeUpdate("INSERT INTO user (user_fname, user_lname, user_password, user_email) VALUES ('"+fname+"', '"+lname+"', '"+pwd+"', '"+email+"')"); 

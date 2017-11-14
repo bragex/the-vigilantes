@@ -57,11 +57,36 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
+        <%
+            Tools dbTools = new Tools(); 
+            dbTools.User();
+            dbTools.getUser();
+            ResultSet users = dbTools.getUser();
             
+        %>    
         
           <table border="1">
             <tbody>
-                                
+                        <tr>
+                    <td>Navn</td>
+                    <td>Epost</td>
+                    <td>Modul 1</td>
+                    <td>Modul 2</td>
+                    <td>Modul 3</td>
+                    <td>Modul 4</td>
+                    <td>Modul 5</td>
+                </tr>
+                <% while (users.next()) { %>
+                <tr>
+                    <td> <a href="MinSide"> <%=users.getString("user_fname") %> <%=users.getString("user_lname") %></a></td>
+                    <td> <%=users.getString("user_email") %></td>
+                    <td> <a href="RessurserM1"> <%=users.getString("user_m1") %></a></td>
+                    <td> <%=users.getString("user_m2") %></td>
+                    <td> <%=users.getString("user_m3") %></td>
+                    <td> <%=users.getString("user_m4") %></td>
+                    <td> <%=users.getString("user_m5") %></td>
+                </tr>
+                <% } %>        
             </tbody>
         </table>
             
