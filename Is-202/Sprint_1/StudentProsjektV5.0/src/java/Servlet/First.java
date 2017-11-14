@@ -38,17 +38,20 @@ public class First extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String userid=request.getParameter("uname"); 
-        session.putValue("userid",userid); 
+        session.putValue("userid",userid);         
+        session.setAttribute("user", userid);
         String pwd=request.getParameter("pass");
         try (PrintWriter out = response.getWriter()) {
+            Class.forName("com.mysql.jdbc.Driver");
               
-java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root"); 
+java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root",""); 
 Statement st= con.createStatement(); 
 ResultSet rs=st.executeQuery("select * from user where user_fname='"+userid+"'"); 
 if(rs.next()) 
@@ -62,9 +65,11 @@ if(rs.getString(4).equals(pwd))
 } 
 else 
 { 
-out.println("Feil passord, prøv igjen"); 
+out.println("Feil passord, prøv igjen");
 } 
-} 
+        }
+    }   catch (ClassNotFoundException ex) {
+            Logger.getLogger(First.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     /*@Override
@@ -91,6 +96,7 @@ out.println("Feil passord, prøv igjen");
             Logger.getLogger(First.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -119,6 +125,7 @@ out.println("Feil passord, prøv igjen");
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }
 
