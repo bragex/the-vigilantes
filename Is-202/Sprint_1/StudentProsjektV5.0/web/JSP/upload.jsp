@@ -28,6 +28,16 @@
                     <table border="0">
                         <h3>et eller annet</h3>
                         <tr>
+                            <td>Modul: </td>
+                            <td><input type="text" name="module" size="50"/></td>
+                        </tr>
+                        <!-- The student writes in the module they are taking. Bad solution.  -->
+                        <tr>
+                            <td>Student ID: </td>
+                            <td><input type="text" name="studentID" size="50"/></td>
+                        </tr>
+                        <!-- Studenten skriver inn sin ID: st001, st002 etc. Bad solution.  -->
+                        <tr>
                             <td>File name: </td>
                             <td><input type="text" name="fileName" size="50"/></td>
                         </tr>

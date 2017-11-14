@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <h3>Lever modul</h3> <!--Move the Download aspect too a java class.-->
-        <form method="post" action="downloadServlet" enctype="multipart/form-data">
+        <form method="get" action="downloadServlet" enctype="multipart/form-data">
             <center>                 
                     <table border="0">  
                         <tr>
