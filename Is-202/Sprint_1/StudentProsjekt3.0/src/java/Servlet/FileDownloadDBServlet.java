@@ -25,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 public class FileDownloadDBServlet extends HttpServlet {
  
     // Buffer for filen. 
-    private static final int BUFFER_SIZE = 4096;   
+    private static final int BUFFER_SIZE = 4096;  
+    
      
     // Database setings
     private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
@@ -34,8 +35,10 @@ public class FileDownloadDBServlet extends HttpServlet {
      
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // Henter upload_id fra url.
-        int uploadId = Integer.parseInt(request.getParameter("id"));
+        // Henter upload_id fra url. + husk å fjenre unødvendige prnit koder
+String id = request.getParameter("id");
+System.out.println("********************* id =" + id);
+        int uploadId = Integer.parseInt(id);
          
         Connection conn = null; // Forbindelsen til databasen. 
          
@@ -43,7 +46,6 @@ public class FileDownloadDBServlet extends HttpServlet {
             // Forbindelse til databasen. 
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
- 
             // queries the database
             String sql = "Select * from submit where submit_id  = (?)";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -58,7 +60,7 @@ public class FileDownloadDBServlet extends HttpServlet {
                 int fileLength = inputStream.available();
                  
                 System.out.println("fileLength = " + fileLength);
- 
+                
                 ServletContext context = getServletContext();
  
                 // sets MIME type for the file download
@@ -106,11 +108,6 @@ public class FileDownloadDBServlet extends HttpServlet {
                 }
             }          
         }
-    }
-    @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("nullll");
     }
    }
 
