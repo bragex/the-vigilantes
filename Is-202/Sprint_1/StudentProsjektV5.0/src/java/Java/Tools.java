@@ -61,18 +61,19 @@ public class Tools {
     }
 
         //Lager en ny bruker i databasen
-    public void newUser(String first, String last, String email, String status) {
+    public void newUser(String first, String last,String password, String email, String status) {
             
          PreparedStatement newStud; 
          int result = 0;                    
             try {
                 insertUsers = connection.prepareStatement(
-                                            "INSERT INTO user (user_fname, user_lname, user_email, user_status)"
-                                             + " VALUES (?, ?, ?, ?)");
+                                            "INSERT INTO user (user_fname, user_lname, user_password, user_email, user_status)"
+                                             + " VALUES (?, ?, ?, ?, ?)");
                 insertUsers.setString(1, first);
                 insertUsers.setString(2, last);
-                insertUsers.setString(3, email);
-                insertUsers.setString(4, status);
+                insertUsers.setString(3, password);
+                insertUsers.setString(4, email);
+                insertUsers.setString(5, status);
                 result = insertUsers.executeUpdate();
                 
 

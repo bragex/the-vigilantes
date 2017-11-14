@@ -9,22 +9,27 @@
 <body>
 <%@ page import ="java.sql.*" %>
 <%@ page import ="javax.sql.*" %>
+<%@ page import ="Java.Tools" %>
 <%
  /**
 String user=request.getParameter("userid"); 
 session.putValue("userid",user); 
 * **/
-String pwd=request.getParameter("pwd"); 
-String fname=request.getParameter("fname"); 
-String lname=request.getParameter("lname"); 
-String email=request.getParameter("email"); 
-Class.forName("com.mysql.jdbc.Driver"); 
-java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit",
-"root",""); 
-Statement st= con.createStatement(); 
-ResultSet rs; 
-int i=st.executeUpdate("INSERT INTO user (user_fname, user_lname, user_password, user_email) VALUES ('"+fname+"', '"+lname+"', '"+pwd+"', '"+email+"')"); 
-
+            Class.forName("com.mysql.jdbc.Driver"); 
+            String first;
+            String last;
+            String pass;
+            String email;
+            String status;
+            first = request.getParameter("fname");
+            last = request.getParameter("lname");
+            pass = request.getParameter("pwd");
+            email = request.getParameter("email");
+            status = "Student";
+            Tools dbTools = new Tools();
+            dbTools.connect();
+            dbTools.newUser(first, last, pass, email, status);
+            
 out.println("Registered"); 
 
 
