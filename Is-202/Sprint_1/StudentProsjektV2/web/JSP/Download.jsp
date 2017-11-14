@@ -12,7 +12,7 @@
     </head>
     <body>
         <h3>Last ned modul</h3> <!--Move the upload aspect too a java class.-->
-        <form method="post" action="DownloadServlet" enctype="multipart/form-data">
+        <form method="post" action="/downloadServlet" enctype="multipart/form-data">
             <center>                 
                     <table border="0">                          
                         <tr>

@@ -98,13 +98,6 @@ values (8,'mo001', 5), (8,'mo002', 6), (8,'mo003', 7), (8,'mo004', 8), (8,'mo005
        (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
        (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
 
-create view points2 as
-select student.student_id, module.module_id, submit_points
-	from `user`,student,submit,module
-    where `user`.user_id = student.user_id
-    and student.student_id = submit.student_id
-    and submit.module_id = module.module_id;
-
 
 create table submit (
 	submit_id varchar(5) primary key,
@@ -129,6 +122,14 @@ values ('su001', 'fi001', '2017-06-14', 'mo001', 'st001'),
 ('su008', 'fi008', '2018-01-14', 'mo003', 'st007'),
 ('su009', 'fi009', '2018-02-14', 'mo005', 'st008'),
 ('su010', 'fi010', '2018-03-14', 'mo003', 'st008');
+
+
+create view points2 as
+select student.student_id, module.module_id, submit_points
+	from `user`,student,submit,module
+    where `user`.user_id = student.user_id
+    and student.student_id = submit.student_id
+    and submit.module_id = module.module_id;
 
 /*
 create view homepage as
@@ -214,50 +215,10 @@ Make a view of all users; both lecturers and students.
 
 */
 
-
-/*
-	Database for å laste opp fil. 
-*/
-drop database FileDB;
-create database FileDB;
- 
-use FileDB;
- 
-CREATE TABLE `contacts` (
-  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `file` longblob,
-  PRIMARY KEY (`contact_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-Select * from `contacts`;
-
-/*
-File download database. Laste ned fil som elev/forelleser laster opp. 
-*/
-
-/*drop database FileDW;
-create database FileDW;
- 
-use FileDW;
-
-Create table fileDW (
-	fileDW_id int (20) primary key null auto_increment,
-    fileDW_name varchar (150) default null,
-    fileDW_data longblob
-) Engine=InnoDB Default charset=latin1;
-
-Select * from fileDW;*/
-
-/*
-Kommentar fra Morten for å skille.
-*/
-
 CREATE TABLE m1 (
 m1_id int,
 user_id int(5),
-m1_points varchar(5),
+m1_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m1_cpk primary key (m1_id, user_id)
 );
@@ -267,7 +228,7 @@ values(1, 1, '8'), (1, 2, '9'), (1, 3, '9'), (1, 4, '10'), (1, 5, '10'), (1, 6, 
 CREATE TABLE m2 (
 m2_id int,
 user_id int(5),
-m2_points varchar(5),
+m2_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m2_cpk primary key (m2_id, user_id)
 );
@@ -277,7 +238,7 @@ values(2, 1, '6'), (2, 2, '7'), (2, 3, '7'), (2, 4, '2'), (2, 5, '3'), (2, 6, '9
 CREATE TABLE m3 (
 m3_id int,
 user_id int(5),
-m3_points varchar(5),
+m3_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m3_cpk primary key (m3_id, user_id)
 );
@@ -287,7 +248,7 @@ values(3, 1, '5'), (3, 2, '9'), (3, 3, '6'), (3, 4, '7'), (3, 5, '8'), (3, 6, '6
 CREATE TABLE m4 (
 m4_id int,
 user_id int(5),
-m4_points varchar(5),
+m4_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m4_cpk primary key (m4_id, user_id)
 );
@@ -297,12 +258,19 @@ values(4, 1, '9'), (4, 2, '8'), (4, 3, '10'), (4, 4, '9'), (4, 5, '10'), (4, 6, 
 CREATE TABLE m5 (
 m5_id int,
 user_id int(5),
-m5_points varchar(5),
+m5_points varchar(5) null,
 foreign key (user_id) references `user` (user_id),
 constraint m5_cpk primary key (m5_id, user_id)
 );
 insert into m5 (m5_id, user_id, m5_points)
 values(5, 1, '6'), (5, 2, '7'), (5, 3, '5'), (5, 4, '6'), (5, 5, '7'), (5, 6, '6'), (5, 7, '5');
+
+/*
+----------------------------------------------------------------------------------------------------------------------------------
+Opprett database med verdi kjør til hit.
+Query nedenfor her
+*/
+
 
 select user.user_fname, m3.m3_points
 from user, m3
@@ -315,3 +283,5 @@ and user.user_id = m2.user_id
 and user.user_id = m3.user_id
 and user.user_id = m4.user_id
 and user.user_id = m5.user_id;
+
+select * from user;
