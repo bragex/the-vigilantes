@@ -56,6 +56,10 @@
                         <td><input type="text" name="last" value="" size="50" /></td>
                     </tr>
                     <tr>
+                        <td>Password</td>
+                        <td><input type="text" name="password" value="" size="50" /></td>
+                    </tr>
+                    <tr>
                         <td>Email</td>
                         <td><input type="text" name="email" value="" size="50" /></td>
                     </tr>
