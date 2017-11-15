@@ -65,8 +65,9 @@ if(rs.getString(4).equals(pwd))
 
 } 
 else 
-{ 
-out.println("Feil passord, prøv igjen");
+{ out.println("Feil passord eller brukernavn.");
+                RequestDispatcher rd = request.getRequestDispatcher("index.html");
+                rd.include(request, response);
 } 
         }
     }   catch (ClassNotFoundException ex) {

@@ -29,7 +29,7 @@ public class tilbakemeldingLager extends HttpServlet {
     
     private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
     private String dbUser = "root";
-    private String dbPass = "Warstar123";
+    private String dbPass = "";
     
     
     /**

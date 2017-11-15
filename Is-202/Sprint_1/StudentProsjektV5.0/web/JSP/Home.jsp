@@ -57,6 +57,8 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
+            
+    <center><h1>Studentliste</h1>
         <%  
             String user = (String)session.getAttribute("user");
             Tools dbTools = new Tools(); 
@@ -90,8 +92,8 @@
                 <% } %>        
             </tbody>
         </table>
+            </center>
             
-        </div>
         <footer>
                 <!--Upload code-->
                 <jsp:include page="lagTilbakemelding.jsp"/>
