@@ -20,7 +20,7 @@ public class Tools {
 
     String URL = "jdbc:mysql://localhost:3306/slit";
     String USERNAME = "root";
-    String PASSWORD = "";
+    String PASSWORD = "root";
     Connection connection = null;
     PreparedStatement insertUsers = null;
     PreparedStatement selectUsers = null;

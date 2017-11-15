@@ -62,7 +62,7 @@
         <%  
             String user = (String)session.getAttribute("user");
             Tools dbTools = new Tools(); 
-            dbTools.User(user);
+            dbTools.User();
             dbTools.getUser();
             ResultSet users = dbTools.getUser();
             

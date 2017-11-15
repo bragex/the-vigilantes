@@ -50,7 +50,7 @@ public class First extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Class.forName("com.mysql.jdbc.Driver");
               
-java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root",""); 
+java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root"); 
 Statement st= con.createStatement(); 
 ResultSet rs=st.executeQuery("select * from user where user_fname='"+userid+"'");
 if(rs.next()) 
