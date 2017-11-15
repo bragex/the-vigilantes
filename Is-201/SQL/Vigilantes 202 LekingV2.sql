@@ -25,22 +25,29 @@ Create table `user` (
     user_id int (5) auto_increment primary key,
     user_fname varchar(40),
     user_lname varchar(40),
+    user_password varchar(40),
     user_email varchar (30),
-    user_status varchar(10) not null 
+    user_status varchar(10) default 'Student',
+    user_m1 int(2) default 0,
+    user_m2 int(2) default 0,
+    user_m3 int(2) default 0,
+    user_m4 int(2) default 0,
+    user_m5 int(2) default 0
+    
 );
 
-insert into `user` (user_id, user_fname, user_lname, user_email, user_status)
+insert into `user` (user_id, user_fname, user_lname, user_password, user_email, user_status, user_m1, user_m2, user_m3, user_m4, user_m5)
 values 
-(1, 'Morten', 'Mygland', 'morten@hotmail.com', 'Student'), 
-(2, 'Benjamin', 'Sandøy', 'benjamin@hotmail.com', 'Student'), 
-(3, 'Kim', 'Moe', 'kim@hotmail.com', 'Student'), 
-(4, 'Vegar', 'Sakseid', 'vegar@hotmail.com', 'Student'), 
-(5, 'Brage', 'Sydskogen', 'brage@hotmail.com', 'Student'), 
-(6, 'Jenny', 'Kristiansen', 'jenny@hotmail.com', 'Student'), 
-(7, 'Tønnes', 'Røren', 'tønnes@hotmail.com', 'Student'),
-(8, 'Ingfrid', 'Hansen', 'ingfrid@hotmail.com', 'Student'), 
-(9, 'Kevin', 'Pedersen', 'kevin@hotmail.com', 'Student'), 
-(10, 'Hallgeir', 'Nilsen', 'hallgeir@hotmail.com', 'Foreleser');
+(1, 'Morten', 'Mygland', 'p123', 'morten@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(2, 'Benjamin', 'Sandøy', 'p123', 'benjamin@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(3, 'Kim', 'Moe', 'p123', 'kim@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(4, 'Vegar', 'Sakseid', 'p123', 'vegar@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(5, 'Brage', 'Sydskogen', 'p123', 'brage@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(6, 'Jenny', 'Kristiansen', 'p123', 'jenny@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(7, 'Tønnes', 'Røren', 'p123', 'tønnes@hotmail.com', 'Student', 6, 7, 8, 9, 10),
+(8, 'Ingfrid', 'Hansen', 'p123', 'ingfrid@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(9, 'Kevin', 'Pedersen', 'p123', 'kevin@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+(10, 'Hallgeir', 'Nilsen', 'p123', 'hallgeir@hotmail.com', 'Foreleser', 6, 7, 8, 9, 10);
 
 
 create table lecturer (
@@ -98,7 +105,7 @@ values (8,'mo001', 5), (8,'mo002', 6), (8,'mo003', 7), (8,'mo004', 8), (8,'mo005
        (6,'mo001', 5), (6,'mo002', 6), (6,'mo003', 7), (6,'mo004', 8), (6,'mo005', 9),
        (7,'mo001', 5), (7,'mo002', 6), (7,'mo003', 7), (7,'mo004', 8), (7,'mo005', 9);
 
-select * from submit;
+
 create table submit (
     submit_id int auto_increment primary key,
     submit_name varchar(30),
@@ -178,19 +185,6 @@ create table notifConnections (
     foreign key (notif_id) references notification(notif_id)
 );
 
-/*
-
-Another way of finding notifications is to have one ID in the table, and
-have fields with the notification text.
-
-*/
-
-/*
-
-Make a view of all users; both lecturers and students.
-
-*/
-
 CREATE TABLE m1 (
 m1_id int,
 user_id int(5),
@@ -260,4 +254,8 @@ and user.user_id = m3.user_id
 and user.user_id = m4.user_id
 and user.user_id = m5.user_id;
 
-select * from user;
+SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user;
+
+insert into `user` (user_fname, user_lname, user_password, user_email)
+values 
+('Bob', 'Bobbsen', 'p123', 'bob@hotmail.com')
