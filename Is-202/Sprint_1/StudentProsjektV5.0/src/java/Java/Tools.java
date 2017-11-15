@@ -43,13 +43,13 @@ public class Tools {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             selectUsers = connection.prepareStatement(
                     /*  "SELECT user_fname, user_lname, user_email, m1_points, m2_points, m3_points, m4_points, m5_points FROM user, m1, m2, m3, m4, m5 where user.user_id  = m1.user_id and user.user_id = m2.user_id and user.user_id = m3.user_id and user.user_id = m4.user_id and user.user_id = m5.user_id;"); */
-<<<<<<< HEAD
-                    " SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user where user_status='Student' ORDER BY FIELD(user_fname, '"+user+"') DESC");
+
+                    //" SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user where user_status='Student' ORDER BY FIELD(user_fname, '"+user+"') DESC");
             
-=======
+
                     " SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user;");
 
->>>>>>> d52ea1b496f22075d66891becce65eede50afb07
+
         } catch (SQLException e) {
         }
     }

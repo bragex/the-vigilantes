@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "tilbakemeldingLager", urlPatterns = {"/tilbakemeldingLager"})
 public class tilbakemeldingLager extends HttpServlet {
 
-<<<<<<< HEAD
+
     
     
     private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
@@ -29,8 +29,7 @@ public class tilbakemeldingLager extends HttpServlet {
     private String dbPass = "";
     
     
-=======
->>>>>>> d52ea1b496f22075d66891becce65eede50afb07
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
