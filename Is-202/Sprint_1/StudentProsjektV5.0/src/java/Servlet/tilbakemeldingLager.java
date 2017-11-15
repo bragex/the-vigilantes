@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import Java.Tools;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,26 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Java.Tools;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  *
- * @author bags
+ * @author Amand
  */
 @WebServlet(name = "tilbakemeldingLager", urlPatterns = {"/tilbakemeldingLager"})
 public class tilbakemeldingLager extends HttpServlet {
 
-    
-    
-    private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
-    private String dbUser = "root";
-    private String dbPass = "Warstar123";
-    
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -60,46 +49,55 @@ public class tilbakemeldingLager extends HttpServlet {
         String points = request.getParameter("points");
         int parsePoints = Integer.parseInt(points);
         String sId = request.getParameter("sId");
+        int parseSId = Integer.parseInt(sId);
             
-            //Tools dbTools = new Tools();
-            //dbTools.connect();
-            
-        Connection conn = null; // Forbindelse til databasen. 
-        String message = null;  // Melding blir sendt tilbake til klienten. 
-         
-        try {
-            // Forbindelse til databasen. 
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
-            
-            String sql = "INSERT INTO feedback (feedback_id, feedback_content, feedback_points, submit_id) values (?, ?, ?, ?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, fId);
-            statement.setString(2, content);
-            statement.setInt(3, parsePoints);
-            statement.setString(4, sId);
-            
-            
-            int row = statement.executeUpdate();
-            if (row > 0) {
-                message = "File uploaded and saved into database";
-            }
-        } catch (SQLException ex) {
-            message = "ERROR: " + ex.getMessage();
-            ex.printStackTrace();
-        } finally {
-            if (conn != null) {
-                // Lukker databasen 
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            
+        Tools dbTools = new Tools();
+        dbTools.connect();
+        dbTools.createFeedback(fId, content, parsePoints, parseSId);
+        
+        
             out.println("</body>");
             out.println("</html>");
-            }
-            }
         }
     }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }
