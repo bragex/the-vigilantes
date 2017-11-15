@@ -116,14 +116,16 @@
         </style>
     </head>
     <body>          <% String url = request.getRequestURI(); %> 
-                    <% String url1 = "StudentProsjektV5.0/First1"; %>
+                    <% String url1 = "/StudentProsjektV5.0/Home"; %>
                     
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
                     <h1 class="h1header" id="h1menu1"><a href="Home">SLIT</a></h1>
                    
-        <header>
-                    
+        <header>                    
+            
+    <%--Viser søkebaren bare på Home.jsp--%>
+    
                     <% if (url.equals(url1)){%>
                         <form id="search00" class=searchclass action="" method="get">
                             <button id="search01">Søk</button>

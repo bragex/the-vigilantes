@@ -57,9 +57,10 @@
               <jsp:include page="HeaderMenu.jsp"/>
             <!--Menu code-->
         </header>
-        <%
+        <%  
+            String user = (String)session.getAttribute("user");
             Tools dbTools = new Tools(); 
-            dbTools.User();
+            dbTools.User(user);
             dbTools.getUser();
             ResultSet users = dbTools.getUser();
             
