@@ -91,5 +91,9 @@
         </table>
             
         </div>
+        <footer>
+                <!--Upload code-->
+                <jsp:include page="lagTilbakemelding.jsp"/>
+        </footer>
     </body>
 </html>
