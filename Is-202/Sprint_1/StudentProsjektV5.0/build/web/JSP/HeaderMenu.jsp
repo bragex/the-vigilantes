@@ -120,7 +120,7 @@
                     
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
-                    <h1 class="h1header" id="h1menu1">Studentlisten</h1>
+                    <h1 class="h1header" id="h1menu1"><a href="Home">SLIT</a></h1>
                    
         <header>
                     

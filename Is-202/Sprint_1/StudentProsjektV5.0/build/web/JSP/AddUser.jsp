@@ -41,7 +41,7 @@
         <header>
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
-        <h1>Legg til student i databasen</h1>
+        <h1>Legg til bruker i databasen</h1>
     
         
         <form name="myForm" action="Add" method="POST">
@@ -66,8 +66,9 @@
                     <tr>
                         <td>Status</td>
                         <td><select name="status">
-                            <option value="Foreleser">Foreleser</option>
                             <option value="Student">Student</option>
+                            <option value="Foreleser">Foreleser</option>
+                            <option value="Hjelpelaerer">Hjelpelærer</option>
                             </select></td>
                     </tr>
                 </tbody>
