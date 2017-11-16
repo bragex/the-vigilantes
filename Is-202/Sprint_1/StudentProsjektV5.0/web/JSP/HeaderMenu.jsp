@@ -115,13 +115,14 @@
             }
         </style>
     </head>
-    <body>          <% String url = request.getRequestURI(); %> 
-                    <% String url1 = "/StudentProsjektV5.0/Home"; %>
-                    
+    <body>          <% String url = request.getRequestURI(); 
+                       String url1 = "/StudentProsjektV5.0/Home"; 
+                       String bruker = (String)session.getAttribute("bruker");
+                    %>
+                       
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
-                    <img src="pic/uia_logo.gif" alt="logo">
-                    <h1 class="h1header" id="h1menu1"><a href="Home">SLIT</a></h1>
+                    <a href="Home"><img src="pic/uia_logo.gif" alt="logo" width="200" height = 37,5></a>
                    
         <header>                    
             
@@ -153,12 +154,17 @@
                     <form action="studentliste" method="post" class="inline">
                         <button class="linkbutton">Innstillinger</button>
                     </form>
+                    <%
+                        if(!bruker.equals("Student")){
+                        %>
                     <form action="AddUser" method="post" class="inline">
                         <button class="linkbutton">Legg til student</button>
                     </form>
                     <form action="DeleteUser" method="post" class="inline">
                         <button class="linkbutton">Slett student</button>
                     </form>
+                        <%}
+                            %>
                     <form action="SendEmail" method="post" class="inline">
                         <button class="linkbutton">Send email</button>
                     </form>
