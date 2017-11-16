@@ -6,6 +6,7 @@
 package Java;
 
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -140,5 +141,25 @@ public class Tools {
                             ex.printStackTrace();
 
         }
+    }
+    
+    public void søk(String Navn) throws SQLException {
+        String navn = Navn;
+        java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit", "root", "root");
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("select * from user where user_fname='" + navn + "'");
+        if (rs.next()) {
+            if (rs.getString(2).equals(navn)) {
+                rs = st.executeQuery("SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user WHERE user_fname='" + navn + "'");
+            }
+
+        } else {
+            if (rs.getString(2).equals(navn)) {
+                rs = st.executeQuery("SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user WHERE user_fname='" + navn + "'");
+            }
+        }
+
+        out.println("Ingen ved navnet " + Navn + " funnet");
+
     }
 }
