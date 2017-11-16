@@ -22,3 +22,4 @@ Is-202/Sprint_1/StudentProsjekt3.0/nbproject/build-impl.xml
 *.sql
 *.class
 *.war
+*.properties
