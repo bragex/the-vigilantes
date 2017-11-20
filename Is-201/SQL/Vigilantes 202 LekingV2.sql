@@ -176,7 +176,7 @@ values ('no-submit','Hva nå enn vi skriver her kommer til å vise som en varsel
 create table notifConnections (
 	notifCon_id varchar(5) primary key,
     module_id varchar(5),
-    submit_id varchar(5),
+    submit_id int,
     feedback_id varchar(5),
     notif_id varchar(20),
     foreign key (module_id) references module(module_id),
