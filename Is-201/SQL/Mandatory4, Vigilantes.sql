@@ -210,29 +210,31 @@ insert into commentSubmit (comment_id, submit_id)
 values ('co001', 'su001'), ('co002', 'su001'), ('co003', 'su002'), ('co004', 'su001'),
 	   ('co008', 'su003'), ('co009', 'su004'), ('co010', 'su003'), ('co011', 'su005'),
        ('co004', 'su005');
-       
+
 
 /* 1)Define a “view” that only gives read access to a user’s modules and that shows the
 number of hand-ins each user has. */
-create view oioi as
-select user_name, submit.submit_id, submit.module_id, count(submit.submit_id)
-from `user`, student, submit
-where `user`.user_id = student.user_id
-and student.student_id = submit.student_id
-group by user_name;
-
-
-select user_name, submit.submit_id, module.module_id, count(submit_id)
-from `user`
-join student on `user`.user_id = student.user_id
-right join submit on student.student_id = submit.student_id
-right join module on submit.module_id = module.module_id
-group by submit_id
-order by user_name;
-
-
-/* Noe er feil her føler jeg. 
-Moduler de kan ta + innleveringer */
+CREATE VIEW opg1 AS
+    SELECT 
+        `user`.user_name, submit.module_id, total_deliveries
+    FROM
+        (SELECT 
+            user_name, COUNT(submit.submit_id) AS total_deliveries
+        FROM
+            `user`, student, submit
+        WHERE
+            `user`.user_id = student.user_id
+                AND student.student_id = submit.student_id
+        GROUP BY `user`.user_name) AS td_table,
+        `user`,
+        student,
+        submit
+    WHERE
+        `user`.user_id = student.user_id
+            AND student.student_id = submit.student_id
+            AND `user`.user_name = td_table.user_name
+    GROUP BY submit.submit_id
+    ORDER BY `user`.user_name;
 
 /* 2)Write a query that lists all modules which does not have hand-ins. */
 select module_name
@@ -254,24 +256,36 @@ where user_email like '%@gmail%';
 
 /* 5)Show an overview of which modules have most comments on the hand-ins, sort
 according to descending number of comments. */
-select module_name, count(`comment`.comment_id) as comment_amount
-from module, submit, commentSubmit, `comment`
-where module.module_id = submit.module_id
-and submit.submit_id = commentSubmit.submit_id
-and commentSubmit.comment_id = `comment`.comment_id
-group by module.module_id
-order by comment_amount desc;
+SELECT 
+    module_name, COUNT(`comment`.comment_id) AS comment_amount
+FROM
+    module,
+    submit,
+    commentSubmit,
+    `comment`
+WHERE
+    module.module_id = submit.module_id
+        AND submit.submit_id = commentSubmit.submit_id
+        AND commentSubmit.comment_id = `comment`.comment_id
+GROUP BY module.module_id
+ORDER BY comment_amount DESC;
 
 /* 6)Elaborate the query in question 5 to only include modules that have 3 comments or
 more. */
-select module_name, count(`comment`.comment_id) as comment_amount
-from module, submit, commentSubmit, `comment`
-where module.module_id = submit.module_id
-and submit.submit_id = commentSubmit.submit_id
-and commentSubmit.comment_id = `comment`.comment_id
-group by module.module_id
-having count(`comment`.comment_id) >=3
-order by comment_amount desc;
+SELECT 
+    module_name, COUNT(`comment`.comment_id) AS comment_amount
+FROM
+    module,
+    submit,
+    commentSubmit,
+    `comment`
+WHERE
+    module.module_id = submit.module_id
+        AND submit.submit_id = commentSubmit.submit_id
+        AND commentSubmit.comment_id = `comment`.comment_id
+GROUP BY module.module_id
+HAVING COUNT(`comment`.comment_id) >= 3
+ORDER BY comment_amount DESC;
 
 /* 7)Write a query to show all the modules that have “Program” in the name, with number
 of questions. */
@@ -279,45 +293,44 @@ select module_name, module_numquestions
 from module
 where module_name like '%Program%';
 
-
 /* 8)What is the average number of resources in the modules taken by user X? (Select a
 particular user). */
-select user_name, count(mr_resources) as oioi
-from `user`, student, submit, module, moduleResources
-where `user`.user_id = student.user_id
-and student.student_id = submit.student_id
-and submit.module_id = module.module_id
-and module.module_id = moduleResources.module_id
-group by user_name;
-
-select `user`.user_name, avg(counted) as average
-	from 
-		(select `user`.user_name, count(mr_resources) as counted
-			from `user`, student, submit, module, moduleResources
-            where `user`.user_id = student.user_id
-            and moduleResources.module_id = module.module_id
-            and student.student_id = submit.student_id
-			and submit.module_id = module.module_id
-            group by `user`.user_name
-        ) as counts, `user`, student, submit, module, moduleResources
-	where `user`.user_name = counts.user_name
-group by `user`.user_name;
-        
-select `user`.user_name,  count(mr_resources) as counted, student.student_id
-			from `user`, student, submit, module, moduleResources
-            where `user`.user_id = student.user_id
-            and moduleResources.module_id = module.module_id
-            and student.student_id = submit.student_id
-			and submit.module_id = module.module_id
-            group by `user`.user_name;
-
-/*
-and `user`.user_id = 'us003';
-*/
-/* Resources: antall ting studenten bruker for å fullføre oppgaven. */
-
-/* Lag tabell for ressurser til en modul og anta at alle studentene bruker alle
-   ressursene knyttet til en modul */
+SELECT 
+    `user`.user_name, counted / divise as average_resources
+FROM
+    (SELECT 
+        `user`.user_name,
+            COUNT(mr_resources) AS counted,
+            oioi.divise
+    FROM
+        (SELECT 
+        COUNT(submit.submit_id) AS divise, student.student_id
+    FROM
+        `user`, student, submit
+    WHERE
+        `user`.user_id = student.user_id
+            AND student.student_id = submit.student_id
+    GROUP BY student.student_id) AS oioi, `user`, student, submit, module, moduleResources
+    WHERE
+        `user`.user_id = student.user_id
+            AND moduleResources.module_id = module.module_id
+            AND student.student_id = submit.student_id
+            AND submit.module_id = module.module_id
+            AND student.student_id = oioi.student_id
+    GROUP BY `user`.user_name) AS counts,
+    `user`,
+    student,
+    submit,
+    module,
+    moduleResources
+WHERE
+    `user`.user_name = counts.user_name
+    AND `user`.user_id = student.user_id
+            AND moduleResources.module_id = module.module_id
+            AND student.student_id = submit.student_id
+            AND submit.module_id = module.module_id
+            AND student.student_id = 'st004'
+GROUP BY `user`.user_name;
 
 /* 9)What is “outer join” used for? Give an example. 
 
@@ -338,6 +351,7 @@ from submit
 left outer join feedback on submit.submit_id = feedback.submit_id
 join student on submit.student_id = student.student_id
 join `user` on student.user_id = `user`.user_id;
+
 
 
 
