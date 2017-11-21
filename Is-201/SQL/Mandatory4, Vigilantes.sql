@@ -213,7 +213,10 @@ values ('co001', 'su001'), ('co002', 'su001'), ('co003', 'su002'), ('co004', 'su
 
 
 /* 1)Define a “view” that only gives read access to a user’s modules and that shows the
-number of hand-ins each user has. */
+number of hand-ins each user has. 
+
+A user name will show several times, as well as the total hand-ins.
+*/
 CREATE VIEW opg1 AS
     SELECT 
         `user`.user_name, submit.module_id, total_deliveries
@@ -288,49 +291,42 @@ HAVING COUNT(`comment`.comment_id) >= 3
 ORDER BY comment_amount DESC;
 
 /* 7)Write a query to show all the modules that have “Program” in the name, with number
-of questions. */
+of questions. 
+
+There are no modules with "Program" in the name.
+*/
 select module_name, module_numquestions
 from module
 where module_name like '%Program%';
 
 /* 8)What is the average number of resources in the modules taken by user X? (Select a
-particular user). */
+particular user). 
+
+We tried using avg(), but kept getting wrong results.*/
 SELECT 
-    `user`.user_name, counted / divise as average_resources
+    user_name, COUNT(mr_resources) / divise AS average_resources
 FROM
     (SELECT 
-        `user`.user_name,
-            COUNT(mr_resources) AS counted,
-            oioi.divise
-    FROM
-        (SELECT 
         COUNT(submit.submit_id) AS divise, student.student_id
     FROM
         `user`, student, submit
     WHERE
         `user`.user_id = student.user_id
             AND student.student_id = submit.student_id
-    GROUP BY student.student_id) AS oioi, `user`, student, submit, module, moduleResources
-    WHERE
-        `user`.user_id = student.user_id
-            AND moduleResources.module_id = module.module_id
-            AND student.student_id = submit.student_id
-            AND submit.module_id = module.module_id
-            AND student.student_id = oioi.student_id
-    GROUP BY `user`.user_name) AS counts,
+    GROUP BY student.student_id) AS oioi,
     `user`,
     student,
     submit,
     module,
     moduleResources
 WHERE
-    `user`.user_name = counts.user_name
-    AND `user`.user_id = student.user_id
-            AND moduleResources.module_id = module.module_id
-            AND student.student_id = submit.student_id
-            AND submit.module_id = module.module_id
-            AND student.student_id = 'st004'
-GROUP BY `user`.user_name;
+    `user`.user_id = student.user_id
+        AND student.student_id = submit.student_id
+        AND submit.module_id = module.module_id
+        AND moduleResources.module_id = module.module_id
+        AND student.student_id = oioi.student_id
+		AND student.student_id = 'st004'
+GROUP BY user_name;
 
 /* 9)What is “outer join” used for? Give an example. 
 
@@ -351,10 +347,6 @@ from submit
 left outer join feedback on submit.submit_id = feedback.submit_id
 join student on submit.student_id = student.student_id
 join `user` on student.user_id = `user`.user_id;
-
-
-
-
 
 
 
