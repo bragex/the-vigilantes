@@ -44,7 +44,7 @@ public class AddUser extends HttpServlet {
                 rd.forward(request, response);
             }
             else
-                out.println("Feil bruker, du er logget in som " + bruker);
+                out.println("Feil bruker, du er logget inn som " + bruker);
         }
     }
 

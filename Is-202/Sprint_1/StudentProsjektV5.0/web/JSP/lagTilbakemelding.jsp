@@ -22,7 +22,6 @@
         <form method="post" action="tilbakemeldingLager" enctype="multipart/form-data">
             <center>                 
                     <table border="0">
-                        <h3>et eller annet</h3>
                         <tr>
                             <td>feedback_id: </td>
                             <td><input type="text" name="fId" size="50"/></td>

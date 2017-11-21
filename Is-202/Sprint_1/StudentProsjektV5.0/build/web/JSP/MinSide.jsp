@@ -3,6 +3,7 @@
     Created on : 22.sep.2017, 10:25:22
     Author     : by-cr
 --%>
+<%@page import="Java.Tools"%>
 <%--This is the user profile--%>
 <%--Depends on HeaderMenu.jsp--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +15,7 @@
         <style>
             .button {
                 color: white;
-                padding: 10px 25px;
+                padding: 7px 10px;
                 text-align: center;
                 text-decoration: none;
                 font-size: 16px;
@@ -75,12 +76,16 @@
         <header>
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
+        <% Tools tools = new Tools();
+        
+        
+        %>
         <div id="bodydiv"> <!--Implement users and Database!-->
             <h1 id="MinSideh1">Min side</h1>
             <div class = "MinSidediv">
-                <p>Navn:</p> 
+                <p>Navn: <%=session.getAttribute("fnavn")%> <%=session.getAttribute("lnavn")%></p> 
                 <p>Blogg:</p>
-                <p>E-post:<!--Declare with database--></p>
+                <p>E-post: </p>
             </div>
             <div class="divminside">
                 <form action="TilbakeMelding" method="post">                    

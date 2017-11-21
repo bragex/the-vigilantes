@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,6 +36,13 @@ public class MinSide extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        String id = request.getParameter("param");
+        String fnavn = request.getParameter("param2");
+        String lnavn = request.getParameter("param3");
+        session.setAttribute("id", id);
+        session.setAttribute("fnavn", fnavn);
+        session.setAttribute("lnavn", lnavn);
         try (PrintWriter out = response.getWriter()) {
             RequestDispatcher rd = request.getRequestDispatcher("JSP/MinSide.jsp");
                 rd.forward(request, response);

@@ -43,7 +43,7 @@ public class Tools {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             selectUsers = connection.prepareStatement(
-                    " SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user where user_status='Student' ORDER BY FIELD(user_fname, '"+user+"') DESC");
+                    " SELECT user_id, user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user where user_status='Student' ORDER BY FIELD(user_fname, '"+user+"') DESC");
             
 
                     //" SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user;");
@@ -162,4 +162,8 @@ public class Tools {
         out.println("Ingen ved navnet " + Navn + " funnet");
 
     }
+    
+    public void poeng(){
+    
+}
 }

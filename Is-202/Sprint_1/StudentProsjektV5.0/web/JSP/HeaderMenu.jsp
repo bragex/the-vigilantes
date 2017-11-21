@@ -154,20 +154,14 @@
                     <form action="studentliste" method="post" class="inline">
                         <button class="linkbutton">Innstillinger</button>
                     </form>
-                    <%
-                        if(!bruker.equals("Student")){
-                        %>
+                    <%if(!bruker.equals("Student")){%>
                     <form action="AddUser" method="post" class="inline">
                         <button class="linkbutton">Legg til student</button>
                     </form>
                     <form action="DeleteUser" method="post" class="inline">
                         <button class="linkbutton">Slett student</button>
                     </form>
-                        <%}
-                            %>
-                    <form action="SendEmail" method="post" class="inline">
-                        <button class="linkbutton">Send email</button>
-                    </form>
+                        <%}%>
                     <form action="index.html" method="post" class="inline">
                         <button class="linkbutton">Logg ut</button>
                     </form>
