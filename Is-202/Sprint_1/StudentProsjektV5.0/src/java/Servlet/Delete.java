@@ -9,6 +9,7 @@ import Java.Tools;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,7 +50,15 @@ public class Delete extends HttpServlet {
             dbTools.connect();
             dbTools.Delete();
             userId = Integer.parseInt(request.getParameter("delete"));
+            try {
             dbTools.deleteUser(userId);
+            RequestDispatcher rd = request.getRequestDispatcher("JSP/DeleteUser.jsp");
+            rd.forward(request, response);
+            }
+            catch (IOException e) {
+                out.println("Det har oppstått en feil, venligst prøv igjen");
+                
+            }
             
             out.println("</body>");
             out.println("</html>");
