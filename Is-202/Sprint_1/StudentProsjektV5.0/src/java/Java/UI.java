@@ -28,7 +28,7 @@ public class UI extends javax.swing.JFrame {
                             
  public void showTableData(){
      try{
-         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit?autoReconnect=true&useSSL=false","root","");
+         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit?autoReconnect=true&useSSL=false","root","root");
          String sql = "SELECT * FROM user";
          pst = con.prepareStatement(sql);
          rs=pst.executeQuery();
@@ -304,7 +304,7 @@ public class UI extends javax.swing.JFrame {
             String sql = "INSERT INTO user"
             +"(user_id, user_fname, user_lname, user_password, user_email, user_status, user_m1, user_m2, user_m3, user_m4, user_m5)"
             +"VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit?autoReconnect=true&useSSL=false","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit?autoReconnect=true&useSSL=false","root","root");
             pst = con.prepareStatement(sql);
             pst.setString(1,id.getText());
             pst.setString(2,fornavn.getText());
@@ -330,7 +330,7 @@ public class UI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try{
             String sql = "UPDATE user SET user_fname=?, user_lname=?, user_password=?, user_email=?, user_status=?, user_m1=?,user_m2=?,user_m3=?,user_m4=?,user_m5=? WHERE user_id=?";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root");
             pst = con.prepareStatement(sql);
 
             pst.setString(1,fornavn.getText());
@@ -357,7 +357,7 @@ public class UI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
             String sql = "DELETE FROM user WHERE user_id =?";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root");
             pst = con.prepareStatement(sql);
             pst.setString(1,id.getText());
             pst.executeUpdate();

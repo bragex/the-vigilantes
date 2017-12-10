@@ -22,7 +22,7 @@ public class FileUploadDBServlet extends HttpServlet {
     // Brukes for å koble til databasen.
     private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
     private String dbUser = "root";
-    private String dbPass = "Warstar123";
+    private String dbPass = "root";
      
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {

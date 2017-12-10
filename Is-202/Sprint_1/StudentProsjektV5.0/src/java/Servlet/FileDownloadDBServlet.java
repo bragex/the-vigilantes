@@ -31,7 +31,7 @@ public class FileDownloadDBServlet extends HttpServlet {
     // Database setings
     private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
     private String dbUser = "root";
-    private String dbPass = "Warstar123";
+    private String dbPass = "root";
      
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
