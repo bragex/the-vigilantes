@@ -54,7 +54,7 @@ System.out.println("********************* id =" + id);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 // Henter filen og file blob. 
-                String filNavn = result.getString("submit_name");
+                String fileName = result.getString("submit_name");
                 Blob blob = result.getBlob("submit_file");
                 InputStream inputStream = blob.getBinaryStream();
                 int fileLength = inputStream.available();
@@ -64,7 +64,7 @@ System.out.println("********************* id =" + id);
                 ServletContext context = getServletContext();
  
                 // sets MIME type for the file download
-                String mimeType = context.getMimeType(filNavn);
+                String mimeType = context.getMimeType(fileName);
                 if (mimeType == null) {        
                     mimeType = "application/octet-stream";
                 }              
@@ -73,7 +73,7 @@ System.out.println("********************* id =" + id);
                 response.setContentType(mimeType);
                 response.setContentLength(fileLength);
                 String headerKey = "Content-Disposition";
-                String headerValue = String.format("attachment; filNavn=\"%s\"", filNavn);
+                String headerValue = String.format("attachment; fileName=\"%s\"", fileName);
                 response.setHeader(headerKey, headerValue);
  
                 // writes the file to the client
