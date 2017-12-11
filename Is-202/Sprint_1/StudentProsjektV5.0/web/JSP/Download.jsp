@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <h3>Lever modul</h3> <!--Move the Download aspect too a java class.-->
+        <h3>Last ned modul</h3> <!--Move the Download aspect too a java class.-->
         <form method="get" action="downloadServlet" enctype="multipart/form-data">
             <center>                 
                     <table border="0">  
@@ -20,7 +20,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="submit" value="Download">
+                                <input type="submit" value="Last ned">
                             </td>
                         </tr>
                     </table>               
