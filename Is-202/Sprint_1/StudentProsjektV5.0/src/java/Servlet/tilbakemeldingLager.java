@@ -22,14 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 public class tilbakemeldingLager extends HttpServlet {
 
 
-    
-    
-    private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
-    private String dbUser = "root";
-    private String dbPass = "";
-    
-    
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,17 +44,27 @@ public class tilbakemeldingLager extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet tilbakemeldingLager at " + request.getContextPath() + "</h1>");
             
-        String fId = request.getParameter("fId");     
-        String content = request.getParameter("content");
-        //String date = request.getParameter("date");
-        String points = request.getParameter("points");
-        int parsePoints = Integer.parseInt(points);
-        String sId = request.getParameter("sId");
-        int parseSId = Integer.parseInt(sId);
+        String content;
+            String points;
+            String submitId;
             
-        Tools dbTools = new Tools();
-        dbTools.connect();
-        dbTools.createFeedback(fId, content, parsePoints, parseSId);
+            System.out.println("OIOIOI");
+            System.out.println("OIOIOI");
+            System.out.println("OIOIOI");
+               
+            content = request.getParameter("content");
+            points = request.getParameter("points");
+            int parsePoints = Integer.parseInt(points);
+            submitId = request.getParameter("sId");
+            int parseSubmitId = Integer.parseInt(submitId);
+            
+            System.out.println("OIOIOI");
+            System.out.println(parsePoints + parseSubmitId);
+            System.out.println("OIOIOI");
+            
+            Tools dbTools = new Tools();
+            dbTools.connect();
+            dbTools.createFeedback(content, parsePoints, parseSubmitId);
         
         
             out.println("</body>");

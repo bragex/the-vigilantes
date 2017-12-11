@@ -15,27 +15,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>lagTilbakemelding</title>
+        <title>Lag Tilbakemelding</title>
     </head>
     <body>
-        <h3>Lag Tilbakemelding</h3> <!--Move the upload aspect too a java class.-->
+        <header>
+            <jsp:include page="HeaderMenu.jsp"/>
+        </header>
+        <h3>Lag Tilbakemelding</h3>
         <form method="post" action="tilbakemeldingLager" enctype="multipart/form-data">
             <center>                 
                     <table border="0">
                         <tr>
-                            <td>feedback_id: </td>
-                            <td><input type="text" name="fId" size="50"/></td>
-                        </tr>
-                        <tr>
                             <td>feedback_content: </td>
                             <td><input type="text" name="content" size="50"/></td>
                         </tr>
-                        <%-- 
-                        <tr>
-                            <td>feedback_date: </td>
-                            <td><input type="text" name="date" size="50"/></td>
-                        </tr>
-                        --%>
                         <tr>
                             <td>feedback_points: </td>
                             <td><input type="text" name="points" size="50"/></td>

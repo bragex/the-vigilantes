@@ -119,21 +119,21 @@ public class Tools {
         return result;
     }
 
-    public void createFeedback(String fId, String content, int points, int sId) {
-
-        PreparedStatement newStud;
-        int result = 0;
+    public void createFeedback(String content, int points, int sId) {
+        
+        PreparedStatement newStud; 
+        int result = 0;   
         try {
             feedback = connection.prepareStatement(
-                    "INSERT INTO feedback (feedback_id, feedback_content, feedback_points, submit_id)"
-                    + " VALUES (?, ?, ?, ?)");
-            feedback.setString(1, fId);
-            feedback.setString(2, content);
-            feedback.setInt(3, points);
-            feedback.setInt(4, sId);
+                                            "INSERT INTO feedback (feedback_content, feedback_date, feedback_points, submit_id)"
+                                             + " VALUES (?, current_timestamp, ?, ?)");
+            feedback.setString(1, content);
+            feedback.setInt(2, points);
+            feedback.setInt(3, sId);
             result = feedback.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        }
+        catch (SQLException ex) {
+                            ex.printStackTrace();
 
         }
     }

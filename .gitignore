@@ -23,3 +23,5 @@ Is-202/Sprint_1/StudentProsjekt3.0/nbproject/build-impl.xml
 *.class
 *.war
 *.properties
+/Is-202/Sprint_1/StudentProsjekt3.0/build/
+/Is-202/Sprint_1/StudentProsjekt3.0/nbproject/private/
