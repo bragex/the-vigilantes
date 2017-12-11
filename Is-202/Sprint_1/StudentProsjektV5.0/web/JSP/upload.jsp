@@ -26,7 +26,6 @@
         <form method="post" action="uploadServlet" enctype="multipart/form-data">
             <center>                 
                     <table border="0">
-                        <h3>et eller annet</h3>
                         <tr>
                             <td>Modul: </td>
                             <td><input type="text" name="module" size="50"/></td>
@@ -42,12 +41,12 @@
                             <td><input type="text" name="fileName" size="50"/></td>
                         </tr>
                         <tr>
-                            <td>Portrait File: </td>
+                            <td>Last opp file: </td>
                             <td><input type="file" name="file" size="50"/></td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="submit" value="Save">
+                                <input type="submit" value="Lagre">
                             </td>
                         </tr>
                     </table>               
