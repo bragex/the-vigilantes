@@ -41,7 +41,7 @@
                             <td><input type="text" name="fileName" size="50"/></td>
                         </tr>
                         <tr>
-                            <td>Last opp file: </td>
+                            <td>Last opp fil: </td>
                             <td><input type="file" name="file" size="50"/></td>
                         </tr>
                         <tr>
