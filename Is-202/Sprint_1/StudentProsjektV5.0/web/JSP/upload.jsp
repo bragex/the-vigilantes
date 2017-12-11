@@ -37,7 +37,7 @@
                         </tr>
                         <!-- Studenten skriver inn sin ID: st001, st002 etc. Bad solution.  -->
                         <tr>
-                            <td>File name: </td>
+                            <td>Fil navn: </td>
                             <td><input type="text" name="fileName" size="50"/></td>
                         </tr>
                         <tr>
