@@ -27,7 +27,7 @@ public class FileUploadDBServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // Henter verdier fra text linjene i databasen. 
-        String fileName = request.getParameter("fileName");
+        String filNavn = request.getParameter("filNavn");
         String module = request.getParameter("module");
         String studentID = request.getParameter("studentID");
               
@@ -56,7 +56,7 @@ public class FileUploadDBServlet extends HttpServlet {
             // Lager SQL statement.
             String sql = "INSERT INTO submit (submit_name, module_id, student_id, submit_file) values (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, fileName);
+            statement.setString(1, filNavn);
             statement.setString(2, module);
             statement.setString(3, studentID);
 
