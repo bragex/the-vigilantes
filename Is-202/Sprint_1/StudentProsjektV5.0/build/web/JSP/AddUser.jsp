@@ -48,19 +48,19 @@
             <table class="center">
                 <tbody>
                     <tr>
-                        <td>First Name</td>
+                        <td>Fornavn</td>
                         <td><input type="text" name="first" value="" size="50" /></td>
                     </tr>
                     <tr>
-                        <td>Last name</td>
+                        <td>Etternavn</td>
                         <td><input type="text" name="last" value="" size="50" /></td>
                     </tr>
                     <tr>
-                        <td>Password</td>
+                        <td>Passord</td>
                         <td><input type="text" name="password" value="" size="50" /></td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>Epost</td>
                         <td><input type="text" name="email" value="" size="50" /></td>
                     </tr>
                     <tr>
