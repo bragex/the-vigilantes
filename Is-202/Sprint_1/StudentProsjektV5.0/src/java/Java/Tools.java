@@ -31,6 +31,9 @@ public class Tools {
     PreparedStatement feedback = null;
     ResultSet resultSet = null;
 
+    /**
+     * Kobbler til databasen med oppgitt brukernavn og passord
+     */
     public void connect() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -39,7 +42,7 @@ public class Tools {
         }
     }
 
-    //Henter ut en liste med studenter og modulpoeng.
+    //Henter ut en liste med fra databasen av brukere og modulpoenge de har.
     public void User(String user) {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -51,6 +54,7 @@ public class Tools {
         }
     }
 
+    // Laggrer et resultSet fra en spørring til database
     public ResultSet getUser() {
         try {
             resultSet = selectUsers.executeQuery();
@@ -98,6 +102,10 @@ public class Tools {
 
     }
 
+    /*
+     *aggrer et resultSet fra en spørring til database. 
+     *Dette er det samme som getUser, er bare brukt med et annet navn for å gjøre kodingen lettere
+    */
     public ResultSet getUserDel() {
 
         try {
@@ -107,7 +115,11 @@ public class Tools {
 
         return resultSet;
     }
-
+    /**
+     * Sletter en user fra tabelen user i databasen basert på id
+     * @param id
+     * @return 
+     */
     public int deleteUser(Integer id) {
         int result = 0;
 

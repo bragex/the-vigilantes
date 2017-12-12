@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *Sletter en bruker som er valgt ut fra DeleteUser.jsp
  * @author by-cr
  */
 @WebServlet(name = "Delete", urlPatterns = {"/Delete"})
@@ -43,13 +43,11 @@ public class Delete extends HttpServlet {
             out.println("<title>Servlet Delete</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Delete at " + request.getContextPath() + "</h1>");
-            int result = 0;
-            Integer userId = new Integer(0);
+            out.println("<h1>Servlet Delete at " + request.getContextPath() + "</h1>");    
             Tools dbTools = new Tools();
             dbTools.connect();
             dbTools.Delete();
-            userId = Integer.parseInt(request.getParameter("delete"));
+            Integer userId = Integer.parseInt(request.getParameter("delete")); // Lagrer brukerId til brukeren som skal slettessom blir sent med fra fra JSP siden
             try {
             dbTools.deleteUser(userId);
             RequestDispatcher rd = request.getRequestDispatcher("JSP/DeleteUser.jsp");

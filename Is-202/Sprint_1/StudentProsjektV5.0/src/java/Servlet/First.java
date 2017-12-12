@@ -26,6 +26,8 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author Kim
+ * Denne Servelten sjekker loggin infoen opp mot en bruker i databasen for¨å se om den finner en matchende bruker.
+ * Hvis den finner en match blir det da sent med et par sessions som brukes videre i programmet for å identifisere brukeren og gi rettigheter.
  */
 @WebServlet(urlPatterns = {"/First1"})
 public class First extends HttpServlet {
@@ -43,22 +45,22 @@ public class First extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(); // Oppretter en session
         String idName=request.getParameter("uname");
-        session.setAttribute("user", idName);
+        session.setAttribute("user", idName);   //Setter  user navnet som en session kalt idName
         String pwd=request.getParameter("pass");
         try (PrintWriter out = response.getWriter()) {
-            Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver");
               
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root"); 
 Statement st= con.createStatement(); 
-ResultSet rs=st.executeQuery("select * from user where user_fname='"+idName+"'");
+ResultSet rs=st.executeQuery("select * from user where user_fname='"+idName+"'");   //Ser i databasen for alle med gitt brukernavn
 if(rs.next()) 
 { 
 if(rs.getString(4).equals(pwd))
 {
     String bruker = rs.getString(6);
-    session.setAttribute("bruker", bruker);
+    session.setAttribute("bruker", bruker); // En session som gir deg rettigheter basert på retighetene til brukeren fra databasen
     RequestDispatcher rd = request.getRequestDispatcher("Home"); 
     rd.forward(request, response);
     
