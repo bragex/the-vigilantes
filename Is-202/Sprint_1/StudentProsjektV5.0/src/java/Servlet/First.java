@@ -7,6 +7,7 @@ package Servlet;
  * and open the template in the editor.
  */
 
+import Java.Tools;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
@@ -52,9 +53,10 @@ public class First extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
         Class.forName("com.mysql.jdbc.Driver");
               
-java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root"); 
-Statement st= con.createStatement(); 
-ResultSet rs=st.executeQuery("select * from user where user_fname='"+idName+"'");   //Ser i databasen for alle med gitt brukernavn
+Tools dbTools = new Tools();
+            dbTools.connect(); 
+            dbTools.loggInn(idName);
+            ResultSet rs = dbTools.getUser();   //Ser i databasen for alle med gitt brukernavn
 if(rs.next()) 
 { 
 if(rs.getString(4).equals(pwd))

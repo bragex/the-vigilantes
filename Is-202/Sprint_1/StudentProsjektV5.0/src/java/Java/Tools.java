@@ -41,6 +41,17 @@ public class Tools {
             Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    // Logger inn ved bruk av brukernavn. Dette matches mot fnavn i databasen
+        public void loggInn(String idName) {
+       try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            selectUsers = connection.prepareStatement(
+                    "select * from user where user_fname='"+ idName +"'");
+
+        } catch (SQLException e) {
+        } 
+    }
 
     //Henter ut en liste med fra databasen av brukere og modulpoenge de har.
     public void User(String user) {
