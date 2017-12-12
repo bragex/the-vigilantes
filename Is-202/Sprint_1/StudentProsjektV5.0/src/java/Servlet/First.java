@@ -44,15 +44,15 @@ public class First extends HttpServlet {
         throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String userid=request.getParameter("uname");
-        session.setAttribute("user", userid);
+        String idName=request.getParameter("uname");
+        session.setAttribute("user", idName);
         String pwd=request.getParameter("pass");
         try (PrintWriter out = response.getWriter()) {
             Class.forName("com.mysql.jdbc.Driver");
               
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/slit","root","root"); 
 Statement st= con.createStatement(); 
-ResultSet rs=st.executeQuery("select * from user where user_fname='"+userid+"'");
+ResultSet rs=st.executeQuery("select * from user where user_fname='"+idName+"'");
 if(rs.next()) 
 { 
 if(rs.getString(4).equals(pwd))
