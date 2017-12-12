@@ -15,7 +15,7 @@
             <center>                 
                     <table border="0">  
                         <tr>
-                            <td>Download submit_id </td> <!-- write the submit id, shitty solution -->
+                            <td>Last ned submit_id </td> <!-- write the submit id, shitty solution -->
                             <td><input type="text" name="id" size="50"/></td>
                         </tr>
                         <tr>
