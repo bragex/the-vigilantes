@@ -52,7 +52,7 @@ public class SendEmail extends HttpServlet {
         
         ArrayList<String> eposter = new ArrayList<>();
         while (epost.next()){
-         eposter.add(epost.getString("user_epost"));                    
+         eposter.add(epost.getString("user_email"));                    
         }
        String str = String.join(",", eposter);
         session.setAttribute("mailer", str);

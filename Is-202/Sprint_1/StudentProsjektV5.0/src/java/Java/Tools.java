@@ -22,7 +22,7 @@ public class Tools {
 
     String URL = "jdbc:mysql://localhost:3306/slit";
     String USERNAME = "root";
-    String PASSWORD = "root";
+    String PASSWORD = "";
     Connection connection = null;
     PreparedStatement insertUsers = null;
     PreparedStatement selectUsers = null;
@@ -257,7 +257,8 @@ public class Tools {
             epost = connection.prepareStatement(
                     "SELECT user_email FROM user where user_m"+modul+"<7");
 
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            ex.getErrorCode();
         }
     }
 
@@ -266,7 +267,8 @@ public class Tools {
         try {
             resultSet = epost.executeQuery();
 
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            ex.getErrorCode();
         }
         return resultSet;
 
