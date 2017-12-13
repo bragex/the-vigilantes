@@ -92,18 +92,23 @@
                 String farge1 = "PaleGreen";
                 int f1 = Integer.valueOf(m1);
                 if (f1<7)farge1="LightCoral";
+                if (f1==0) farge1="LightGrey";
                 String farge2 = "PaleGreen";
                 int f2 = Integer.valueOf(m2);
                 if (f2<7)farge2="LightCoral";
+                if (f2==0) farge2="LightGrey";
                 String farge3 = "PaleGreen";
                 int f3 = Integer.valueOf(m3);
                 if (f3<7)farge3="LightCoral";
+                if (f3==0) farge3="LightGrey";
                 String farge4 = "PaleGreen";
                 int f4 = Integer.valueOf(m4);
                 if (f4<7)farge4="LightCoral";
+                if (f4==0) farge4="LightGrey";
                 String farge5 = "PaleGreen";
                 int f5 = Integer.valueOf(m5);
                 if (f5<7)farge5="LightCoral";
+                if (f5==0) farge5="LightGrey";
                 %>
                 <tr>
                     <td> <a href="MinSide?param=<%=id%>&param2=<%=fnavn%>&param3=<%=lnavn%>"> <%=fnavn%> <%=lnavn%></a></td>

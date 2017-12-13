@@ -76,10 +76,7 @@
         <header>
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
-        <% Tools tools = new Tools();
         
-        
-        %>
         <div id="bodydiv"> <!--Implement users and Database!-->
             <h1 id="MinSideh1">Min side</h1>
             <div class = "MinSidediv">
