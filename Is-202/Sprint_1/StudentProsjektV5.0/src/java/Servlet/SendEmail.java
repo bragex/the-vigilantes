@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author vegar
@@ -46,23 +47,19 @@ public class SendEmail extends HttpServlet {
         Tools tool = new Tools();
         String modul = request.getParameter("modul");
         session.setAttribute("modul", modul);
-        session.getAttribute("user");
         ResultSet epost = tool.getEpost(modul);
+        try (PrintWriter out = response.getWriter()) {
         
-         try (PrintWriter out = response.getWriter()) {
+        ArrayList<String> eposter = new ArrayList<>();
         while (epost.next()){
-            ArrayList eposter = new ArrayList();
-            eposter.add(epost.getString("user_epost"));                    
+         eposter.add(epost.getString("user_epost"));                    
         }
-        String email = epost.next()+",";
-        session.setAttribute("mailer", email);
-        RequestDispatcher rd = request.getRequestDispatcher("Home"); 
+       String str = String.join(",", eposter);
+        session.setAttribute("mailer", str);
+        RequestDispatcher rd = request.getRequestDispatcher("JSP/Home.jsp"); 
     rd.forward(request, response);
-       
-        
     }
     }
-
 
     
 

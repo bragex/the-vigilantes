@@ -254,10 +254,9 @@ public class Tools {
     public void epost(String modul) {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            selectUsers = connection.prepareStatement(
-                    "SELECT user_email FROM user where user_m" + modul + "<7");
+            epost = connection.prepareStatement(
+                    "SELECT user_email FROM user where user_m"+modul+"<7");
 
-            //" SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user;");
         } catch (SQLException e) {
         }
     }
