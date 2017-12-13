@@ -50,15 +50,17 @@ public class Add extends HttpServlet {
             
             String first;
             String last;
+            String pass;
             String email;
             String status;
             first = request.getParameter("first");
             last = request.getParameter("last");
+            pass = request.getParameter("password");
             email = request.getParameter("email");
             status = request.getParameter("status");
             Tools dbTools = new Tools();
             dbTools.connect();
-            dbTools.newUser(first, last, email, status);
+            dbTools.newUser(first, last, pass, email, status);
             
             
             out.println("</body>");

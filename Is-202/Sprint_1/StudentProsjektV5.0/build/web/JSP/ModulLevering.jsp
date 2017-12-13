@@ -49,18 +49,30 @@
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
         <div>
-            <h1 class="Modulh21">Modul 1</h1>           
+            <h1 class="Modulh21">Modul <%=session.getAttribute("modul")%></h1>           
             <a href="Moduler">
                 <h4 id="p1">Oversikt over alle Moduler</h4>
             </a>
             <div id="lmål1">
-            <p><a id="alevering" href="RessurserM1">Se her for læringsmål Modul 1</a></p>
+            <p><a id="alevering" href="RessurserM<%=session.getAttribute("modul")%>">Se her for læringsmål Modul <%=session.getAttribute("modul")%></a></p>
             </div>
             <footer>
                 <!--Upload code-->
+                 <%
+                String bruker = (String)session.getAttribute("bruker");
+                if (bruker.equals("Student")){
+                %>
                 <jsp:include page="upload.jsp"/>
+                <jsp:include page="TilbakeMelding.jsp"/>
+                <%}%>
                 <!--Upload code-->
                 <jsp:include page="Download.jsp"/>
+                <!-- Lag en tilbakemelding -->
+                <%
+                if (bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){
+                %>
+                <jsp:include page="lagTilbakemelding.jsp"/>
+                <%}%>
             </footer>
         </div>
     </body>

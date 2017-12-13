@@ -25,25 +25,26 @@ import javax.servlet.http.HttpServletResponse;
 public class FileDownloadDBServlet extends HttpServlet {
  
     // Buffer for filen. 
-    private static final int BUFFER_SIZE = 4096;   
+    private static final int BUFFER_SIZE = 4096;  
+    
      
     // Database setings
     private String dbURL = "jdbc:mysql://localhost:3306/SLIT";
     private String dbUser = "root";
-    private String dbPass = "Warstar123";
+    private String dbPass = "root";
      
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // Henter upload_id fra url.
-        int uploadId = Integer.parseInt(request.getParameter("id"));
+        // Henter upload_id fra url. + husk å fjenre unødvendige prnit koder
+            String id = request.getParameter("id");
+            int uploadId = Integer.parseInt(id);
          
-        Connection conn = null; // Forbindelsen til databasen. 
+            Connection conn = null; // Forbindelsen til databasen. 
          
-        try {
+            try {
             // Forbindelse til databasen. 
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
- 
             // queries the database
             String sql = "Select * from submit where submit_id  = (?)";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -58,7 +59,7 @@ public class FileDownloadDBServlet extends HttpServlet {
                 int fileLength = inputStream.available();
                  
                 System.out.println("fileLength = " + fileLength);
- 
+                
                 ServletContext context = getServletContext();
  
                 // sets MIME type for the file download
@@ -71,7 +72,7 @@ public class FileDownloadDBServlet extends HttpServlet {
                 response.setContentType(mimeType);
                 response.setContentLength(fileLength);
                 String headerKey = "Content-Disposition";
-                String headerValue = String.format("attachment; filename=\"%s\"", fileName);
+                String headerValue = String.format("attachment; fileName=\"%s\"", fileName);
                 response.setHeader(headerKey, headerValue);
  
                 // writes the file to the client
@@ -86,17 +87,21 @@ public class FileDownloadDBServlet extends HttpServlet {
                  
                 inputStream.close();
                 outStream.close();             
-            } else {
+            } 
+            else {
                 // Ingen fil funnet.
                 response.getWriter().print("File not found for the id: " );  
             }
-        } catch (SQLException ex) {
+            }
+            catch (SQLException ex) {
             ex.printStackTrace();
             response.getWriter().print("SQL Error: " + ex.getMessage());
-        } catch (IOException ex) {
+            } 
+            catch (IOException ex) {
             ex.printStackTrace();
             response.getWriter().print("IO Error: " + ex.getMessage());
-        } finally {
+            } 
+            finally {
             if (conn != null) {
                 // Lukker forbindelsen til databasen når arbeidet er fullført. 
                 try {
@@ -107,10 +112,5 @@ public class FileDownloadDBServlet extends HttpServlet {
             }          
         }
     }
-    @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("nullll");
-    }
-   }
+}
 

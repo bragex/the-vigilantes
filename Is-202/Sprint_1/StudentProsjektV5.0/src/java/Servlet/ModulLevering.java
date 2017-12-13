@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,6 +36,9 @@ public class ModulLevering extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        String modul = request.getParameter("modul");
+        session.setAttribute("modul", modul);
         RequestDispatcher rd = request.getRequestDispatcher("JSP/ModulLevering.jsp");
             rd.include(request, response);    
     }

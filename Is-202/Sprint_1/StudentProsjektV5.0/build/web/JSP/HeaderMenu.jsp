@@ -115,19 +115,22 @@
             }
         </style>
     </head>
-    <body>          <% String url = request.getRequestURI(); %> 
-                    <% String url1 = "/StudentProsjektV2/First1"; %>
-                    
+    <body>          <% String url = request.getRequestURI(); 
+                       String url1 = "/StudentProsjektV5.0/Home"; 
+                       String bruker = (String)session.getAttribute("bruker");
+                    %>
+                       
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
-                    <h1 class="h1header" id="h1menu1">Studentlisten</h1>
+                    <a href="Home"><img src="pic/uia_logo.gif" alt="logo" width="200" height = "37"></a>
                    
-        <header>
-                    
+        <header>                    
+            
+    <%--Viser søkebaren bare på Home.jsp--%>
+    
                     <% if (url.equals(url1)){%>
-                        <form id="search00" class=searchclass action="" method="get">
+                        <form id="search00" class=searchclass action="sok" method="post">
                             <button id="search01">Søk</button>
-                            <input id="search02" type="search" name="Search">
                         </form>
                     <%}%> 
                 </div>
@@ -147,18 +150,20 @@
                     <form action="Moduler" method="post" class="inline">
                         <button class="linkbutton">Moduler</button>
                     </form>
-                    <form action="studentliste" method="post" class="inline">
+                    <form action="Innstillinger" method="post" class="inline">
                         <button class="linkbutton">Innstillinger</button>
                     </form>
+                    <%if(!bruker.equals("Student")){%>
                     <form action="AddUser" method="post" class="inline">
-                        <button class="linkbutton">Legg til student</button>
+                        <button class="linkbutton">Legg til bruker</button>
                     </form>
                     <form action="DeleteUser" method="post" class="inline">
-                        <button class="linkbutton">Slett student</button>
+                        <button class="linkbutton">Slett bruker</button>
                     </form>
-                    <form action="SendEmail" method="post" class="inline">
-                        <button class="linkbutton">Send email</button>
+                    <form action="lagTilbakemelding" method="post" class="inline">
+                        <button class="linkbutton">Lag Tilbakemelding</button>
                     </form>
+                        <%}%>
                     <form action="index.html" method="post" class="inline">
                         <button class="linkbutton">Logg ut</button>
                     </form>
@@ -170,7 +175,7 @@
                 <!--if the user value is empty, this part of the code will show.-->
             <% } else {%>
                 <!--If the user value aren't empty, this part of the code will show.-->
-                <b><p>Logget inn som: <%=session.getAttribute("user")%></p></b>
+                <b><p>Logget inn som: <%=session.getAttribute("user")%>     -       Brukerstatus: <%=session.getAttribute("bruker")%></p></b>
             <% } %>
         </div>
         <script type="text/javascript"> //Javascript for dropdown menu.

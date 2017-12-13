@@ -2,6 +2,7 @@
     Document   : insex
     Created on : 15.okt.2017, 12:02:03
     Author     : by-cr
+    Kan legge tile en bruker i databasen
 --%>
 <%@page import="java.sql.*"%>
 <%@page import="Java.Tools"%>
@@ -41,29 +42,34 @@
         <header>
             <jsp:include page="HeaderMenu.jsp"/>
         </header>
-        <h1>Legg til student i databasen</h1>
+        <h1>Legg til bruker i databasen</h1>
     
         
         <form name="myForm" action="Add" method="POST">
             <table class="center">
                 <tbody>
                     <tr>
-                        <td>First Name</td>
+                        <td>Fornavn</td>
                         <td><input type="text" name="first" value="" size="50" /></td>
                     </tr>
                     <tr>
-                        <td>Last name</td>
+                        <td>Etternavn</td>
                         <td><input type="text" name="last" value="" size="50" /></td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>Passord</td>
+                        <td><input type="text" name="password" value="" size="50" /></td>
+                    </tr>
+                    <tr>
+                        <td>Epost</td>
                         <td><input type="text" name="email" value="" size="50" /></td>
                     </tr>
                     <tr>
                         <td>Status</td>
                         <td><select name="status">
-                            <option value="Foreleser">Foreleser</option>
                             <option value="Student">Student</option>
+                            <option value="Foreleser">Foreleser</option>
+                            <option value="Hjelpelaerer">Hjelpelærer</option>
                             </select></td>
                     </tr>
                 </tbody>
