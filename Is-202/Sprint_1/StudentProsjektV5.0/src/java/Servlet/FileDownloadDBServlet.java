@@ -36,13 +36,12 @@ public class FileDownloadDBServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // Henter upload_id fra url. + husk å fjenre unødvendige prnit koder
-String id = request.getParameter("id");
-System.out.println("********************* id =" + id);
-        int uploadId = Integer.parseInt(id);
+            String id = request.getParameter("id");
+            int uploadId = Integer.parseInt(id);
          
-        Connection conn = null; // Forbindelsen til databasen. 
+            Connection conn = null; // Forbindelsen til databasen. 
          
-        try {
+            try {
             // Forbindelse til databasen. 
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
@@ -88,17 +87,21 @@ System.out.println("********************* id =" + id);
                  
                 inputStream.close();
                 outStream.close();             
-            } else {
+            } 
+            else {
                 // Ingen fil funnet.
                 response.getWriter().print("File not found for the id: " );  
             }
-        } catch (SQLException ex) {
+            }
+            catch (SQLException ex) {
             ex.printStackTrace();
             response.getWriter().print("SQL Error: " + ex.getMessage());
-        } catch (IOException ex) {
+            } 
+            catch (IOException ex) {
             ex.printStackTrace();
             response.getWriter().print("IO Error: " + ex.getMessage());
-        } finally {
+            } 
+            finally {
             if (conn != null) {
                 // Lukker forbindelsen til databasen når arbeidet er fullført. 
                 try {
@@ -109,5 +112,5 @@ System.out.println("********************* id =" + id);
             }          
         }
     }
-   }
+}
 
