@@ -151,7 +151,7 @@
                     <form action="Moduler" method="post" class="inline">
                         <button class="linkbutton">Moduler</button>
                     </form>
-                    <form action="studentliste" method="post" class="inline">
+                    <form action="Innstillinger" method="post" class="inline">
                         <button class="linkbutton">Innstillinger</button>
                     </form>
                     <%if(!bruker.equals("Student")){%>

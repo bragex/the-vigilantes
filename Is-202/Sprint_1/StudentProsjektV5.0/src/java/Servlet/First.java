@@ -50,6 +50,7 @@ public class First extends HttpServlet {
         String idName=request.getParameter("uname");
         session.setAttribute("user", idName);   //Setter  user navnet som en session kalt idName
         String pwd=request.getParameter("pass");
+        session.setAttribute("pass", pwd);
         try (PrintWriter out = response.getWriter()) {
         Class.forName("com.mysql.jdbc.Driver");
               

@@ -29,6 +29,7 @@ public class Tools {
     PreparedStatement selectUsersDel = null;
     PreparedStatement deleteUser = null;
     PreparedStatement feedback = null;
+    PreparedStatement updatePass = null;
     ResultSet resultSet = null;
 
     /**
@@ -235,7 +236,16 @@ public class Tools {
 
     }
 
-    public void poeng() {
-
+    public void update(String user, String npass1) {
+        int update = 0; 
+      
+        try {
+            updatePass = connection.prepareStatement( 
+                    "update user set user_password = '"+npass1+"' where user_fname = '"+user+"'");
+            update = updatePass.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
