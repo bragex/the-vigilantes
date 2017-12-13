@@ -8,6 +8,7 @@ package Servlet;
 import Java.Tools;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,40 +36,25 @@ public class tilbakemeldingLager extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet tilbakemeldingLager</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet tilbakemeldingLager at " + request.getContextPath() + "</h1>");
             
-        String content;
-            String points;
-            String submitId;
-            
-            System.out.println("OIOIOI");
-            System.out.println("OIOIOI");
-            System.out.println("OIOIOI");
-               
-            content = request.getParameter("content");
-            points = request.getParameter("points");
+            // Henter input fra .jsp siden og parser String til int hvor det trengs
+            String content = request.getParameter("content");
+            String points = request.getParameter("points");
             int parsePoints = Integer.parseInt(points);
-            submitId = request.getParameter("sId");
+            String submitId = request.getParameter("sId");
             int parseSubmitId = Integer.parseInt(submitId);
+            String module = request.getParameter("module");
+            String userId = request.getParameter("uId");
+            int parseUserId = Integer.parseInt(userId);
             
-            System.out.println("OIOIOI");
-            System.out.println(parsePoints + parseSubmitId);
-            System.out.println("OIOIOI");
-            
+            //Bruker metoder fra Tools klassen for å lase opp til databasen
             Tools dbTools = new Tools();
             dbTools.connect();
-            dbTools.createFeedback(content, parsePoints, parseSubmitId);
-        
-        
-            out.println("</body>");
-            out.println("</html>");
+            dbTools.createFeedback(content, parsePoints, parseSubmitId, module, parseUserId);
+            
+            RequestDispatcher rd = request.getRequestDispatcher("Home");
+            rd.forward(request, response);
+            
         }
     }
 

@@ -161,6 +161,9 @@
                     <form action="DeleteUser" method="post" class="inline">
                         <button class="linkbutton">Slett student</button>
                     </form>
+                    <form action="lagTilbakemelding" method="post" class="inline">
+                        <button class="linkbutton">Lag Tilbakemelding</button>
+                    </form>
                         <%}%>
                     <form action="index.html" method="post" class="inline">
                         <button class="linkbutton">Logg ut</button>

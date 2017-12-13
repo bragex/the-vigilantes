@@ -63,6 +63,7 @@
                 if (bruker.equals("Student")){
                 %>
                 <jsp:include page="upload.jsp"/>
+                <jsp:include page="TilbakeMelding.jsp"/>
                 <%}%>
                 <!--Upload code-->
                 <jsp:include page="Download.jsp"/>

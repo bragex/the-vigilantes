@@ -2,6 +2,7 @@
     Document   : insex
     Created on : 15.okt.2017, 12:02:03
     Author     : by-cr
+    Kan legge tile en bruker i databasen
 --%>
 <%@page import="java.sql.*"%>
 <%@page import="Java.Tools"%>

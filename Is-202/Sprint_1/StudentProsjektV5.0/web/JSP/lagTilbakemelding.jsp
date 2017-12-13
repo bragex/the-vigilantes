@@ -3,13 +3,13 @@
     Created on : 15.nov.2017, 12:05:02
     Author     : bags
 --%>
-
+<%@page import="java.sql.*"%>
+<%Class.forName("com.mysql.jdbc.Driver");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <%--
     Denne siden skal bestå av felt hvor man lager en tilbakemelding.
-    Trenger felt for feedback_id, feedback_content, feedback_date, feedback_points, submit_id
     Denne løsningen vil ikke være den beste.
 --%>
 <html>
@@ -18,31 +18,37 @@
         <title>Lag Tilbakemelding</title>
     </head>
     <body>
-        <header>
-            <jsp:include page="HeaderMenu.jsp"/>
-        </header>
         <h3>Lag Tilbakemelding</h3>
-        <form method="post" action="tilbakemeldingLager" enctype="multipart/form-data">
+        <form method="post" action="tilbakemeldingLager">
             <center>                 
                     <table border="0">
                         <tr>
-                            <td>feedback_content: </td>
+                            <td>Tilbakemelding Tekst: </td>
                             <td><input type="text" name="content" size="50"/></td>
                         </tr>
                         <tr>
-                            <td>feedback_points: </td>
+                            <td>Poeng: 1-10</td>
                             <td><input type="text" name="points" size="50"/></td>
                         </tr>
+                        <%-- Dårlig løsning --%>
                         <tr>
-                            <td>submit_id: </td>
+                            <td>Submit ID: Krever at foreleser kan ID på innlevering</td>
                             <td><input type="text" name="sId" size="50"/></td>
                         </tr>
                         <tr>
+                            <td>Modul: Eks. user_m1 for modul 1</td>
+                            <td><input type="text" name="module" size="50"/></td>
+                        </tr>
+                        <tr>
+                            <td>Bruker ID: Krever at foreleser kan bruker ID til student</td>
+                            <td><input type="text" name="uId" size="50"/></td>
+                        </tr>
+                        <tr>
                             <td colspan="2">
-                                <input type="submit" value="Save">
+                                <input type="submit" value="Save" name="send"/>
                             </td>
                         </tr>
-                    </table>               
+                    </table>
             </center>
         </form>
     </body>

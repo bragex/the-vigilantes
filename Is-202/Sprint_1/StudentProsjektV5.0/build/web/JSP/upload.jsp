@@ -38,7 +38,7 @@
                         <!-- Studenten skriver inn sin ID: st001, st002 etc. Bad solution.  -->
                         <tr>
                             <td>Fil navn: </td>
-                            <td><input type="text" name="filNavn" size="50"/></td>
+                            <td><input type="text" name="fileName" size="50"/></td>
                         </tr>
                         <tr>
                             <td>Last opp fil: </td>

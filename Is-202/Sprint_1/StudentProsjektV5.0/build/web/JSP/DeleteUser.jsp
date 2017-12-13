@@ -2,6 +2,7 @@
     Document   : index
     Created on : 19.okt.2017, 09:20:39
     Author     : by-cr
+    Får opp en liste over brukere. Velg så en bruker for å slette den fra databasen
 --%>
 <%@page import="Java.Tools"%>
 <%@page import="java.sql.*"%>

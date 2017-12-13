@@ -142,9 +142,8 @@ public class Tools {
         return result;
     }
 
-    public void createFeedback(String content, int points, int sId) {
-        
-        PreparedStatement newStud; 
+    public void createFeedback(String content, int points, int sId, String module, int userId) {
+        // Pepares SQL query to insert values into the feedback table
         int result = 0;   
         try {
             feedback = connection.prepareStatement(
@@ -154,11 +153,66 @@ public class Tools {
             feedback.setInt(2, points);
             feedback.setInt(3, sId);
             result = feedback.executeUpdate();
+            result = 0;
+            
+            // Prepares SQL query to update the points in the user table
+            feedback = connection.prepareStatement (
+                                            "UPDATE `user` "
+                                          + "SET " + module + " = ? "
+                                          + "WHERE `user`.user_id = ?;");
+            feedback.setInt(1, points);
+            feedback.setInt(2, userId);
+            result = feedback.executeUpdate();
         }
         catch (SQLException ex) {
                             ex.printStackTrace();
 
         }
+    }
+
+    public void feedbackQuery(String paramModule, String user_fname) {
+        // Sets the proper string needed in the query
+        String theModule = "";
+        try {
+            if (paramModule.equals("1")) {
+                theModule = "Module 1";
+            }
+            else if (paramModule.equals("2")) {
+                theModule = "Module 2";
+            }
+            else if (paramModule.equals("3")) {
+                theModule = "Module 3";
+            }
+            else if (paramModule.equals("4")) {
+                theModule = "Module 4";
+            }
+            else if (paramModule.equals("5")) {
+                theModule = "Module 5";
+            }
+            // Prepares the SQL query
+            feedback = connection.prepareStatement(
+                                            "SELECT feedback_content "
+                                          + "FROM feedback, submit, module, student, `user` "
+                                          + "WHERE feedback.submit_id = submit.submit_id "
+                                          + "AND submit.module_id = module.module_id "
+                                          + "AND submit.student_id = student.student_id "
+                                          + "AND student.user_id = `user`.user_id "
+                                          + "AND module_name = '" + theModule + "' "
+                                          + "AND user_fname = '" + user_fname + "' ");
+    }
+        catch (SQLException ex) {
+                            ex.printStackTrace();
+
+        }
+    }
+    
+    public ResultSet getFeedback() {
+        try {
+            resultSet = feedback.executeQuery();
+        } 
+        catch (SQLException e) {
+        }
+        return resultSet;
     }
 
     public void søk(String Navn) throws SQLException {

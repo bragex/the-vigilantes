@@ -118,10 +118,5 @@
             </tbody>
         </table>
             </center>
-        <header>
-            <!--Menu code-->
-              <jsp:include page="lagTilbakemelding.jsp"/>
-            <!--Menu code-->
-        </header>
     </body>
 </html>
