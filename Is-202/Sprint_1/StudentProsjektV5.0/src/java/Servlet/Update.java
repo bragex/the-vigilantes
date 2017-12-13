@@ -32,39 +32,38 @@ public class Update extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(); 
-        String user = (String) session.getAttribute ("user"); 
-        String gpass = request.getParameter("gpass");
+        String user = (String) session.getAttribute ("user"); /** Henter "user" fra definisjon i First.java */
+        String gpass = request.getParameter("gpass"); /** Henter Gammelt passord fra Innstillinger */
         session.setAttribute("gpass", gpass);
         String npass1 = request.getParameter("npass1");
         session.setAttribute("npass1", npass1);
         String npass2 = request.getParameter("npass2");
         session.setAttribute("npass2", npass2);
         
-         
          try (PrintWriter out = response.getWriter()) {
              
-         if (gpass.equals((String)session.getAttribute("pass"))){
+         if (gpass.equals((String)session.getAttribute("pass"))){ /** Sjekker det man har skrevet i Gammelt passord mot passord skrevet ved innlogging */
              
-         if (npass1.equals(npass2)){
+         if (npass1.equals(npass2)){ /** Sjekker om Nytt passord er likt Gjenta passord */
             Tools dbTools = new Tools(); 
             dbTools.connect();
             dbTools.update(user, npass1);
             
              RequestDispatcher rd = request.getRequestDispatcher("JSP/Innstillinger.jsp");
              rd.include (request, response);
-             out.println ("Passoret er endret");
+             out.println ("Passoret er endret"); /** Sender deg tilbake til siden og skriver ut bekreftelse */
          }
          
          else {
              RequestDispatcher rd = request.getRequestDispatcher("JSP/Innstillinger.jsp");
              rd.include (request, response);
-             out.println ("De nye passordene er ikke like");
+             out.println ("De nye passordene er ikke like"); /** Sender deg tilbake til siden og skriver ut feilmelding */
          }
          }
          else {
              RequestDispatcher rd = request.getRequestDispatcher("JSP/Innstillinger.jsp");
              rd.include (request, response);
-             out.println ("Feil gammelt passord");
+             out.println ("Feil gammelt passord"); /** Sender deg tilbake til siden og skriver ut feilmelding */
          }
     }
              

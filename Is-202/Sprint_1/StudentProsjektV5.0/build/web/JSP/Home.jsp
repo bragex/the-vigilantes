@@ -108,11 +108,11 @@
                 <tr>
                     <td> <a href="MinSide?param=<%=id%>&param2=<%=fnavn%>&param3=<%=lnavn%>"> <%=fnavn%> <%=lnavn%></a></td>
                     <td> <a href="mailto:<%=email%>?Subject=IS-110" target="_top"><%=email%></a></td>
-                    <td style="background-color:<%=farge1%>"> <a href="ModulLevering?modul=1"> <%if (user.equals(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m1%><%}%></a></td>
-                    <td style="background-color:<%=farge2%>"> <a href="ModulLevering?modul=2"> <%if (user.equals(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m2%><%}%></a></td>
-                    <td style="background-color:<%=farge3%>"> <a href="ModulLevering?modul=3"> <%if (user.equals(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m3%><%}%></a></td>
-                    <td style="background-color:<%=farge4%>"> <a href="ModulLevering?modul=4"> <%if (user.equals(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m4%><%}%></a></td>
-                    <td style="background-color:<%=farge5%>"> <a href="ModulLevering?modul=5"> <%if (user.equals(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m5%><%}%></a></td>
+                    <td style="background-color:<%=farge1%>"> <a href="ModulLevering?modul=1"> <%if (user.equalsIgnoreCase(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m1%><%}%></a></td>
+                    <td style="background-color:<%=farge2%>"> <a href="ModulLevering?modul=2"> <%if (user.equalsIgnoreCase(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m2%><%}%></a></td>
+                    <td style="background-color:<%=farge3%>"> <a href="ModulLevering?modul=3"> <%if (user.equalsIgnoreCase(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m3%><%}%></a></td>
+                    <td style="background-color:<%=farge4%>"> <a href="ModulLevering?modul=4"> <%if (user.equalsIgnoreCase(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m4%><%}%></a></td>
+                    <td style="background-color:<%=farge5%>"> <a href="ModulLevering?modul=5"> <%if (user.equalsIgnoreCase(fnavn)||bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){%><%=m5%><%}%></a></td>
                 </tr>
                 <%}%>        
             </tbody>
