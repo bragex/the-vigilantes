@@ -68,7 +68,10 @@ if(rs.getString(4).equals(pwd))
     rd.forward(request, response);
     
 
-} 
+}
+out.println("Feil passord eller brukernavn.");
+                RequestDispatcher rd = request.getRequestDispatcher("index.html");
+                rd.include(request, response);
 }
 else 
 { out.println("Feil passord eller brukernavn.");
