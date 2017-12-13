@@ -122,16 +122,15 @@
                        
             <div id="headerbox1" class="headerbox">
                 <div id="menudiv1" class="divfrontpage">
-                    <a href="Home"><img src="pic/uia_logo.gif" alt="logo" width="200" height = 37,5></a>
+                    <a href="Home"><img src="pic/uia_logo.gif" alt="logo" width="200" height = "37"></a>
                    
         <header>                    
             
     <%--Viser søkebaren bare på Home.jsp--%>
     
                     <% if (url.equals(url1)){%>
-                        <form id="search00" class=searchclass action="" method="get">
+                        <form id="search00" class=searchclass action="sok" method="post">
                             <button id="search01">Søk</button>
-                            <input id="search02" type="search" name="Search">
                         </form>
                     <%}%> 
                 </div>
