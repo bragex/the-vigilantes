@@ -25,12 +25,12 @@ values
 ('Benjamin', 'Sandøy', 'p123', 'benjamin@hotmail.com', 'Student', 5, 5, 5, 5, 5), 
 ('Kim', 'Moe', 'p123', 'kim@hotmail.com', 'Student', 10, 9, 8, 9, 10), 
 ('Vegar', 'Sakseid', 'p123', 'vegar@hotmail.com', 'Student', 10, 9, 8, 9, 8), 
-('Brage', 'Sydskogen', 'p123', 'brage@hotmail.com', 'Student', 1, 5, 7, 0, 10), 
+('Brage', 'Sydskogen', 'p123', 'brage@hotmail.com', 'Student', 10, 8, 7, 6, 0), 
 ('Jenny', 'Kristiansen', 'p123', 'jenny@hotmail.com', 'Student', 8, 8, 8, 8, 8), 
 ('Tønnes', 'Røren', 'p123', 'tønnes@hotmail.com', 'Student', 10, 10, 10, 9, 10),
-('Ingfrid', 'Hansen', 'p123', 'ingfrid@hotmail.com', 'Student', 0, 0, 0, 0, 0), 
-('Kevin', 'Pedersen', 'p123', 'kevin@hotmail.com', 'Student', 7, 7, 7, 7, 7), 
-('Hallgeir', 'Nilsen', 'p123', 'hallgeir@hotmail.com', 'Foreleser', 6, 7, 8, 9, 10);
+('Ingfrid', 'Hansen', 'p123', 'ingfrid@hotmail.com', 'Student', 7, 7, 0, 0, 0), 
+('Kevin', 'Pedersen', 'p123', 'kevin@hotmail.com', 'Student', 7, 7, 7, 5, 0), 
+('Hallgeir', 'Nilsen', 'p123', 'hallgeir@hotmail.com', 'Foreleser', null, null, null, null, null);
 
 
 create table lecturer (
