@@ -30,6 +30,7 @@ public class Tools {
     PreparedStatement deleteUser = null;
     PreparedStatement feedback = null;
     PreparedStatement updatePass = null;
+    PreparedStatement epost = null;
     ResultSet resultSet = null;
 
     /**
@@ -247,5 +248,27 @@ public class Tools {
         catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    //Henter ut eposter.
+    public void epost(String modul) {
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            selectUsers = connection.prepareStatement(
+                    "SELECT user_email FROM user where user_m"+modul+"<7");
+
+            //" SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user;");
+        } catch (SQLException e) {
+        }
+    }
+    
+    public ResultSet getEpost(String modul) {
+        epost(modul);
+        try {
+            resultSet = epost.executeQuery();
+           
+        } catch (SQLException e) {
+        }
+         return resultSet;
+
     }
 }

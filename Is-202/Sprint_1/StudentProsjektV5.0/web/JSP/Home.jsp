@@ -117,6 +117,25 @@
                 <%}%>        
             </tbody>
         </table>
+            <br>
+                <p>Send mail til alle som ikke har fått godkjent modul </p>
+            <form name="SendMail" action="SendEmail" method="POST">
+                <select name="modul">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br>
+                <input type="submit" value="Hent adresser">
+            </form>
+                <%
+                String m = (String)session.getAttribute("mailer");
+                %>
+                <a href="mailto:<%=m%>?Subject=IS-109/110" target="_top">Send epost</a>
+                  
+            <br>
             </center>
     </body>
 </html>
