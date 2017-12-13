@@ -74,21 +74,21 @@
                     </td>
                     <td>
                         <ul>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>                            
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>                             
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>
-                            <li><a href="ModulLevering">Lever her</a></li>                   
+                            <li><a href="ModulLevering?modul=1">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=2">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=3">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=4">Lever her</a></li>                            
+                            <li><a href="ModulLevering?modul=5">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=6">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=7">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=8">Lever her</a></li>                             
+                            <li><a href="ModulLevering?modul=9">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=10">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=11">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=12">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=13">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=14">Lever her</a></li>
+                            <li><a href="ModulLevering?modul=15">Lever her</a></li>                   
                         </ul>
                     </td>    
                 </tr>    
