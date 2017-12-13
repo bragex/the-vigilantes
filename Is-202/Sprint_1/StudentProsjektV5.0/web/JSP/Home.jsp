@@ -118,6 +118,9 @@
             </tbody>
         </table>
             <br>
+            <% 
+            if (bruker.equals("Foreleser")||bruker.equals("Hjelpelaerer")){
+            %>
                 <p>Send mail til alle som ikke har fått godkjent modul </p>
             <form name="SendMail" action="SendEmail" method="POST">
                 <select name="modul">
@@ -133,9 +136,9 @@
                 <%
                 String m = (String)session.getAttribute("mailer");
                 %>
-                <a href="mailto:<%=m%>?Subject=IS-109/110" target="_top">Send epost</a>
-                  
+                <a href="mailto:<%=m%>?Subject=IS-109/110" target="_top">Send epost</a>                  
             <br>
+            <%}%>
             </center>
     </body>
 </html>
