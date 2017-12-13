@@ -45,9 +45,9 @@ public class Update extends HttpServlet {
          if (gpass.equals((String)session.getAttribute("pass"))){ /** Sjekker det man har skrevet i Gammelt passord mot passord skrevet ved innlogging */
              
          if (npass1.equals(npass2)){ /** Sjekker om Nytt passord er likt Gjenta passord */
-            Tools dbTools = new Tools(); 
-            dbTools.connect();
-            dbTools.update(user, npass1);
+            Tools dbTools = new Tools();  /** Oppretter et objekt */
+            dbTools.connect(); /** Kobler til database */ 
+            dbTools.update(user, npass1); /** Oppdaterer database */
             
              RequestDispatcher rd = request.getRequestDispatcher("JSP/Innstillinger.jsp");
              rd.include (request, response);

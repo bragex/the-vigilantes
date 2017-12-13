@@ -155,10 +155,10 @@
                     </form>
                     <%if(!bruker.equals("Student")){%>
                     <form action="AddUser" method="post" class="inline">
-                        <button class="linkbutton">Legg til student</button>
+                        <button class="linkbutton">Legg til bruker</button>
                     </form>
                     <form action="DeleteUser" method="post" class="inline">
-                        <button class="linkbutton">Slett student</button>
+                        <button class="linkbutton">Slett bruker</button>
                     </form>
                     <form action="lagTilbakemelding" method="post" class="inline">
                         <button class="linkbutton">Lag Tilbakemelding</button>
