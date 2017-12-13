@@ -40,19 +40,20 @@ public class Tools {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException ex) {
-            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+            ex.getErrorCode();
         }
     }
-    
+
     // Logger inn ved bruk av brukernavn. Dette matches mot fnavn i databasen
-        public void loggInn(String idName) {
-       try {
+    public void loggInn(String idName) {
+        try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             selectUsers = connection.prepareStatement(
-                    "select * from user where user_fname='"+ idName +"'");
+                    "select * from user where user_fname='" + idName + "'");
 
-        } catch (SQLException e) {
-        } 
+        } catch (SQLException ex) {
+            ex.getErrorCode();
+        }
     }
 
     //Henter ut en liste med fra databasen av brukere og modulpoenge de har.
@@ -63,7 +64,8 @@ public class Tools {
                     " SELECT user_id, user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user where user_status='Student' ORDER BY FIELD(user_fname, '" + user + "') DESC");
 
             //" SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user;");
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            ex.getErrorCode();
         }
     }
 
@@ -72,7 +74,8 @@ public class Tools {
         try {
             resultSet = selectUsers.executeQuery();
 
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            ex.getErrorCode();
         }
 
         return resultSet;
@@ -96,7 +99,7 @@ public class Tools {
 
         } // end try     
         catch (SQLException ex) {
-            ex.printStackTrace();
+            ex.getErrorCode();
 
         }
     }
@@ -110,7 +113,8 @@ public class Tools {
 
             deleteUser = connection.prepareStatement(
                     "DELETE FROM user WHERE user_id = ?");
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            ex.getErrorCode();
         }
 
     }
@@ -118,20 +122,23 @@ public class Tools {
     /*
      *aggrer et resultSet fra en spørring til database. 
      *Dette er det samme som getUser, er bare brukt med et annet navn for å gjøre kodingen lettere
-    */
+     */
     public ResultSet getUserDel() {
 
         try {
             resultSet = selectUsersDel.executeQuery();
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            ex.getErrorCode();
         }
 
         return resultSet;
     }
+
     /**
      * Sletter en user fra tabelen user i databasen basert på id
+     *
      * @param id
-     * @return 
+     * @return
      */
     public int deleteUser(Integer id) {
         int result = 0;
@@ -139,35 +146,35 @@ public class Tools {
         try {
             deleteUser.setInt(1, id);
             result = deleteUser.executeUpdate();
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            ex.getErrorCode();
         }
         return result;
     }
 
     public void createFeedback(String content, int points, int sId, String module, int userId) {
         // Pepares SQL query to insert values into the feedback table
-        int result = 0;   
+        int result = 0;
         try {
             feedback = connection.prepareStatement(
-                                            "INSERT INTO feedback (feedback_content, feedback_date, feedback_points, submit_id)"
-                                             + " VALUES (?, current_timestamp, ?, ?)");
+                    "INSERT INTO feedback (feedback_content, feedback_date, feedback_points, submit_id)"
+                    + " VALUES (?, current_timestamp, ?, ?)");
             feedback.setString(1, content);
             feedback.setInt(2, points);
             feedback.setInt(3, sId);
             result = feedback.executeUpdate();
             result = 0;
-            
+
             // Prepares SQL query to update the points in the user table
-            feedback = connection.prepareStatement (
-                                            "UPDATE `user` "
-                                          + "SET " + module + " = ? "
-                                          + "WHERE `user`.user_id = ?;");
+            feedback = connection.prepareStatement(
+                    "UPDATE `user` "
+                    + "SET " + module + " = ? "
+                    + "WHERE `user`.user_id = ?;");
             feedback.setInt(1, points);
             feedback.setInt(2, userId);
             result = feedback.executeUpdate();
-        }
-        catch (SQLException ex) {
-                            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
 
         }
     }
@@ -178,41 +185,35 @@ public class Tools {
         try {
             if (paramModule.equals("1")) {
                 theModule = "Module 1";
-            }
-            else if (paramModule.equals("2")) {
+            } else if (paramModule.equals("2")) {
                 theModule = "Module 2";
-            }
-            else if (paramModule.equals("3")) {
+            } else if (paramModule.equals("3")) {
                 theModule = "Module 3";
-            }
-            else if (paramModule.equals("4")) {
+            } else if (paramModule.equals("4")) {
                 theModule = "Module 4";
-            }
-            else if (paramModule.equals("5")) {
+            } else if (paramModule.equals("5")) {
                 theModule = "Module 5";
             }
             // Prepares the SQL query
             feedback = connection.prepareStatement(
-                                            "SELECT feedback_content "
-                                          + "FROM feedback, submit, module, student, `user` "
-                                          + "WHERE feedback.submit_id = submit.submit_id "
-                                          + "AND submit.module_id = module.module_id "
-                                          + "AND submit.student_id = student.student_id "
-                                          + "AND student.user_id = `user`.user_id "
-                                          + "AND module_name = '" + theModule + "' "
-                                          + "AND user_fname = '" + user_fname + "' ");
-    }
-        catch (SQLException ex) {
-                            ex.printStackTrace();
+                    "SELECT feedback_content "
+                    + "FROM feedback, submit, module, student, `user` "
+                    + "WHERE feedback.submit_id = submit.submit_id "
+                    + "AND submit.module_id = module.module_id "
+                    + "AND submit.student_id = student.student_id "
+                    + "AND student.user_id = `user`.user_id "
+                    + "AND module_name = '" + theModule + "' "
+                    + "AND user_fname = '" + user_fname + "' ");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
 
         }
     }
-    
+
     public ResultSet getFeedback() {
         try {
             resultSet = feedback.executeQuery();
-        } 
-        catch (SQLException e) {
+        } catch (SQLException e) {
         }
         return resultSet;
     }
@@ -238,37 +239,37 @@ public class Tools {
     }
 
     public void update(String user, String npass1) {
-        int update = 0; 
-      
+        int update = 0;
+
         try {
-            updatePass = connection.prepareStatement( 
-                    "update user set user_password = '"+npass1+"' where user_fname = '"+user+"'");
+            updatePass = connection.prepareStatement(
+                    "update user set user_password = '" + npass1 + "' where user_fname = '" + user + "'");
             update = updatePass.executeUpdate();
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
+
     //Henter ut eposter.
     public void epost(String modul) {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             selectUsers = connection.prepareStatement(
-                    "SELECT user_email FROM user where user_m"+modul+"<7");
+                    "SELECT user_email FROM user where user_m" + modul + "<7");
 
             //" SELECT user_fname, user_lname, user_email, user_m1, user_m2, user_m3, user_m4, user_m5 FROM user;");
         } catch (SQLException e) {
         }
     }
-    
+
     public ResultSet getEpost(String modul) {
         epost(modul);
         try {
             resultSet = epost.executeQuery();
-           
+
         } catch (SQLException e) {
         }
-         return resultSet;
+        return resultSet;
 
     }
 }

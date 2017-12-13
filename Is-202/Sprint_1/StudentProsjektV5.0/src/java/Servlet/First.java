@@ -10,6 +10,7 @@ package Servlet;
 import Java.Tools;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -79,7 +80,8 @@ else
                 rd.include(request, response);
 } 
         
-    }   catch (ClassNotFoundException ex) {
+    }   catch (ClassNotFoundException | NullPointerException ex) {
+        out.println("feilmelding");
             Logger.getLogger(First.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
