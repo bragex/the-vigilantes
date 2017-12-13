@@ -21,15 +21,15 @@ Create table `user` (
 
 insert into `user` (user_fname, user_lname, user_password, user_email, user_status, user_m1, user_m2, user_m3, user_m4, user_m5)
 values 
-('Morten', 'Mygland', 'p123', 'morten@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
-('Benjamin', 'Sandøy', 'p123', 'benjamin@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
-('Kim', 'Moe', 'p123', 'kim@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
-('Vegar', 'Sakseid', 'p123', 'vegar@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
-('Brage', 'Sydskogen', 'p123', 'brage@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
-('Jenny', 'Kristiansen', 'p123', 'jenny@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
-('Tønnes', 'Røren', 'p123', 'tønnes@hotmail.com', 'Student', 6, 7, 8, 9, 10),
-('Ingfrid', 'Hansen', 'p123', 'ingfrid@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
-('Kevin', 'Pedersen', 'p123', 'kevin@hotmail.com', 'Student', 6, 7, 8, 9, 10), 
+('Morten', 'Mygland', 'p123', 'morten@hotmail.com', 'Student', 10, 10, 10, 10, 10), 
+('Benjamin', 'Sandøy', 'p123', 'benjamin@hotmail.com', 'Student', 5, 5, 5, 5, 5), 
+('Kim', 'Moe', 'p123', 'kim@hotmail.com', 'Student', 10, 9, 8, 9, 10), 
+('Vegar', 'Sakseid', 'p123', 'vegar@hotmail.com', 'Student', 10, 9, 8, 9, 8), 
+('Brage', 'Sydskogen', 'p123', 'brage@hotmail.com', 'Student', 1, 5, 7, 0, 10), 
+('Jenny', 'Kristiansen', 'p123', 'jenny@hotmail.com', 'Student', 8, 8, 8, 8, 8), 
+('Tønnes', 'Røren', 'p123', 'tønnes@hotmail.com', 'Student', 10, 10, 10, 9, 10),
+('Ingfrid', 'Hansen', 'p123', 'ingfrid@hotmail.com', 'Student', 0, 0, 0, 0, 0), 
+('Kevin', 'Pedersen', 'p123', 'kevin@hotmail.com', 'Student', 7, 7, 7, 7, 7), 
 ('Hallgeir', 'Nilsen', 'p123', 'hallgeir@hotmail.com', 'Foreleser', 6, 7, 8, 9, 10);
 
 
@@ -98,15 +98,16 @@ values ('test1', 'fi001', '2017-06-14', 'mo001', 'st001'),
 create table feedback (
 	feedback_id int auto_increment primary key,
     feedback_content text,
+    feedback_points int,
     feedback_date timestamp,
-    submit_id int,
+    submit_id int unique,
     foreign key (submit_id) references submit (submit_id)
 );
 
-insert into feedback (feedback_content, feedback_date, submit_id)
-values ('This was good', current_timestamp,1), ('This was bad', current_timestamp, 2), 
-('Need more work', current_timestamp, 3), ('Excellent', current_timestamp, 4), 
-('Give up', current_timestamp, 5);
+insert into feedback (feedback_content, feedback_date, feedback_points, submit_id)
+values ('This was good', current_timestamp,8,1), ('This was bad', current_timestamp,2, 2), 
+('Need more work', current_timestamp,5,3), ('Excellent', current_timestamp,10,4), 
+('Give up', current_timestamp,1,5);
 
 
 create table blog (
@@ -127,4 +128,3 @@ values ('bl001', 'blog 1', 'Ones upon a time', '2017-06-17', 'st001'),
 ('bl006', 'blog 6', ' but then they relaized', '2017-11-17', 'st006'),
 ('bl007', 'blog 7', 'they had to get their shit togheter', '2017-12-17', 'st007'), 
 ('bl008', 'blog 8', 'and do it again and pass', '2018-01-17', 'st008');
-
